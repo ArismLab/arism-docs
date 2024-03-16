@@ -1,0 +1,58 @@
+{
+    "title": "Arism Wallet",
+    "headerTitle": "Arism Wallet - The Hyper Wallet Protocol",
+    "description": "A Distributed Key and Identifier Management Protocol powered by Zero Knowledge",
+    "language": "en-us",
+    "locale": "en-US",
+    "theme": "system",
+    "siteUrl": "https://whitepaper.arism.org",
+    "siteRepo": "https://github.com/Arism-Lab/arism-whitepaper",
+    "siteLogo": "/static/logo.png",
+    "siteBanner": "/static/banner.png",
+    "externalLinks": [
+        {
+            "name": "Homepage",
+            "url": "https://arism.org"
+        },
+        {
+            "name": "Github",
+            "url": "https://github.com/ArismLab"
+        },
+        {
+            "name": "Twitter",
+            "url": "https://twitter.com/ArismLab"
+        },
+        {
+            "name": "Whitepaper",
+            "url": "https://whitepaper.arism.org"
+        }
+    ],
+    "analytics": {
+        "umamiWebsiteId": "b018c634-3134-4965-ac2f-8b3a89c32e40",
+        "googleAnalyticsId": "G-V2EES3R603"
+    },
+    "mainNav": [
+        {
+            "title": "Guides",
+            "links": [
+                { "title": "Introduction", "href": "/" },
+                { "title": "Quickstart", "href": "/quickstart" },
+                { "title": "SDKs", "href": "/sdks" },
+                { "title": "Authentication", "href": "/authentication" },
+                { "title": "Pagination", "href": "/pagination" },
+                { "title": "Errors", "href": "/errors" },
+                { "title": "Webhooks", "href": "/webhooks" }
+            ]
+        },
+        {
+            "title": "Resources",
+            "links": [
+                { "title": "Contacts", "href": "/contacts" },
+                { "title": "Conversations", "href": "/conversations" },
+                { "title": "Messages", "href": "/messages" },
+                { "title": "Groups", "href": "/groups" },
+                { "title": "Attachments", "href": "/attachments" }
+            ]
+        }
+    ]
+}
