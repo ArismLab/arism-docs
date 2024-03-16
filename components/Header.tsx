@@ -3,12 +3,15 @@ import Link from '@components/Link'
 import clsx from 'clsx'
 import { motion, useScroll, useTransform } from 'framer-motion'
 
-import { Button } from '@components/Button'
-import { Logo } from '@components/Logo'
+import Button from '@components/Button'
+import Logo from '@components/Logo'
 import MobileNavigation from '@components/MobileNavigation'
 import { ModeToggle } from '@components/ModeToggle'
 import { MobileSearch, Search } from '@components/Search'
-import { useIsInsideMobileNavigation, useMobileNavigationStore } from '@hooks/navigation'
+import {
+	useIsInsideMobileNavigation,
+	useMobileNavigationStore,
+} from '@hooks/navigation'
 
 const TopLevelNavItem = ({ href, children }) => {
 	return (
@@ -23,9 +26,9 @@ const TopLevelNavItem = ({ href, children }) => {
 	)
 }
 
-export const Header = forwardRef(({ className }: any, ref: any) => {
+const Header = forwardRef(({ className }: any, ref: any) => {
 	let { isOpen: mobileNavIsOpen }: any = useMobileNavigationStore()
-	let isInsideMobileNavigation = useIsInsideMobileNavigation()
+	let isInsideMobileNavigation = useIsInsideMobileNavigation().Context
 
 	let { scrollY } = useScroll()
 	let bgOpacityLight = useTransform(scrollY, [0, 72], [0.5, 0.9])
@@ -82,3 +85,5 @@ export const Header = forwardRef(({ className }: any, ref: any) => {
 		</motion.div>
 	)
 })
+
+export default Header

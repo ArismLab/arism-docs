@@ -30,8 +30,8 @@ const Button = ({
 	variant = 'primary',
 	className,
 	children,
-  arrow,
-  href,
+	arrow,
+	href,
 	...props
 }: any) => {
 	let Component = href ? Link : 'button'

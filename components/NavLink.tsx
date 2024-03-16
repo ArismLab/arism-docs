@@ -1,13 +1,19 @@
-import Link from "next/link"
-import { Tag } from "./Tag"
-import clsx from "clsx"
+import Link from 'next/link'
+import { Tag } from './Tag'
+import clsx from 'clsx'
 
-const NavLink = ({ href, tag, active, isAnchorLink = false, children }: {
-  href: string
-  tag?: string
-  active?: boolean
-  isAnchorLink?: boolean
-  children: React.ReactNode
+const NavLink = ({
+	href,
+	tag,
+	active,
+	isAnchorLink = false,
+	children,
+}: {
+	href: string
+	tag?: string
+	active?: boolean
+	isAnchorLink?: boolean
+	children: React.ReactNode
 }) => {
 	return (
 		<Link

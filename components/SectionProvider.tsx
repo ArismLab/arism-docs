@@ -1,19 +1,13 @@
-import { useVisibleSections } from '@hooks/navigation'
+import { useIsomorphicLayoutEffect, useVisibleSections } from '@hooks/navigation'
 import { createSectionStore } from '@libs/store'
 import {
 	createContext,
-	useContext,
-	useEffect,
-	useLayoutEffect,
 	useState,
 } from 'react'
 
-const SectionStoreContext = createContext()
+const SectionStoreContext = createContext<boolean>(false)
 
-const useIsomorphicLayoutEffect =
-	typeof window === 'undefined' ? useEffect : useLayoutEffect
-
-export function SectionProvider({ sections, children }) {
+const SectionProvider = ({ sections, children }) => {
 	let [sectionStore] = useState(() => createSectionStore(sections))
 
 	useVisibleSections(sectionStore)
@@ -23,8 +17,10 @@ export function SectionProvider({ sections, children }) {
 	}, [sectionStore, sections])
 
 	return (
-		<SectionStoreContext.Provider value={sectionStore}>
+		<SectionStoreContext.Provider value={sectionStore as any}>
 			{children}
 		</SectionStoreContext.Provider>
 	)
 }
+
+export default SectionProvider

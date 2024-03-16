@@ -1,6 +1,6 @@
 import clsx from 'clsx'
 
-export function Prose({ as: Component = 'div', className, ...props }) {
+const Prose = ({ as: Component = 'div', className, ...props }: any) => {
 	return (
 		<Component
 			className={clsx(className, 'prose dark:prose-invert')}
@@ -8,3 +8,5 @@ export function Prose({ as: Component = 'div', className, ...props }) {
 		/>
 	)
 }
+
+export default Prose

@@ -1,7 +1,6 @@
-import { remToPx } from "@libs/remToPx"
-import { useIsPresent, motion } from "framer-motion"
-import { useSectionStore } from "./SectionProvider"
-import { useInitialValue, useIsInsideMobileNavigation } from "@hooks/navigation"
+import { remToPx } from '@libs/remToPx'
+import { useIsPresent, motion } from 'framer-motion'
+import { useInitialValue, useIsInsideMobileNavigation, useSectionStore } from '@hooks/navigation'
 
 const VisibleSectionHighlight = ({ group, pathname }) => {
 	let [sections, visibleSections] = useInitialValue(
@@ -9,7 +8,7 @@ const VisibleSectionHighlight = ({ group, pathname }) => {
 			useSectionStore((s) => s.sections),
 			useSectionStore((s) => s.visibleSections),
 		],
-		useIsInsideMobileNavigation()
+		useIsInsideMobileNavigation().Context
 	)
 
 	let isPresent = useIsPresent()

@@ -2,9 +2,9 @@ import Link from '@components/Link'
 import clsx from 'clsx'
 
 import { MDXComponents } from 'mdx/types'
-import { Heading } from '@components/Heading'
-export { Button } from '@components/Button'
-export { CodeGroup, Code as code, Pre as pre } from '@components/Code'
+import Heading from '@components/Heading'
+import Button from '@components/Button'
+import { CodeGroup, Code, Pre } from '@components/Code'
 
 const InfoIcon = (props) => {
 	return (
@@ -98,5 +98,9 @@ export const mdxComponents: MDXComponents = {
 	Col,
 	Properties,
 	Property,
-	a: Link,
+  a: Link,
+  Button,
+  CodeGroup,
+  code: Code as any,
+  pre: Pre as any
 }

@@ -12,37 +12,37 @@
     <h2>Table of contents</h2>
 </div>
 
-- [I. Architecture](#i-architecture)
-  - [1. ARM Token](#1-arm-token)
-  - [2. Arism Node](#2-arism-node)
-    - [2.1. Validation Node](#21-validation-node)
-    - [2.2. Whitelist Node (Backup Node)](#22-whitelist-node-backup-node)
-    - [2.3. Supervised Node](#23-supervised-node)
-    - [2.4. Node lifecycle](#24-node-lifecycle)
-    - [2.5. Rewards and fines](#25-rewards-and-fines)
-    - [2.6. Voting Event](#26-voting-event)
-- [II. Terminologies and conventions](#ii-terminologies-and-conventions)
-  - [1. Application side](#1-application-side)
-  - [2. Network side](#2-network-side)
-- [III. Mechanisms](#iii-mechanisms)
-  - [1. Keystore mechanisms (application side)](#1-keystore-mechanisms-application-side)
-    - [1.1. Theorem 1 - Client Key \& Factor definition](#11-theorem-1---client-key--factor-definition)
-    - [1.2. Theorem 2 - Distributed Key Generation (DKG)](#12-theorem-2---distributed-key-generation-dkg)
-    - [1.3. Theorem 3 - Network Key \& Factor definition](#13-theorem-3---network-key--factor-definition)
-    - [1.4. Theorem 4 - Shamir's Secret Sharing (SSS)](#14-theorem-4---shamirs-secret-sharing-sss)
-    - [1.5. Theorem 5 - Device Key \& Factor definition](#15-theorem-5---device-key--factor-definition)
-    - [1.6. Theorem 6 - Private Key retrieval technique](#16-theorem-6---private-key-retrieval-technique)
-    - [1.7. Theorem 7 - Multi-Factor Authentication (MFA)](#17-theorem-7---multi-factor-authentication-mfa)
-    - [1.8. Theorem 8 - Recovery Key \& Factor definition](#18-theorem-8---recovery-key--factor-definition)
-    - [1.9. Theorem 9 - Private Key retrieval threshold](#19-theorem-9---private-key-retrieval-threshold)
-  - [2. Dead node handling mechanisms (network side)](#2-dead-node-handling-mechanisms-network-side)
-    - [2.1. Theorem 10 - Circularly Protecting Secret Sharing (CPSS)](#21-theorem-10---circularly-protecting-secret-sharing-cpss)
-    - [2.1. Theorem 11 - Consensually Recovering Secret Sharing (CRSS)](#21-theorem-11---consensually-recovering-secret-sharing-crss)
-  - [3. Integrity preservation mechanism (network side)](#3-integrity-preservation-mechanism-network-side)
-    - [3.1. Theorem 12 - Proactive Secret Sharing (PSS)](#31-theorem-12---proactive-secret-sharing-pss)
-    - [3.2. Theorem 13 - Pedersen Verifiable Secret Sharing (PVSS)](#32-theorem-13---pedersen-verifiable-secret-sharing-pvss)
-- [IV. Notes](#iv-notes)
-- [V. Future implementations](#v-future-implementations)
+-   [I. Architecture](#i-architecture)
+    -   [1. ARM Token](#1-arm-token)
+    -   [2. Arism Node](#2-arism-node)
+        -   [2.1. Validation Node](#21-validation-node)
+        -   [2.2. Whitelist Node (Backup Node)](#22-whitelist-node-backup-node)
+        -   [2.3. Supervised Node](#23-supervised-node)
+        -   [2.4. Node lifecycle](#24-node-lifecycle)
+        -   [2.5. Rewards and fines](#25-rewards-and-fines)
+        -   [2.6. Voting Event](#26-voting-event)
+-   [II. Terminologies and conventions](#ii-terminologies-and-conventions)
+    -   [1. Application side](#1-application-side)
+    -   [2. Network side](#2-network-side)
+-   [III. Mechanisms](#iii-mechanisms)
+    -   [1. Keystore mechanisms (application side)](#1-keystore-mechanisms-application-side)
+        -   [1.1. Theorem 1 - Client Key \& Factor definition](#11-theorem-1---client-key--factor-definition)
+        -   [1.2. Theorem 2 - Distributed Key Generation (DKG)](#12-theorem-2---distributed-key-generation-dkg)
+        -   [1.3. Theorem 3 - Network Key \& Factor definition](#13-theorem-3---network-key--factor-definition)
+        -   [1.4. Theorem 4 - Shamir's Secret Sharing (SSS)](#14-theorem-4---shamirs-secret-sharing-sss)
+        -   [1.5. Theorem 5 - Device Key \& Factor definition](#15-theorem-5---device-key--factor-definition)
+        -   [1.6. Theorem 6 - Private Key retrieval technique](#16-theorem-6---private-key-retrieval-technique)
+        -   [1.7. Theorem 7 - Multi-Factor Authentication (MFA)](#17-theorem-7---multi-factor-authentication-mfa)
+        -   [1.8. Theorem 8 - Recovery Key \& Factor definition](#18-theorem-8---recovery-key--factor-definition)
+        -   [1.9. Theorem 9 - Private Key retrieval threshold](#19-theorem-9---private-key-retrieval-threshold)
+    -   [2. Dead node handling mechanisms (network side)](#2-dead-node-handling-mechanisms-network-side)
+        -   [2.1. Theorem 10 - Circularly Protecting Secret Sharing (CPSS)](#21-theorem-10---circularly-protecting-secret-sharing-cpss)
+        -   [2.1. Theorem 11 - Consensually Recovering Secret Sharing (CRSS)](#21-theorem-11---consensually-recovering-secret-sharing-crss)
+    -   [3. Integrity preservation mechanism (network side)](#3-integrity-preservation-mechanism-network-side)
+        -   [3.1. Theorem 12 - Proactive Secret Sharing (PSS)](#31-theorem-12---proactive-secret-sharing-pss)
+        -   [3.2. Theorem 13 - Pedersen Verifiable Secret Sharing (PVSS)](#32-theorem-13---pedersen-verifiable-secret-sharing-pvss)
+-   [IV. Notes](#iv-notes)
+-   [V. Future implementations](#v-future-implementations)
 
 ---
 
@@ -102,37 +102,37 @@ Of course, a positive vote will be cast if a node finds the **Victim Node** acti
 
 There are some cryptographic algorithms on the application side:
 
-- **Distributed Key Generation (DKG)**: An algorithm to generate a **Network Key**.
-- **Shamir's Secret Sharing (SSS)**: An algorithm to create a unique line on the *Cartesian coordinate system*.
+-   **Distributed Key Generation (DKG)**: An algorithm to generate a **Network Key**.
+-   **Shamir's Secret Sharing (SSS)**: An algorithm to create a unique line on the _Cartesian coordinate system_.
 
 We will encounter some terminologies when talking about mechanisms and algorithms on the application side:
 
-- **Factor**: A point on the *Cartesian coordinate system* where the x-value is the index and the y-value is the **Factor's Key**. All factors must be on a unique straight line called **Factor Polynomial**.
-- **Key (Factor's Key)**: A number which behaves like a private key.
-- **Factor Polynomial**: A first degree polynomial which is a unique straight line on the *Cartesian coordinate system*, the intersection point between it and the y-axis is the user **Private Key**.
+-   **Factor**: A point on the _Cartesian coordinate system_ where the x-value is the index and the y-value is the **Factor's Key**. All factors must be on a unique straight line called **Factor Polynomial**.
+-   **Key (Factor's Key)**: A number which behaves like a private key.
+-   **Factor Polynomial**: A first degree polynomial which is a unique straight line on the _Cartesian coordinate system_, the intersection point between it and the y-axis is the user **Private Key**.
 
 ## 2. Network side
 
 There are also some cryptographic algorithms on the network side:
 
-- **Proactive Secret Sharing (PSS)**: An algorithm to protect nodes.
-- **Pedersen Verifiable Secret Sharing (PVSS)**: An algorithm to verify the integrity of the **Private Line**.
+-   **Proactive Secret Sharing (PSS)**: An algorithm to protect nodes.
+-   **Pedersen Verifiable Secret Sharing (PVSS)**: An algorithm to verify the integrity of the **Private Line**.
 
 We are proud to introduce our new cryptographic algorithms on the network side used in the mechanisms:
 
-- **Circularly Protecting Secret Sharing (CPSS)**: An algorithm to handle dead nodes.
-- **Consensually Recovering Secret Sharing (CRSS)**: An algorithm to recover dead nodes.
+-   **Circularly Protecting Secret Sharing (CPSS)**: An algorithm to handle dead nodes.
+-   **Consensually Recovering Secret Sharing (CRSS)**: An algorithm to recover dead nodes.
 
 We will encounter some terminologies when talking about those mechanisms and algorithms on the network side:
 
-- **Secret**: In the algorithm, whenever user registers, each **Validation Node** will create a key. **Secret** is a point on the y-axis of the *Cartesian coordinate system* whose y-value is that key.
-- **Share Polynomial**: A second degree polynomial which is a unique parabolic line on the *Cartesian coordinate system*, the intersection point between it and the y-axis is the **Secret**'s Key.
-- **Generated Shares**: **Generated Shares** are the points whose each x-value corresponds to the sequence number of a **Validation Node** (which are $x = 1, 2, 3, 4, 5$), and the y-value is the result of the **Share Polynomial** when substituted by the x-value.
-- **Received Shares**: **Received Shares** are the points which x-values are only one number (the sequence number of a **Validation Node**) and the y-values are the values when substituted that x-value into all the **Share Polynomials** of the **Validation Nodes**.
-- **Share**: An element of the **Generated Shares** or the **Received Shares**, which is a pair of x-value and y-value.
-- **Master Share**: Sum of the **Received Shares** (sum of all **Share** following an x-value).
-- **Master Share Polynomial**: A second degree polynomial which is a unique parabolic line on the *Cartesian coordinate system* formed by the **Master Shares**.
-- **Network Key**: The y-value of the **Master Share Polynomial** where $x = 0$.
+-   **Secret**: In the algorithm, whenever user registers, each **Validation Node** will create a key. **Secret** is a point on the y-axis of the _Cartesian coordinate system_ whose y-value is that key.
+-   **Share Polynomial**: A second degree polynomial which is a unique parabolic line on the _Cartesian coordinate system_, the intersection point between it and the y-axis is the **Secret**'s Key.
+-   **Generated Shares**: **Generated Shares** are the points whose each x-value corresponds to the sequence number of a **Validation Node** (which are $x = 1, 2, 3, 4, 5$), and the y-value is the result of the **Share Polynomial** when substituted by the x-value.
+-   **Received Shares**: **Received Shares** are the points which x-values are only one number (the sequence number of a **Validation Node**) and the y-values are the values when substituted that x-value into all the **Share Polynomials** of the **Validation Nodes**.
+-   **Share**: An element of the **Generated Shares** or the **Received Shares**, which is a pair of x-value and y-value.
+-   **Master Share**: Sum of the **Received Shares** (sum of all **Share** following an x-value).
+-   **Master Share Polynomial**: A second degree polynomial which is a unique parabolic line on the _Cartesian coordinate system_ formed by the **Master Shares**.
+-   **Network Key**: The y-value of the **Master Share Polynomial** where $x = 0$.
 
 # III. Mechanisms
 
@@ -152,7 +152,7 @@ $$
 pk = \text{key}_{\text{client}}
 $$
 
-**Client Factor** is the point located on the y-axis in the *Cartesian coordinate system* with the height is **Client Key** value.
+**Client Factor** is the point located on the y-axis in the _Cartesian coordinate system_ with the height is **Client Key** value.
 
 $$
 \textbf{CF} = (0, \text{key}_{\text{client}})
@@ -170,7 +170,7 @@ $$
 \text{key}_{\text{network}} \leftarrow \text{DKG} | \text{network}
 $$
 
-Combine it with $x = 1$, we have **Network Factor** as a point in the *Cartesian coordinate system*, which is represented as below.
+Combine it with $x = 1$, we have **Network Factor** as a point in the _Cartesian coordinate system_, which is represented as below.
 
 $$
 \textbf{NF} = (1, \text{key}_{\text{network}})
@@ -178,7 +178,7 @@ $$
 
 ### 1.4. Theorem 4 - Shamir's Secret Sharing (SSS)
 
-With those two points, we can establish a unique line (i.e a first degree equation) on the *Cartesian coordinate system* using *Lagrange interpolation*. This is called **Factor Polynomial**.
+With those two points, we can establish a unique line (i.e a first degree equation) on the _Cartesian coordinate system_ using _Lagrange interpolation_. This is called **Factor Polynomial**.
 
 The process of creating the **Factor Polynomial** is called **Shamir's Secret Sharing (SSS)**.
 
@@ -204,7 +204,7 @@ $$
 
 Therefore, every time user logs in later, it's just needed to log in on the original device (to get the **Device Key**) with the registered third-party account (to get the **Network Key**).
 
-Then user can recreate the **Factor Polynomial** by using *Lagrange interpolation*, and get the **Private Key** by intersecting it with the y-axis (where $x = 0$).
+Then user can recreate the **Factor Polynomial** by using _Lagrange interpolation_, and get the **Private Key** by intersecting it with the y-axis (where $x = 0$).
 
 $$
 pk = \textbf{P}(x = 0)
@@ -222,7 +222,7 @@ $$
 \text{key}_{\text{recovery}} = \textbf{H}(\text{password}) \\
 $$
 
-This is called **Recovery Key**, but in order to make a point for **Recovery Factor**, its x-value on the *Cartesian coordinate system* is needed. We will restore the **Factor Polynomial** by using **Lagrange interpolation** for the **Private Key** and the **Device Key**.
+This is called **Recovery Key**, but in order to make a point for **Recovery Factor**, its x-value on the _Cartesian coordinate system_ is needed. We will restore the **Factor Polynomial** by using **Lagrange interpolation** for the **Private Key** and the **Device Key**.
 
 Then, the x-value will then be the value that when substituted it into the **Factor Polynomial**, the result will be the **Recovery Key**.
 
@@ -260,11 +260,11 @@ This is about node fidelity validation
 
 The nodes only communicate with each other when user registers an account. When logging in, there is no need to communicate with other nodes, therefore dead or malicious nodes are only detected when a user registers an account.
 
-*Cartesian coordinate system* on application side has only straight lines, while on network side has only parabolic lines. Because on application side, there are 3 factors, while on network side, there are 5 nodes.
+_Cartesian coordinate system_ on application side has only straight lines, while on network side has only parabolic lines. Because on application side, there are 3 factors, while on network side, there are 5 nodes.
 
 # V. Future implementations
 
-- Integrate **Decentralized Identifier (DID)** and **Verifiable Credential (VC)** into the protocol.
-- Integrate **Account Abstraction (AA)** into the protocol.
-- Multiple private keys support.
-- SDK for developers to integrate the protocol into their applications.
+-   Integrate **Decentralized Identifier (DID)** and **Verifiable Credential (VC)** into the protocol.
+-   Integrate **Account Abstraction (AA)** into the protocol.
+-   Multiple private keys support.
+-   SDK for developers to integrate the protocol into their applications.

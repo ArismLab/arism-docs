@@ -8,7 +8,7 @@ import {
 import { Tab } from '@headlessui/react'
 import clsx from 'clsx'
 
-import { Tag } from '@components/Tag'
+import Tag from '@components/Tag'
 import { useTabGroupProps } from '@hooks/code'
 import { ClipboardIcon } from './icons/ClipboardIcon'
 
@@ -27,8 +27,32 @@ const getPanelTitle = ({ title, language }) => {
 	return title ?? languageNames[language] ?? 'Code'
 }
 
-const CopyButton = ({ code }) => {
-	let [copyCount, setCopyCount] = useState(0)
+const CodePanelHeader = ({ tag, label }) => {
+	if (!tag && !label) {
+		return null
+	}
+
+	return (
+		<div className="border-b-white/7.5 bg-white/2.5 dark:bg-white/1 flex h-9 items-center gap-2 border-y border-t-transparent bg-zinc-900 px-4 dark:border-b-white/5">
+			{tag && (
+				<div className="dark flex">
+					<Tag variant="small">{tag}</Tag>
+				</div>
+			)}
+			{tag && label && (
+				<span className="h-0.5 w-0.5 rounded-full bg-zinc-500" />
+			)}
+			{label && (
+				<span className="font-mono text-xs text-zinc-400">{label}</span>
+			)}
+		</div>
+	)
+}
+
+const CodePanel = ({ tag, label, code, children }: any) => {
+  let child = Children.only(children)
+  
+  let [copyCount, setCopyCount] = useState(0)
 	let copied = copyCount > 0
 
 	useEffect(() => {
@@ -41,7 +65,14 @@ const CopyButton = ({ code }) => {
 	}, [copyCount])
 
 	return (
-		<button
+		<div className="dark:bg-white/2.5 group">
+			<CodePanelHeader
+				tag={child.props.tag ?? tag}
+				label={child.props.label ?? label}
+			/>
+			<div className="relative">
+        <pre className="overflow-x-auto p-4 text-xs text-white">{children}</pre>
+        <button
 			type="button"
 			className={clsx(
 				'group/button text-2xs absolute right-4 top-3.5 overflow-hidden rounded-full py-1 pl-2 pr-3 font-medium opacity-0 backdrop-blur transition focus:opacity-100 group-hover:opacity-100',
@@ -75,43 +106,6 @@ const CopyButton = ({ code }) => {
 				Copied!
 			</span>
 		</button>
-	)
-}
-
-const CodePanelHeader = ({ tag, label }) => {
-	if (!tag && !label) {
-		return null
-	}
-
-	return (
-		<div className="border-b-white/7.5 bg-white/2.5 dark:bg-white/1 flex h-9 items-center gap-2 border-y border-t-transparent bg-zinc-900 px-4 dark:border-b-white/5">
-			{tag && (
-				<div className="dark flex">
-					<Tag variant="small">{tag}</Tag>
-				</div>
-			)}
-			{tag && label && (
-				<span className="h-0.5 w-0.5 rounded-full bg-zinc-500" />
-			)}
-			{label && (
-				<span className="font-mono text-xs text-zinc-400">{label}</span>
-			)}
-		</div>
-	)
-}
-
-const CodePanel = ({ tag, label, code, children }: any) => {
-	let child = Children.only(children)
-
-	return (
-		<div className="dark:bg-white/2.5 group">
-			<CodePanelHeader
-				tag={child.props.tag ?? tag}
-				label={child.props.label ?? label}
-			/>
-			<div className="relative">
-				<pre className="overflow-x-auto p-4 text-xs text-white">{children}</pre>
-				<CopyButton code={child.props.code ?? code} />
 			</div>
 		</div>
 	)
@@ -176,7 +170,7 @@ export const CodeGroup = ({ children, title, ...props }: any) => {
 	let languages = Children.map(children, (child) => getPanelTitle(child.props))
 	let tabGroupProps = useTabGroupProps(languages)
 	let hasTabs = Children.count(children) > 1
-	let Container = hasTabs ? Tab.Group : 'div'
+	let Container: any = hasTabs ? Tab.Group : 'div'
 	let containerProps = hasTabs ? tabGroupProps : {}
 	let headerProps = hasTabs
 		? { selectedIndex: tabGroupProps.selectedIndex }

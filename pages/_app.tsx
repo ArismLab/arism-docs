@@ -4,7 +4,6 @@ import { MDXProvider } from '@mdx-js/react'
 
 import { Layout } from '@components/Layout'
 import * as mdxComponents from '@components/mdx'
-import { useMobileNavigationStore } from '@components/MobileNavigation'
 
 import type { AppProps } from 'next/app'
 import NProgress from 'nprogress'
@@ -14,6 +13,7 @@ import Analytics from '@components/Analytics'
 import '@styles/tailwind.css'
 import '@styles/extra.css'
 import 'focus-visible'
+import { useMobileNavigationStore } from '@hooks/navigation'
 
 // NProgress.configure({ showSpinner: false });
 

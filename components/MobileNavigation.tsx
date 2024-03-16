@@ -4,7 +4,10 @@ import { motion } from 'framer-motion'
 
 import Header from '@components/Header'
 import Navigation from '@components/Navigation'
-import { useIsInsideMobileNavigation, useMobileNavigationStore } from '@hooks/navigation'
+import {
+	useIsInsideMobileNavigation,
+	useMobileNavigationStore,
+} from '@hooks/navigation'
 
 const MenuIcon = (props) => {
 	return (
@@ -34,15 +37,13 @@ const XIcon = (props) => {
 	)
 }
 
-const IsInsideMobileNavigationContext: Context<boolean> = createContext(false)
-
 const MobileNavigation = () => {
-	let isInsideMobileNavigation = useIsInsideMobileNavigation(IsInsideMobileNavigationContext)
+	let IsInsideMobileNavigation = useIsInsideMobileNavigation()
 	let { isOpen, toggle, close }: any = useMobileNavigationStore()
 	let ToggleIcon = isOpen ? XIcon : MenuIcon
 
 	return (
-		<IsInsideMobileNavigationContext.Provider value={true}>
+		<IsInsideMobileNavigation.Value.Provider value={true}>
 			<button
 				type="button"
 				className="flex h-6 w-6 items-center justify-center rounded-md transition hover:bg-zinc-900/5 dark:hover:bg-white/5"
@@ -51,7 +52,7 @@ const MobileNavigation = () => {
 			>
 				<ToggleIcon className="w-2.5 stroke-zinc-900 dark:stroke-white" />
 			</button>
-			{!isInsideMobileNavigation && (
+			{!IsInsideMobileNavigation.Context && (
 				<Transition.Root show={isOpen} as={Fragment}>
 					<Dialog onClose={close} className="fixed inset-0 z-50 lg:hidden">
 						<Transition.Child
@@ -99,7 +100,7 @@ const MobileNavigation = () => {
 					</Dialog>
 				</Transition.Root>
 			)}
-		</IsInsideMobileNavigationContext.Provider>
+		</IsInsideMobileNavigation.Value.Provider>
 	)
 }
 

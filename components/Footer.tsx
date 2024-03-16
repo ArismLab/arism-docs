@@ -3,14 +3,13 @@ import Link from '@components/Link'
 import { useRouter } from 'next/router'
 import { Transition } from '@headlessui/react'
 
-import { Button } from '@components/Button'
+import Button from '@components/Button'
 import { mainNav } from '@data/siteMetadata.json'
 import FeedbackButton from './icons/FeedbackButton'
-import { CheckIcon } from './icons/CheckIcon'
+import CheckIcon from './icons/CheckIcon'
 import TwitterIcon from './icons/TwitterIcon'
 import GitHubIcon from './icons/GitHubIcon'
 import DiscordIcon from './icons/Discord'
-
 
 const FeedbackForm = forwardRef(({ onSubmit }: any, ref: any) => {
 	return (
@@ -112,8 +111,8 @@ const SocialLink = ({ href, icon: Icon, children }) => {
 }
 
 const Footer = () => {
-  let router = useRouter()
-  let [submitted, setSubmitted] = useState(false)
+	let router = useRouter()
+	let [submitted, setSubmitted] = useState(false)
 
 	const onSubmit = (event) => {
 		event.preventDefault()
@@ -123,43 +122,43 @@ const Footer = () => {
 
 	return (
 		<footer className="mx-auto max-w-2xl space-y-10 pb-16 lg:max-w-5xl">
-					<div className="relative h-8">
-			<Transition
-				show={!submitted}
-				as={Fragment}
-				leaveFrom="opacity-100"
-				leaveTo="opacity-0"
-				leave="pointer-events-none duration-300"
-			>
-				<FeedbackForm onSubmit={onSubmit} />
-			</Transition>
-			<Transition
-				show={submitted}
-				as={Fragment}
-				enterFrom="opacity-0"
-				enterTo="opacity-100"
-				enter="delay-150 duration-300"
-			>
-				<FeedbackThanks />
-			</Transition>
-		</div>
-			<PageNavigation />
-      <div className="flex flex-col items-center justify-between gap-5 border-t border-zinc-900/5 pt-8 sm:flex-row dark:border-white/5">
-			<p className="text-xs text-zinc-600 dark:text-zinc-400">
-				&copy; Copyright {new Date().getFullYear()}. All rights reserved.
-			</p>
-			<div className="flex gap-4">
-				<SocialLink href="#" icon={TwitterIcon}>
-					Follow us on Twitter
-				</SocialLink>
-				<SocialLink href="#" icon={GitHubIcon}>
-					Follow us on GitHub
-				</SocialLink>
-				<SocialLink href="#" icon={DiscordIcon}>
-					Join our Discord server
-				</SocialLink>
+			<div className="relative h-8">
+				<Transition
+					show={!submitted}
+					as={Fragment}
+					leaveFrom="opacity-100"
+					leaveTo="opacity-0"
+					leave="pointer-events-none duration-300"
+				>
+					<FeedbackForm onSubmit={onSubmit} />
+				</Transition>
+				<Transition
+					show={submitted}
+					as={Fragment}
+					enterFrom="opacity-0"
+					enterTo="opacity-100"
+					enter="delay-150 duration-300"
+				>
+					<FeedbackThanks />
+				</Transition>
 			</div>
-		</div>
+			<PageNavigation />
+			<div className="flex flex-col items-center justify-between gap-5 border-t border-zinc-900/5 pt-8 sm:flex-row dark:border-white/5">
+				<p className="text-xs text-zinc-600 dark:text-zinc-400">
+					&copy; Copyright {new Date().getFullYear()}. All rights reserved.
+				</p>
+				<div className="flex gap-4">
+					<SocialLink href="#" icon={TwitterIcon}>
+						Follow us on Twitter
+					</SocialLink>
+					<SocialLink href="#" icon={GitHubIcon}>
+						Follow us on GitHub
+					</SocialLink>
+					<SocialLink href="#" icon={DiscordIcon}>
+						Join our Discord server
+					</SocialLink>
+				</div>
+			</div>
 		</footer>
 	)
 }

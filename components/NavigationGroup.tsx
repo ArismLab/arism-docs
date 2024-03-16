@@ -29,7 +29,7 @@ const useInitialValue = (value, condition = true) => {
 }
 
 const NavigationGroup = ({ group, className }) => {
-	let isInsideMobileNavigation = useIsInsideMobileNavigation()
+	let isInsideMobileNavigation = useIsInsideMobileNavigation().Context
 	let [router, sections] = useInitialValue(
 		[useRouter(), useSectionStore((s: any) => s.sections)],
 		isInsideMobileNavigation

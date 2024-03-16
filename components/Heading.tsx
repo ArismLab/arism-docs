@@ -2,11 +2,10 @@ import { useEffect, useRef } from 'react'
 import Link from '@components/Link'
 import { useInView } from 'framer-motion'
 
-import { Tag } from '@components/Tag'
+import Tag from '@components/Tag'
 import { remToPx } from '@libs/remToPx'
 import AnchorIcon from './icons/AnchorIcon'
 import { useSectionStore } from '@hooks/navigation'
-
 
 const Eyebrow = ({ tag, label }) => {
 	if (!tag && !label) {
@@ -44,7 +43,7 @@ const Anchor = ({ id, inView, children }) => {
 	)
 }
 
-export function Heading({
+const Heading = ({
 	level = 2,
 	children,
 	id,
@@ -52,7 +51,7 @@ export function Heading({
 	label,
 	anchor = true,
 	...props
-}) {
+}: any) => {
 	let Component: any = `h${level}`
 	let ref: any = useRef()
 	let registerHeading: any = useSectionStore((s: any) => s.registerHeading)
@@ -88,3 +87,5 @@ export function Heading({
 		</>
 	)
 }
+
+export default Heading

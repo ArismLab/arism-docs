@@ -1,4 +1,4 @@
-export function Logo(props) {
+const Logo = (props) => {
 	return (
 		<div className="flex flex-row justify-start">
 			<svg viewBox="0 0 24 24" aria-hidden="true" {...props}>
@@ -13,3 +13,5 @@ export function Logo(props) {
 		</div>
 	)
 }
+
+export default Logo

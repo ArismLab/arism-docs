@@ -15,8 +15,7 @@ const TopLevelNavItem = ({ href, children }) => {
 	)
 }
 
-
-const Navigation = ({ className }: {className?: string}) => {
+const Navigation = ({ className }: { className?: string }) => {
 	return (
 		<nav className={className}>
 			<ul role="list">
