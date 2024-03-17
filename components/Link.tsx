@@ -1,5 +1,4 @@
-import NextLink, { LinkProps } from 'next/link'
-import { FC, HTMLProps } from 'react'
+import NextLink from 'next/link'
 import { LuArrowUpRight } from 'react-icons/lu'
 
 const Link = ({

@@ -10,7 +10,7 @@ const MobileSearch = () => {
 		<div className="contents lg:hidden">
 			<button
 				type="button"
-				className="flex h-6 w-6 items-center justify-center rounded-md transition hover:bg-zinc-900/5 lg:hidden dark:hover:bg-white/5 focus:[&:not(:focus-visible)]:outline-none"
+				className="flex h-6 w-6 items-center justify-center rounded-md transition hover:bg-zinc-900/5 dark:hover:bg-white/5 lg:hidden focus:[&:not(:focus-visible)]:outline-none"
 				aria-label="Find something..."
 				{...buttonProps}
 			>

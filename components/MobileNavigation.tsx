@@ -1,13 +1,10 @@
 import { Dialog, Transition } from '@headlessui/react'
 import { motion } from 'framer-motion'
-import { Context, Fragment, createContext } from 'react'
+import { Fragment, createContext, useContext } from 'react'
 
 import Header from '@components/Header'
 import Navigation from '@components/Navigation'
-import {
-	useIsInsideMobileNavigation,
-	useMobileNavigationStore,
-} from '@hooks/navigation'
+import { useMobileNavigationStore } from '@hooks/navigation'
 
 const MenuIcon = (props) => {
 	return (
@@ -37,13 +34,19 @@ const XIcon = (props) => {
 	)
 }
 
+const IsInsideMobileNavigationContext = createContext(false)
+
+export const useIsInsideMobileNavigation = () => {
+	return useContext(IsInsideMobileNavigationContext)
+}
+
 const MobileNavigation = () => {
-	const IsInsideMobileNavigation = useIsInsideMobileNavigation()
+	const isInsideMobileNavigation = useIsInsideMobileNavigation()
 	const { isOpen, toggle, close }: any = useMobileNavigationStore()
 	const ToggleIcon = isOpen ? XIcon : MenuIcon
 
 	return (
-		<IsInsideMobileNavigation.Value.Provider value={true}>
+		<IsInsideMobileNavigationContext.Provider value={true}>
 			<button
 				type="button"
 				className="flex h-6 w-6 items-center justify-center rounded-md transition hover:bg-zinc-900/5 dark:hover:bg-white/5"
@@ -52,7 +55,7 @@ const MobileNavigation = () => {
 			>
 				<ToggleIcon className="w-2.5 stroke-zinc-900 dark:stroke-white" />
 			</button>
-			{!IsInsideMobileNavigation.Context && (
+			{!isInsideMobileNavigation && (
 				<Transition.Root show={isOpen} as={Fragment}>
 					<Dialog onClose={close} className="fixed inset-0 z-50 lg:hidden">
 						<Transition.Child
@@ -91,7 +94,7 @@ const MobileNavigation = () => {
 							>
 								<motion.div
 									layoutScroll
-									className="ring-zinc-900/7.5 fixed bottom-0 left-0 top-14 w-full overflow-y-auto bg-white px-4 pb-4 pt-6 shadow-lg shadow-zinc-900/10 ring-1 min-[416px]:max-w-sm sm:px-6 sm:pb-10 dark:bg-zinc-900 dark:ring-zinc-800"
+									className="ring-zinc-900/7.5 fixed bottom-0 left-0 top-14 w-full overflow-y-auto bg-white px-4 pb-4 pt-6 shadow-lg shadow-zinc-900/10 ring-1 dark:bg-zinc-900 dark:ring-zinc-800 min-[416px]:max-w-sm sm:px-6 sm:pb-10"
 								>
 									<Navigation />
 								</motion.div>
@@ -100,7 +103,7 @@ const MobileNavigation = () => {
 					</Dialog>
 				</Transition.Root>
 			)}
-		</IsInsideMobileNavigation.Value.Provider>
+		</IsInsideMobileNavigationContext.Provider>
 	)
 }
 

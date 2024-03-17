@@ -51,8 +51,8 @@ const Resource = ({ resource }) => {
 			</div>
 			<div className="ring-zinc-900/7.5 absolute inset-0 rounded-2xl ring-1 ring-inset ring-primary-300 group-hover:ring-zinc-900/10 dark:ring-white/10 dark:group-hover:ring-white/20" />
 			<div className="relative rounded-2xl px-4 pb-4 pt-16">
-				<div className="dark:bg-white/7.5 dark:group-hover:bg-primary-300/10 flex h-7 w-7 items-center justify-center rounded-full bg-zinc-900/5 ring-1 ring-zinc-900/25 backdrop-blur-[2px] transition duration-300 group-hover:bg-white/50 group-hover:ring-zinc-900/25 dark:ring-white/15 dark:group-hover:ring-primary-800">
-					<resource.icon className="dark:group-hover:fill-primary-300/10 h-5 w-5 fill-zinc-700/10 stroke-zinc-700 transition-colors duration-300 group-hover:stroke-zinc-900 dark:fill-white/10 dark:stroke-zinc-400 dark:group-hover:stroke-primary-800" />
+				<div className="dark:bg-white/7.5 flex h-7 w-7 items-center justify-center rounded-full bg-zinc-900/5 ring-1 ring-zinc-900/25 backdrop-blur-[2px] transition duration-300 group-hover:bg-white/50 group-hover:ring-zinc-900/25 dark:ring-white/15 dark:group-hover:bg-primary-300/10 dark:group-hover:ring-primary-800">
+					<resource.icon className="h-5 w-5 fill-zinc-700/10 stroke-zinc-700 transition-colors duration-300 group-hover:stroke-zinc-900 dark:fill-white/10 dark:stroke-zinc-400 dark:group-hover:fill-primary-300/10 dark:group-hover:stroke-primary-800" />
 				</div>
 				<h3 className="mt-4 text-sm font-semibold leading-7 text-zinc-900 dark:text-white">
 					<Link href={resource.href}>

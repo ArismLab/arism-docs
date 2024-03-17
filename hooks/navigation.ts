@@ -1,5 +1,4 @@
 import {
-    Context,
     createContext,
     useContext,
     useEffect,
@@ -9,14 +8,6 @@ import {
 import { create, useStore } from 'zustand'
 
 import { remToPx } from '@libs/remToPx'
-
-export const IsInsideMobileNavigationContext = createContext<boolean>(false)
-export const useIsInsideMobileNavigation = () => {
-    return {
-        Context: useContext(IsInsideMobileNavigationContext),
-        Value: IsInsideMobileNavigationContext,
-    }
-}
 
 export const SectionStoreContext = createContext(null)
 export const useSectionStore = (selector) => {

@@ -15,16 +15,16 @@
             "url": "https://arism.org"
         },
         {
+            "name": "Application",
+            "url": "https://app.arism.org"
+        },
+        {
             "name": "Github",
             "url": "https://github.com/ArismLab"
         },
         {
             "name": "Twitter",
             "url": "https://twitter.com/ArismLab"
-        },
-        {
-            "name": "Whitepaper",
-            "url": "https://whitepaper.arism.org"
         }
     ],
     "analytics": {
@@ -33,24 +33,30 @@
     },
     "mainNav": [
         {
-            "title": "Guides",
-            "links": [
-                { "title": "Introduction", "href": "/" },
-                { "title": "Quickstart", "href": "/quickstart" },
-                { "title": "Authentication", "href": "/authentication" },
-                { "title": "Pagination", "href": "/pagination" },
-                { "title": "Errors", "href": "/errors" },
-                { "title": "Webhooks", "href": "/webhooks" }
-            ]
+            "title": "Getting Started",
+            "links": [{ "title": "Introduction", "href": "/" }]
         },
         {
-            "title": "Resources",
+            "title": "Whitepaper",
             "links": [
-                { "title": "Contacts", "href": "/contacts" },
-                { "title": "Conversations", "href": "/conversations" },
-                { "title": "Messages", "href": "/messages" },
-                { "title": "Groups", "href": "/groups" },
-                { "title": "Attachments", "href": "/attachments" }
+                { "title": "Architecture", "href": "/architecture" },
+                {
+                    "title": "Terminologies and Conventions",
+                    "href": "/terminologies-and-conventions"
+                },
+                {
+                    "title": "Keystore Mechanisms",
+                    "href": "/keystore-mechanisms"
+                },
+                {
+                    "title": "Dead Node Handing Mechanisms",
+                    "href": "/dead-node-handling-mechanisms"
+                },
+                {
+                    "title": "Integrity Preservation Mechanisms",
+                    "href": "/integrity-preservation-mechanisms"
+                },
+                { "title": "Conclusions", "href": "/conclusions" }
             ]
         }
     ]

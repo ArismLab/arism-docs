@@ -50,13 +50,13 @@ const MyApp = ({ Component, pageProps }: AppProps): JSX.Element => {
 				<meta name="description" content={pageProps.description} />
 				<Analytics />
 			</Head>
-			<MDXProvider components={mdxComponents}>
-				<div className="bg-global">
+			<div className="bg-global">
+				<MDXProvider components={mdxComponents}>
 					<Layout {...pageProps}>
 						<Component {...pageProps} />
 					</Layout>
-				</div>
-			</MDXProvider>
+				</MDXProvider>
+			</div>
 		</>
 	)
 }

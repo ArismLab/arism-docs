@@ -1,12 +1,14 @@
-import shiki from 'shiki'
-import recmaNextjsStaticProps from 'recma-nextjs-static-props'
-import rehypeMdxTitle from 'rehype-mdx-title'
-import remarkGfm from 'remark-gfm'
-import { visit } from 'unist-util-visit'
-import { toString } from 'mdast-util-to-string'
-import { mdxAnnotations } from 'mdx-annotations'
 import { slugifyWithCounter } from '@sindresorhus/slugify'
 import * as acorn from 'acorn'
+import { toString } from 'mdast-util-to-string'
+import { mdxAnnotations } from 'mdx-annotations'
+import recmaNextjsStaticProps from 'recma-nextjs-static-props'
+import rehypeKatex from 'rehype-katex'
+import rehypeMdxTitle from 'rehype-mdx-title'
+import remarkGfm from 'remark-gfm'
+import remarkMath from 'remark-math'
+import shiki from 'shiki'
+import { visit } from 'unist-util-visit'
 
 const rehypeParseCodeBlocks = () => {
     return (tree) => {
@@ -134,6 +136,7 @@ export const rehypePlugins = [
     rehypeShiki,
     rehypeSlugify,
     rehypeMdxTitle,
+    rehypeKatex,
     [
         rehypeAddMDXExports,
         (tree) => ({
@@ -148,4 +151,4 @@ export const recmaPlugins = [
     recmaNextjsStaticProps,
 ]
 
-export const remarkPlugins = [mdxAnnotations.remark, remarkGfm]
+export const remarkPlugins = [mdxAnnotations.remark, remarkGfm, remarkMath]

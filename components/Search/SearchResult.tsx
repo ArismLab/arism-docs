@@ -52,7 +52,7 @@ const SearchResult = ({ result, resultIndex, autocomplete, collection }) => {
 				<div
 					id={`${id}-hierarchy`}
 					aria-hidden="true"
-					className="text-2xs mt-1 truncate whitespace-nowrap text-zinc-500"
+					className="mt-1 truncate whitespace-nowrap text-2xs text-zinc-500"
 				>
 					{hierarchyHtml.map((item, itemIndex, items) => (
 						<Fragment key={itemIndex}>

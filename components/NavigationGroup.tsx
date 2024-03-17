@@ -5,8 +5,10 @@ import { useRef } from 'react'
 
 import NavLink from '@components/NavLink'
 import VisibleSectionHighlight from '@components/VisibleSessionHighlight'
-import { useIsInsideMobileNavigation, useSectionStore } from '@hooks/navigation'
+import { useSectionStore } from '@hooks/navigation'
 import { remToPx } from '@libs/remToPx'
+
+import { useIsInsideMobileNavigation } from './MobileNavigation'
 
 function ActivePageMarker({ group, pathname }) {
 	const itemHeight = remToPx(2)
@@ -34,7 +36,7 @@ const useInitialValue = (value, condition = true) => {
 }
 
 const NavigationGroup = ({ group, className }) => {
-	const isInsideMobileNavigation = useIsInsideMobileNavigation().Context
+	const isInsideMobileNavigation = useIsInsideMobileNavigation()
 	const [router, sections] = useInitialValue(
 		[useRouter(), useSectionStore((s: any) => s.sections)],
 		isInsideMobileNavigation

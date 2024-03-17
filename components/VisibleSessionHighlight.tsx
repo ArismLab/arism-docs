@@ -1,11 +1,9 @@
 import { motion, useIsPresent } from 'framer-motion'
 
-import {
-	useInitialValue,
-	useIsInsideMobileNavigation,
-  useSectionStore,
-} from '@hooks/navigation'
+import { useInitialValue, useSectionStore } from '@hooks/navigation'
 import { remToPx } from '@libs/remToPx'
+
+import { useIsInsideMobileNavigation } from './MobileNavigation'
 
 const VisibleSectionHighlight = ({ group, pathname }) => {
 	const [sections, visibleSections] = useInitialValue(
@@ -13,7 +11,7 @@ const VisibleSectionHighlight = ({ group, pathname }) => {
 			useSectionStore((s) => s.sections),
 			useSectionStore((s) => s.visibleSections),
 		],
-		useIsInsideMobileNavigation().Context
+		useIsInsideMobileNavigation()
 	)
 
 	const isPresent = useIsPresent()
@@ -37,7 +35,7 @@ const VisibleSectionHighlight = ({ group, pathname }) => {
 			initial={{ opacity: 0 }}
 			animate={{ opacity: 1, transition: { delay: 0.2 } }}
 			exit={{ opacity: 0 }}
-			className="bg-zinc-800/2.5 dark:bg-white/2.5 absolute inset-x-0 top-0 will-change-transform"
+			className="absolute inset-x-0 top-0 bg-primary-400/20 will-change-transform dark:bg-primary-400/20"
 			style={{ borderRadius: 8, height, top }}
 		/>
 	)

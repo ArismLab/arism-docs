@@ -1,0 +1,55 @@
+export const description =
+    'On this page, we’ll dive into the different attachment endpoints you can use to manage attachments programmatically.'
+
+export const sections = [
+    { title: 'ARM Token', id: 'arm-token' },
+    { title: 'Arism Node', id: 'arism-node' },
+]
+
+## ARM Token
+
+**ARM Token** (or **Arism Token**) is a Fungible Token for staking, rewarding and fining in operating **Arism Nodes**.
+
+## Arism Node
+
+**Arism Node** operator will prepare an available server (or device) with a staked amount of **ARM Token**.
+
+The **Arism Network** is a distributed network linked together by 5 **Validation Nodes**.
+
+### Validation Node
+
+**Validation Nodes** are the **Arism Nodes** which joining into the main network for executing algorithms to verify third-party accounts which users used for registering their accounts.
+
+### Whitelist Node (Backup Node)
+
+**Whitelist Nodes** are the **Arism Nodes** which are in the queue to become **Validation Nodes**.
+
+### Supervised Node
+
+This is part of the **Circularly Protecting Secret Sharing (CPSS)** algorithm, to ensure that when a **Validation Node** dies, it will still be possible to generate **Network Keys** as long as the number of dead Nodes is below a certain threshold or conditions.
+
+One **Validation Node** will supervise the other **Validation Node**. When a node dies, the node that is supervising it will take care of performing the algorithm for it.
+
+However, a node will only be able to supervise JUST ONE other node. All node must monitor another node circularly, because if a node monitors on 2 or more other nodes, it can find or manipulate the **Network Key** (which will be mentioned later).
+
+### Node lifecycle
+
+**Validation Node**'s lifetime is determined based on the staked amount of **ARM Token** and the number of **Whitelist Nodes** in the queue.
+
+This ensures a degree of decentralization, preventing node operators from colluding with each other to damage the integrity and security of the network.
+
+### Rewards and fines
+
+**Validation Nodes** will receive rewards periodically for their work. **Whitelist Nodes** will receive a portion of the rewards as well because they still have to work continuously while waiting for a **Voting Event**.
+
+If a **Validation Node** is found to be dead or malicious, it will be fined and removed from the **Arism Network**. It will not be able to withdraw the entire staked amount of **ARM Token** because it will be deducted from a fine amount.
+
+The reward amount will be calculated based on the staked amount and waiting/working time, while the fine amount will be calculated based on the remaining time it still has before the deadline.
+
+### Voting Event
+
+**Validation Nodes** will be randomly selected from **Whitelist Nodes** (but with priority on the staked amount of **ARM Tokens**), meaning that **Whitelist Nodes** with the most staked amount of **ARM Tokens** will have a high chance of participating into **Arism Network** as a **Validation Node** when there is an **Validation Node** dies or expires.
+
+Nodes will be managed on a **Smart Contract** and voting will also be executed on the **Smart Contract** as well to ensure the transparency property. This will happen automatically between **Validation Nodes** whenever a node detects (or requests) of a dead or malicious node, such a node is called **Victim Node**.
+
+Of course, a positive vote will be cast if a node finds the **Victim Node** active, a negative vote will be cast if a node finds the **Victim Node** dead or malicious. Absolutely no human intervention.
