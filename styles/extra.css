@@ -24,6 +24,7 @@ html {
     color: white;
 }
 
+
 .swipe-box {
     box-shadow: inset 0 0 0 0 rgb(var(--primary-700));
     color: rgb(var(--primary-700));

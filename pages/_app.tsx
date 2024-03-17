@@ -1,17 +1,20 @@
 import { MDXProvider } from '@mdx-js/react'
 import type { AppProps } from 'next/app'
 import Head from 'next/head'
+import { redirect } from 'next/navigation'
 import { Router, useRouter } from 'next/router'
 import NProgress from 'nprogress'
 import ProgressBar from 'react-scroll-progress-bar'
 
 import Analytics from '@components/Analytics'
-import Layout from '@components/Layout'
 import mdxComponents from '@components/mdx'
+import PageLayout from '@components/PageLayout'
 import '@styles/tailwind.css'
 import '@styles/extra.css'
 import 'focus-visible'
+import { internalLinks } from '@data/siteMetadata.json'
 import { useMobileNavigationStore } from '@hooks/navigation'
+import kebabCase from '@libs/kebabCase'
 
 // NProgress.configure({ showSpinner: false });
 
@@ -36,7 +39,7 @@ Router.events.on('routeChangeComplete', onRouteChange)
 Router.events.on('routeChangeError', onRouteChange)
 
 const MyApp = ({ Component, pageProps }: AppProps): JSX.Element => {
-	const router = useRouter()
+  const router = useRouter()
 
 	return (
 		<>
@@ -52,9 +55,9 @@ const MyApp = ({ Component, pageProps }: AppProps): JSX.Element => {
 			</Head>
 			<div className="bg-global">
 				<MDXProvider components={mdxComponents}>
-					<Layout {...pageProps}>
+					<PageLayout {...pageProps}>
 						<Component {...pageProps} />
-					</Layout>
+					</PageLayout>
 				</MDXProvider>
 			</div>
 		</>

@@ -10,6 +10,7 @@ const config: Config = {
     theme: {
         fontFamily: {
             sans: ['Sarabun', 'sans-serif'],
+            serif: ['Lora', 'serif'],
         },
         fontSize: {
             '2xs': ['0.75rem', { lineHeight: '1.25rem' }],
@@ -19,7 +20,7 @@ const config: Config = {
             lg: ['1.125rem', { lineHeight: '1.75rem' }],
             xl: ['1.25rem', { lineHeight: '1.75rem' }],
             '2xl': ['1.5rem', { lineHeight: '2rem' }],
-            '3xl': ['1.875rem', { lineHeight: '2.25rem' }],
+            '3xl': ['2rem', { lineHeight: '2.25rem' }],
             '4xl': ['2.25rem', { lineHeight: '2.5rem' }],
             '5xl': ['3rem', { lineHeight: '3rem' }],
             '6xl': ['3.75rem', { lineHeight: '1' }],
@@ -84,14 +85,14 @@ const config: Config = {
                     '--tw-prose-links-underline': theme(
                         'colors.primary.500 / 0.3'
                     ),
-                    '--tw-prose-bold': theme('colors.zinc.900'),
+                    '--tw-prose-bold': theme('colors.zinc.800'),
                     '--tw-prose-counters': theme('colors.zinc.500'),
                     '--tw-prose-bullets': theme('colors.zinc.300'),
-                    '--tw-prose-hr': theme('colors.zinc.900 / 0.05'),
-                    '--tw-prose-quotes': theme('colors.zinc.900'),
+                    '--tw-prose-hr': theme('colors.zinc.800 / 0.05'),
+                    '--tw-prose-quotes': theme('colors.zinc.800'),
                     '--tw-prose-quote-borders': theme('colors.zinc.200'),
                     '--tw-prose-captions': theme('colors.zinc.500'),
-                    '--tw-prose-code': theme('colors.zinc.900'),
+                    '--tw-prose-code': theme('colors.zinc.800'),
                     '--tw-prose-code-bg': theme('colors.zinc.100'),
                     '--tw-prose-code-ring': theme('colors.zinc.300'),
                     '--tw-prose-th-borders': theme('colors.zinc.300'),
@@ -105,46 +106,46 @@ const config: Config = {
                     '--tw-prose-invert-links-underline': theme(
                         'colors.primary.500 / 0.3'
                     ),
-                    '--tw-prose-invert-bold': theme('colors.white'),
+                    '--tw-prose-invert-bold': theme('colors.zinc.300'),
                     '--tw-prose-invert-counters': theme('colors.zinc.400'),
                     '--tw-prose-invert-bullets': theme('colors.zinc.600'),
-                    '--tw-prose-invert-hr': theme('colors.white / 0.05'),
+                    '--tw-prose-invert-hr': theme('colors.zinc.300 / 0.05'),
                     '--tw-prose-invert-quotes': theme('colors.zinc.100'),
                     '--tw-prose-invert-quote-borders': theme('colors.zinc.700'),
                     '--tw-prose-invert-captions': theme('colors.zinc.400'),
-                    '--tw-prose-invert-code': theme('colors.white'),
+                    '--tw-prose-invert-code': theme('colors.zinc.300'),
                     '--tw-prose-invert-code-bg': theme(
                         'colors.zinc.700 / 0.15'
                     ),
-                    '--tw-prose-invert-code-ring': theme('colors.white / 0.1'),
+                    '--tw-prose-invert-code-ring': theme('colors.zinc.300 / 0.1'),
                     '--tw-prose-invert-th-borders': theme('colors.zinc.600'),
                     '--tw-prose-invert-td-borders': theme('colors.zinc.700'),
 
                     // Base
                     color: 'var(--tw-prose-body)',
-                    fontSize: theme('fontSize.lg')[0],
-                    lineHeight: theme('lineHeight.7'),
+                    fontSize: theme('fontSize.base')[0],
+                    lineHeight: theme('lineHeight.8'),
+                    fontFamily: theme('fontFamily.serif').join(', '),
 
                     // Layout
                     '> *': {
-                        maxWidth: theme('maxWidth.2xl'),
                         marginLeft: 'auto',
                         marginRight: 'auto',
                         '@screen lg': {
-                            maxWidth: theme('maxWidth.3xl'),
-                            marginLeft: `calc(50% - min(50%, ${theme('maxWidth.lg')}))`,
-                            marginRight: `calc(50% - min(50%, ${theme('maxWidth.lg')}))`,
+                            marginLeft: `calc(55% - min(50%, ${theme('maxWidth.lg')}))`,
+                            marginRight: `calc(55% - min(50%, ${theme('maxWidth.lg')}))`,
                         },
                     },
 
                     // Text
                     p: {
-                        marginTop: theme('spacing.6'),
-                        marginBottom: theme('spacing.6'),
+                        marginTop: theme('spacing.4'),
+                        marginBottom: theme('spacing.4'),
                     },
-                    '[class~="lead"]': {
-                        fontSize: theme('fontSize.lg')[0],
-                        ...theme('fontSize.lg')[1],
+                    '[class~="katex"]': {
+                        fontSize: theme('fontSize.xl')[0],
+                        color: 'var(--tw-prose-bold)',
+                        ...theme('fontSize.xl')[1],
                     },
 
                     // Lists
@@ -266,15 +267,15 @@ const config: Config = {
                         fontWeight: '700',
                         fontSize: theme('fontSize.5xl')[0],
                         ...theme('fontSize.5xl')[1],
-                        marginBottom: theme('spacing.2'),
+                        marginBottom: theme('spacing.16'),
                     },
                     h2: {
                         color: 'var(--tw-prose-headings)',
                         fontWeight: '600',
                         fontSize: theme('fontSize.3xl')[0],
                         ...theme('fontSize.3xl')[1],
-                        marginTop: theme('spacing.16'),
-                        marginBottom: theme('spacing.2'),
+                        marginTop: theme('spacing.12'),
+                        marginBottom: theme('spacing.6'),
                     },
                     h3: {
                         color: 'var(--tw-prose-headings)',
@@ -282,7 +283,7 @@ const config: Config = {
                         ...theme('fontSize.2xl')[1],
                         fontWeight: '600',
                         marginTop: theme('spacing.10'),
-                        marginBottom: theme('spacing.2'),
+                        marginBottom: theme('spacing.4'),
                     },
 
                     // Media

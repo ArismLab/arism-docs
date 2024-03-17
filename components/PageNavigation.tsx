@@ -1,6 +1,6 @@
 import { useRouter } from 'next/router'
 
-import { mainNav } from '@data/siteMetadata.json'
+import { internalLinks } from '@data/siteMetadata.json'
 
 import Button from './Button'
 import Link from './Link'
@@ -30,7 +30,7 @@ const PageLink = ({ label, page, previous = false }) => {
 
 const PageNavigation = () => {
 	const router = useRouter()
-	const allPages = mainNav.flatMap((group) => group.links)
+	const allPages = internalLinks.flatMap((group) => group.links)
 	const currentPageIndex = allPages.findIndex(
 		(page) => page.href === router.pathname
 	)

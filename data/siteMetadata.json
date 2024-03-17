@@ -5,8 +5,8 @@
     "language": "en-us",
     "locale": "en-US",
     "theme": "system",
-    "siteUrl": "https://whitepaper.arism.org",
-    "siteRepo": "https://github.com/Arism-Lab/arism-whitepaper",
+    "siteUrl": "https://docs.arism.org",
+    "siteRepo": "https://github.com/Arism-Lab/arism-docs",
     "siteLogo": "/static/logo.png",
     "siteBanner": "/static/banner.png",
     "externalLinks": [
@@ -27,37 +27,67 @@
             "url": "https://twitter.com/ArismLab"
         }
     ],
-    "analytics": {
-        "umamiWebsiteId": "b018c634-3134-4965-ac2f-8b3a89c32e40",
-        "googleAnalyticsId": "G-V2EES3R603"
-    },
-    "mainNav": [
+    "internalLinks": [
         {
-            "title": "Getting Started",
-            "links": [{ "title": "Introduction", "href": "/" }]
+            "title": "Getting started",
+            "links": [
+                {
+                    "title": "Introduction",
+                    "href": "/",
+                    "description": "A quick tour towards the Arism Wallet."
+                }
+            ]
         },
         {
             "title": "Whitepaper",
             "links": [
-                { "title": "Architecture", "href": "/architecture" },
+                {
+                    "title": "Architecture",
+                    "href": "/architecture",
+                    "description": "All the components in the Arism Wallet architecture."
+                },
                 {
                     "title": "Terminologies and Conventions",
-                    "href": "/terminologies-and-conventions"
+                    "href": "/terminologies-and-conventions",
+                    "description": "The terminologies and conventions used in this whitepaper."
                 },
                 {
                     "title": "Keystore Mechanisms",
-                    "href": "/keystore-mechanisms"
+                    "href": "/keystore-mechanisms",
+                    "description": "The mechanisms for how keys are stored in the Arism Wallet."
                 },
                 {
                     "title": "Dead Node Handing Mechanisms",
-                    "href": "/dead-node-handling-mechanisms"
+                    "href": "/dead-node-handling-mechanisms",
+                    "description": "The mechanisms for how dead nodes are handled in the Arism Network."
                 },
                 {
                     "title": "Integrity Preservation Mechanisms",
-                    "href": "/integrity-preservation-mechanisms"
+                    "href": "/integrity-preservation-mechanisms",
+                    "description": "The mechanisms for how integrity is preserved in the Arism Network."
                 },
-                { "title": "Conclusions", "href": "/conclusions" }
+                {
+                    "title": "Conclusions",
+                    "href": "/conclusions",
+                    "description": "Notes and future implementations for the Arism Wallet."
+                }
             ]
+        },
+        {
+            "title": "How to use",
+            "links": []
+        },
+        {
+            "title": "Node setup",
+            "links": []
+        },
+        {
+            "title": "SDK integration",
+            "links": []
         }
-    ]
+    ],
+    "analytics": {
+        "umamiWebsiteId": "b018c634-3134-4965-ac2f-8b3a89c32e40",
+        "googleAnalyticsId": "G-V2EES3R603"
+    }
 }

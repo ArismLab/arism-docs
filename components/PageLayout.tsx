@@ -1,4 +1,6 @@
 import { motion } from 'framer-motion'
+import { useRouter } from 'next/router'
+import { useEffect } from 'react'
 
 import Footer from '@components/Footer'
 import Header from '@components/Header'
@@ -7,12 +9,32 @@ import Logo from '@components/Logo'
 import Navigation from '@components/Navigation'
 import Prose from '@components/Prose'
 import SectionProvider from '@components/SectionProvider'
+import { internalLinks } from '@data/siteMetadata.json'
+import kebabCase from '@libs/kebabCase'
 
 import HeroPattern from './HeroPattern'
+import { HomeSEO, PageSEO } from './PageSEO'
 
-const Layout = ({ children, sections = [] }) => {
+const PageLayout = ({ children, sections = []}) => {
+  const router = useRouter()
+  const path = router.asPath.split('#')[0].split('?')[0]
+  const info = internalLinks.flatMap(section => section.links).find(link => link.href === path)
+
+  const chapterLinks = internalLinks.map(section => section.links)
+  const acceptedLinks = internalLinks.map(chapter => `/${kebabCase(chapter.title)}`)
+
+  useEffect(() => {
+    if (acceptedLinks.includes(path)) {
+      const chapterLink = chapterLinks[acceptedLinks.indexOf(path)]
+      router.push(chapterLink[0].href)
+    }
+  }, [])
+
 	return (
-		<SectionProvider sections={sections}>
+    <SectionProvider sections={sections}>
+      {
+        path === '/' ? <HomeSEO /> : <PageSEO title={info?.title} description={info?.description} />
+      }
 			<HeroPattern />
 			<div className="lg:ml-72 xl:ml-80">
 				<motion.header
@@ -40,4 +62,4 @@ const Layout = ({ children, sections = [] }) => {
 	)
 }
 
-export default Layout
+export default PageLayout

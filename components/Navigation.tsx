@@ -1,6 +1,6 @@
 import Link from '@components/Link'
 import NavigationGroup from '@components/NavigationGroup'
-import { mainNav } from '@data/siteMetadata.json'
+import { internalLinks } from '@data/siteMetadata.json'
 
 const TopLevelNavItem = ({ href, children }) => {
 	return (
@@ -19,9 +19,7 @@ const Navigation = ({ className }: { className?: string }) => {
 	return (
 		<nav className={className}>
 			<ul role="list">
-				<TopLevelNavItem href="/">API</TopLevelNavItem>
-				<TopLevelNavItem href="#">Documentation</TopLevelNavItem>
-				{mainNav.map((group, groupIndex) => (
+				{internalLinks.map((group, groupIndex) => (
 					<NavigationGroup
 						key={group.title}
 						group={group}

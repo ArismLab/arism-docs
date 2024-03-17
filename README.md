@@ -107,9 +107,9 @@ There are some cryptographic algorithms on the application side:
 
 We will encounter some terminologies when talking about mechanisms and algorithms on the application side:
 
--   **Factor**: A point on the _Cartesian coordinate system_ where the x-value is the index and the y-value is the **Factor's Key**. All factors must be on a unique straight line called **Factor Polynomial**.
+-   **Factor**: A point on the _Cartesian coordinate system_ where the x-value is the index and the y-value is the **Factor's Key**. All factors must be on a unique straight line called **Factor's Polynomial**.
 -   **Key (Factor's Key)**: A number which behaves like a private key.
--   **Factor Polynomial**: A first degree polynomial which is a unique straight line on the _Cartesian coordinate system_, the intersection point between it and the y-axis is the user **Private Key**.
+-   **Factor's Polynomial**: A first degree polynomial which is a unique straight line on the _Cartesian coordinate system_, the intersection point between it and the y-axis is the user **Private Key**.
 
 ## 2. Network side
 
@@ -178,9 +178,9 @@ $$
 
 ### 1.4. Theorem 4 - Shamir's Secret Sharing (SSS)
 
-With those two points, we can establish a unique line (i.e a first degree equation) on the _Cartesian coordinate system_ using _Lagrange interpolation_. This is called **Factor Polynomial**.
+With those two points, we can establish a unique line (i.e a first degree equation) on the _Cartesian coordinate system_ using _Lagrange interpolation_. This is called **Factor's Polynomial**.
 
-The process of creating the **Factor Polynomial** is called **Shamir's Secret Sharing (SSS)**.
+The process of creating the **Factor's Polynomial** is called **Shamir's Secret Sharing (SSS)**.
 
 $$
 \textbf{P} \leftarrow \text{SSS}|\text{client}
@@ -188,7 +188,7 @@ $$
 
 ### 1.5. Theorem 5 - Device Key & Factor definition
 
-Once having the **Factor Polynomial**, we will get a third key called **Device Key** by retrieving the value of the polynomial where $x = 2$. This **Key** is stored in user's device (browser)
+Once having the **Factor's Polynomial**, we will get a third key called **Device Key** by retrieving the value of the polynomial where $x = 2$. This **Key** is stored in user's device (browser)
 
 $$
 \text{key}_{\text{device}} = \textbf{P}(x = 2)
@@ -204,7 +204,7 @@ $$
 
 Therefore, every time user logs in later, it's just needed to log in on the original device (to get the **Device Key**) with the registered third-party account (to get the **Network Key**).
 
-Then user can recreate the **Factor Polynomial** by using _Lagrange interpolation_, and get the **Private Key** by intersecting it with the y-axis (where $x = 0$).
+Then user can recreate the **Factor's Polynomial** by using _Lagrange interpolation_, and get the **Private Key** by intersecting it with the y-axis (where $x = 0$).
 
 $$
 pk = \textbf{P}(x = 0)
@@ -222,9 +222,9 @@ $$
 \text{key}_{\text{recovery}} = \textbf{H}(\text{password}) \\
 $$
 
-This is called **Recovery Key**, but in order to make a point for **Recovery Factor**, its x-value on the _Cartesian coordinate system_ is needed. We will restore the **Factor Polynomial** by using **Lagrange interpolation** for the **Private Key** and the **Device Key**.
+This is called **Recovery Key**, but in order to make a point for **Recovery Factor**, its x-value on the _Cartesian coordinate system_ is needed. We will restore the **Factor's Polynomial** by using **Lagrange interpolation** for the **Private Key** and the **Device Key**.
 
-Then, the x-value will then be the value that when substituted it into the **Factor Polynomial**, the result will be the **Recovery Key**.
+Then, the x-value will then be the value that when substituted it into the **Factor's Polynomial**, the result will be the **Recovery Key**.
 
 $$
 \textbf{RF} = \left(\textbf{P}^{-1}(\text{key}_{\text{recovery}}), \text{key}_{\text{recovery}}\right)

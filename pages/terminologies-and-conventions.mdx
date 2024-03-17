@@ -1,38 +1,39 @@
-export const description =
-    'On this page, we’ll dive into the different attachment endpoints you can use to manage attachments programmatically.'
-    
+# Terminologies & Conventions
+
 ## Application side
 
 There are some cryptographic algorithms on the application side:
 
--   **Distributed Key Generation (DKG)**: An algorithm to generate a **Network Key**.
--   **Shamir's Secret Sharing (SSS)**: An algorithm to create a unique line on the _Cartesian coordinate system_.
+- **Lagrange's Interpolation**: An algorithm to reconstruct the **Factor's Polynomial**.
+- **Shamir's Secret Sharing (SSS)**: An algorithm to create a unique line on the _Cartesian coordinate system_.
 
 We will encounter some terminologies when talking about mechanisms and algorithms on the application side:
 
--   **Factor**: A point on the _Cartesian coordinate system_ where the x-value is the index and the y-value is the **Factor's Key**. All factors must be on a unique straight line called **Factor Polynomial**.
--   **Key (Factor's Key)**: A number which behaves like a private key.
--   **Factor Polynomial**: A first degree polynomial which is a unique straight line on the _Cartesian coordinate system_, the intersection point between it and the y-axis is the user **Private Key**.
+- **Factor**: A point on the _Cartesian coordinate system_ where the x-value is the index and the y-value is the **Factor's Key**. All factors must be on a unique straight line called **Factor's Polynomial**.
+- **Key (Factor's Key)**: A number which behaves like a private key.
+- **Factor's Polynomial**: A first degree polynomial which is a unique straight line on the _Cartesian coordinate system_, the intersection point between it and the y-axis is the user **Private Key**.
 
 ## Network side
 
 There are also some cryptographic algorithms on the network side:
 
--   **Proactive Secret Sharing (PSS)**: An algorithm to protect nodes.
--   **Pedersen Verifiable Secret Sharing (PVSS)**: An algorithm to verify the integrity of the **Private Line**.
+- **Lagrange's Interpolation**: An algorithm to reconstruct the **Share's Polynomial** and the **Master Share's Polynomial**.
+- **Distributed Secret Sharing (DSS)**: An algorithm to generate a **Network Key**.
+- **Proactive Secret Sharing (PSS)**: An algorithm to protect nodes.
+- **Pedersen Verifiable Secret Sharing (PVSS)**: An algorithm to verify the integrity of the **Private Line**.
 
 We are proud to introduce our new cryptographic algorithms on the network side used in the mechanisms:
 
--   **Circularly Protecting Secret Sharing (CPSS)**: An algorithm to handle dead nodes.
--   **Consensually Recovering Secret Sharing (CRSS)**: An algorithm to recover dead nodes.
+- **Circularly Protecting Secret Sharing (CPSS)**: An algorithm to handle dead nodes.
+- **Consensually Recovering Secret Sharing (CRSS)**: An algorithm to recover dead nodes.
 
 We will encounter some terminologies when talking about those mechanisms and algorithms on the network side:
 
--   **Secret**: In the algorithm, whenever user registers, each **Validation Node** will create a key. **Secret** is a point on the y-axis of the _Cartesian coordinate system_ whose y-value is that key.
--   **Share Polynomial**: A second degree polynomial which is a unique parabolic line on the _Cartesian coordinate system_, the intersection point between it and the y-axis is the **Secret**'s Key.
--   **Generated Shares**: **Generated Shares** are the points whose each x-value corresponds to the sequence number of a **Validation Node** (which are $x = 1, 2, 3, 4, 5$), and the y-value is the result of the **Share Polynomial** when substituted by the x-value.
--   **Received Shares**: **Received Shares** are the points which x-values are only one number (the sequence number of a **Validation Node**) and the y-values are the values when substituted that x-value into all the **Share Polynomials** of the **Validation Nodes**.
--   **Share**: An element of the **Generated Shares** or the **Received Shares**, which is a pair of x-value and y-value.
--   **Master Share**: Sum of the **Received Shares** (sum of all **Share** following an x-value).
--   **Master Share Polynomial**: A second degree polynomial which is a unique parabolic line on the _Cartesian coordinate system_ formed by the **Master Shares**.
--   **Network Key**: The y-value of the **Master Share Polynomial** where $x = 0$.
+- **Secret**: In the algorithm, whenever user registers, each **Validation Node** will create a key. **Secret** is a point on the y-axis of the _Cartesian coordinate system_ whose y-value is that key.
+- **Share's Polynomial**: A second degree polynomial which is a unique parabolic line on the _Cartesian coordinate system_, the intersection point between it and the y-axis is the **Secret**'s Key.
+- **Generated Shares**: A   re the points whose each x-value corresponds to the sequence number of a **Validation Node** (which are $x = 1, 2, 3, 4, 5$), and the y-value is the result of the **Share's Polynomial** when substituted by the x-value.
+- **Received Shares**: A    re the points which x-values are only one number (the sequence number of a **Validation Node**) and the y-values are the values when substituted that x-value into all the **Share's Polynomials** of the **Validation Nodes**.
+- **Share**: An element of the **Generated Shares** or the **Received Shares**, which is a pair of x-value and y-value.
+- **Master Share**: Sum of the **Received Shares** (sum of all **Share** following an x-value).
+- **Master Share's Polynomial**: A second degree polynomial which is a unique parabolic line on the _Cartesian coordinate system_ formed by the **Master Shares**.
+- **Network Key**: The y-value of the **Master Share's Polynomial** where $x = 0$.

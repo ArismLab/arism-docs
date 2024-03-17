@@ -2,8 +2,8 @@ export {}
 
 declare global {
     type PageSEOProps = {
-        title: string
-        description: string
+        title: string | undefined
+        description: string | undefined
     }
 
     type Wrapper = {

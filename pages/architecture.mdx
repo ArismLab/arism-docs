@@ -1,28 +1,36 @@
-export const description =
-    'On this page, we’ll dive into the different attachment endpoints you can use to manage attachments programmatically.'
-
-export const sections = [
-    { title: 'ARM Token', id: 'arm-token' },
-    { title: 'Arism Node', id: 'arism-node' },
-]
+# Architecture
 
 ## ARM Token
 
 **ARM Token** (or **Arism Token**) is a Fungible Token for staking, rewarding and fining in operating **Arism Nodes**.
 
+## Arism Network
+
+### Mainnet (Validation Network)
+
+**Mainnet** is the main network for executing algorithms to verify third-party accounts and conduct **Network Key** for users.
+
+**Mainnet** is made up by a set of 5 **Validation Nodes**. 
+
+### Subnet (Backup Network)
+
+**Subnet** is the network that provides **Backup Nodes** when there is a dead, malicious or expired **Validation Node** in **Mainnet**. There is also only **5 Backup Nodes** available at same time. Everytime there is a node leaving the **Mainnet**, a **Backup Node** will be promoted to replace it.
+
+For some security reasons, all **Validation Nodes** will have to recreate their data along with this node. Because **Validation Nodes** cannot know exactly the data is held by the old node, and they cannot share their **Secrets** to reproduce that old node's data to the new node either. This is called **Proactive Secret Sharing (PSS)** algorithm (which will be mentioned later).
+
 ## Arism Node
 
 **Arism Node** operator will prepare an available server (or device) with a staked amount of **ARM Token**.
 
-The **Arism Network** is a distributed network linked together by 5 **Validation Nodes**.
-
 ### Validation Node
 
-**Validation Nodes** are the **Arism Nodes** which joining into the main network for executing algorithms to verify third-party accounts which users used for registering their accounts.
+**Validation Nodes** are the **Arism Nodes** which joining into the **Mainnet**. When a user registers an account, each node will generate 1 **Secret** and 5 **Shares** (by number of nodes) for that account.
 
-### Whitelist Node (Backup Node)
+While **Secrets** are the private data, **Shares** have 5 times more numbers than **Secrets** because a node will share 1 **Share** for each remaining node on the network. This is called **Distributed Secret Sharing (DSS)** algorithm (which will be mentioned later).
 
-**Whitelist Nodes** are the **Arism Nodes** which are in the queue to become **Validation Nodes**.
+### Backup Node
+
+**Backup Nodes** are the **Arism Nodes** which are in the queue to protect each **Validation Node** in the **Mainnet**.
 
 ### Supervised Node
 
@@ -34,13 +42,13 @@ However, a node will only be able to supervise JUST ONE other node. All node mus
 
 ### Node lifecycle
 
-**Validation Node**'s lifetime is determined based on the staked amount of **ARM Token** and the number of **Whitelist Nodes** in the queue.
+**Validation Node**'s lifetime is determined based on the staked amount of **ARM Token** and the number of **Backup Nodes** in the queue.
 
 This ensures a degree of decentralization, preventing node operators from colluding with each other to damage the integrity and security of the network.
 
 ### Rewards and fines
 
-**Validation Nodes** will receive rewards periodically for their work. **Whitelist Nodes** will receive a portion of the rewards as well because they still have to work continuously while waiting for a **Voting Event**.
+**Validation Nodes** will receive rewards periodically for their work. **Backup Nodes** will receive a portion of the rewards as well because they still have to work continuously while waiting for a **Voting Event**.
 
 If a **Validation Node** is found to be dead or malicious, it will be fined and removed from the **Arism Network**. It will not be able to withdraw the entire staked amount of **ARM Token** because it will be deducted from a fine amount.
 
@@ -48,7 +56,7 @@ The reward amount will be calculated based on the staked amount and waiting/work
 
 ### Voting Event
 
-**Validation Nodes** will be randomly selected from **Whitelist Nodes** (but with priority on the staked amount of **ARM Tokens**), meaning that **Whitelist Nodes** with the most staked amount of **ARM Tokens** will have a high chance of participating into **Arism Network** as a **Validation Node** when there is an **Validation Node** dies or expires.
+**Validation Nodes** will be randomly selected from **Backup Nodes** (but with priority on the staked amount of **ARM Tokens**), meaning that **Backup Nodes** with the most staked amount of **ARM Tokens** will have a high chance of participating into **Arism Network** as a **Validation Node** when there is an **Validation Node** dies or expires.
 
 Nodes will be managed on a **Smart Contract** and voting will also be executed on the **Smart Contract** as well to ensure the transparency property. This will happen automatically between **Validation Nodes** whenever a node detects (or requests) of a dead or malicious node, such a node is called **Victim Node**.
 

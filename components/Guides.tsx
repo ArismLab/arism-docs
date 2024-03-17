@@ -3,26 +3,26 @@ import Heading from '@components/Heading'
 
 const guides = [
 	{
-		href: '/authentication',
-		name: 'Authentication',
-		description: 'Learn how to authenticate your API requests.',
+		href: '/whitepaper',
+		name: 'Whitepaper',
+		description: 'Learn about the core concepts of the Arism Wallet protocol.',
 	},
 	{
-		href: '/pagination',
-		name: 'Pagination',
-		description: 'Understand how to work with paginated responses.',
+		href: '/how-to-use',
+		name: 'How to use',
+		description: 'Start your journey with guides and recommended practices.',
 	},
 	{
-		href: '/errors',
-		name: 'Errors',
+		href: '/node-setup',
+		name: 'Node setup',
 		description:
-			'Read about the different types of errors returned by the API.',
+			'Learn how to set up an Arism Node and start earning rewards.',
 	},
 	{
-		href: '/webhooks',
-		name: 'Webhooks',
+		href: '/sdk-integration',
+		name: 'SDK Integration',
 		description:
-			'Learn how to programmatically configure webhooks for your app.',
+			'Use our SDK integrate the Arism Wallet protocol to your DApps.',
 	},
 ]
 
@@ -35,7 +35,7 @@ const Guides = () => {
 			<div className="not-prose mt-4 grid grid-cols-1 gap-8 border-t border-zinc-900/5 pt-10 dark:border-white/5 sm:grid-cols-2 xl:grid-cols-4">
 				{guides.map((guide) => (
 					<div key={guide.href}>
-						<h3 className="text-sm font-semibold text-zinc-900 dark:text-white">
+						<h3 className="text-lg font-semibold text-zinc-900 dark:text-white">
 							{guide.name}
 						</h3>
 						<p className="mt-1 text-sm text-zinc-600 dark:text-zinc-400">

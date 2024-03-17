@@ -59,10 +59,15 @@ const Footer = () => {
 			</div>
 			<PageNavigation />
 			<div className="flex flex-col items-center justify-between gap-5 border-t border-zinc-900/5 pt-8 dark:border-white/5 sm:flex-row">
-				<p className="text-xs text-zinc-600 dark:text-zinc-400">
-					&copy; Copyright {new Date().getFullYear()}. All rights reserved.
+        <p className="text-xs text-zinc-600 dark:text-zinc-400">
+					Provided by <a href="https://github.com/snowyfield1906" className="text-black dark:text-white hover:text-zinc-600 hover:dark:text-zinc-400 text-sm">@snowyfield</a>
 				</p>
-				<div className="flex gap-4">
+        <p className="text-xs text-zinc-600 dark:text-zinc-400">
+          &copy; Copyright {new Date().getFullYear()}{' '}
+          <a href="https://arism.org" className="text-black dark:text-white hover:text-zinc-600 hover:dark:text-zinc-400 text-sm">arism.org</a>
+          . All rights reserved.
+				</p>
+				<div className="flex gap-5">
 					<SocialLink href="#" icon={TwitterIcon}>
 						Follow us on Twitter
 					</SocialLink>

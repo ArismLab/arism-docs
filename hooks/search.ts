@@ -5,11 +5,11 @@ import { useRouter } from 'next/router'
 import { useId, useRef, useState } from 'react'
 
 export const useAutocomplete = () => {
-    let id = useId()
-    let router = useRouter()
-    let [autocompleteState, setAutocompleteState] = useState({})
+    const id = useId()
+    const router = useRouter()
+    const [autocompleteState, setAutocompleteState] = useState({})
 
-    let [autocomplete] = useState(() =>
+    const [autocomplete] = useState(() =>
         createAutocomplete({
             id,
             placeholder: 'Find something...',
@@ -27,7 +27,7 @@ export const useAutocomplete = () => {
                     sourceId: 'documentation',
                     getItemInputValue: ({ item }) => item.query,
                     getItemUrl: ({ item }) => {
-                        let url = new URL(item.url as any)
+                        const url = new URL(item.url as any)
                         return `${url.pathname}${url.hash}`
                     },
                     onSelect: ({ itemUrl }) => router.push(itemUrl as any),
@@ -62,8 +62,8 @@ export const useAutocomplete = () => {
 }
 
 export const useSearchProps = () => {
-    let buttonRef: any = useRef()
-    let [open, setOpen] = useState(false)
+    const buttonRef: any = useRef()
+    const [open, setOpen] = useState(false)
 
     return {
         buttonProps: {
@@ -73,7 +73,7 @@ export const useSearchProps = () => {
         dialogProps: {
             open,
             setOpen: (open) => {
-                let { width, height } =
+                const { width, height } =
                     buttonRef.current.getBoundingClientRect()
                 if (!open || (width !== 0 && height !== 0)) {
                     setOpen(open)

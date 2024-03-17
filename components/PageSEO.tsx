@@ -27,8 +27,6 @@ const CommonSEO = ({
 			<meta property="og:description" content={description} />
 			<meta property="og:title" content={title} />
 			<meta property="og:image" content={ogImage} />
-			{/* <meta property="fb:app_id" content={siteMetadata.facebookAppId} /> */}
-			{/* <meta name="twitter:site" content={siteMetadata.twitter} /> */}
 			<meta name="twitter:card" content="summary_large_image" />
 			<meta name="twitter:title" content={title} />
 			<meta name="twitter:description" content={description} />
@@ -38,6 +36,9 @@ const CommonSEO = ({
 }
 
 export const PageSEO = ({ title, description }: PageSEOProps): JSX.Element => {
+  if (!title) {
+    return <HomeSEO />
+  }
 	return (
 		<CommonSEO
 			title={`${title} - ${siteMetadata.title}`}
