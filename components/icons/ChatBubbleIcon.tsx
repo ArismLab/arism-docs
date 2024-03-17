@@ -1,4 +1,4 @@
-export function ChatBubbleIcon(props) {
+const ChatBubbleIcon = (props) => {
 	return (
 		<svg viewBox="0 0 20 20" aria-hidden="true" {...props}>
 			<path
@@ -15,3 +15,5 @@ export function ChatBubbleIcon(props) {
 		</svg>
 	)
 }
+
+export default ChatBubbleIcon

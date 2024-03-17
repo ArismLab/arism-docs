@@ -13,6 +13,8 @@
         "@typescript-eslint/no-explicit-any": "off",
         "@typescript-eslint/no-var-requires": "off",
         "react-hooks/rules-of-hooks": "off",
+        "react/display-name": "off",
+        "import/no-named-as-default": "off",
         "import/no-unresolved": "error",
         "no-empty": "off",
         "import/order": [

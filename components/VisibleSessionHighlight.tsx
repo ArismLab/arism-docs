@@ -1,9 +1,14 @@
+import { motion, useIsPresent } from 'framer-motion'
+
+import {
+	useInitialValue,
+	useIsInsideMobileNavigation,
+  useSectionStore,
+} from '@hooks/navigation'
 import { remToPx } from '@libs/remToPx'
-import { useIsPresent, motion } from 'framer-motion'
-import { useInitialValue, useIsInsideMobileNavigation, useSectionStore } from '@hooks/navigation'
 
 const VisibleSectionHighlight = ({ group, pathname }) => {
-	let [sections, visibleSections] = useInitialValue(
+	const [sections, visibleSections] = useInitialValue(
 		[
 			useSectionStore((s) => s.sections),
 			useSectionStore((s) => s.visibleSections),
@@ -11,18 +16,18 @@ const VisibleSectionHighlight = ({ group, pathname }) => {
 		useIsInsideMobileNavigation().Context
 	)
 
-	let isPresent = useIsPresent()
-	let firstVisibleSectionIndex = Math.max(
+	const isPresent = useIsPresent()
+	const firstVisibleSectionIndex = Math.max(
 		0,
 		[{ id: '_top' }, ...sections].findIndex(
 			(section) => section.id === visibleSections[0]
 		)
 	)
-	let itemHeight = remToPx(2)
-	let height = isPresent
+	const itemHeight = remToPx(2)
+	const height = isPresent
 		? Math.max(1, visibleSections.length) * itemHeight
 		: itemHeight
-	let top =
+	const top =
 		group.links.findIndex((link) => link.href === pathname) * itemHeight +
 		firstVisibleSectionIndex * itemHeight
 

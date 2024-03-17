@@ -1,5 +1,6 @@
-import Link from '@components/Link'
 import clsx from 'clsx'
+
+import Link from '@components/Link'
 
 const ArrowIcon = (props) => {
 	return (
@@ -34,7 +35,7 @@ const Button = ({
 	href,
 	...props
 }: any) => {
-	let Component = href ? Link : 'button'
+	const Component = href ? Link : 'button'
 
 	className = clsx(
 		'inline-flex gap-0.5 justify-center overflow-hidden text-sm font-medium transition',
@@ -42,7 +43,7 @@ const Button = ({
 		className
 	)
 
-	let arrowIcon = (
+	const arrowIcon = (
 		<ArrowIcon
 			className={clsx(
 				'mt-0.5 h-5 w-5',

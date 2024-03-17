@@ -1,6 +1,6 @@
-import { Context, Fragment, createContext } from 'react'
 import { Dialog, Transition } from '@headlessui/react'
 import { motion } from 'framer-motion'
+import { Context, Fragment, createContext } from 'react'
 
 import Header from '@components/Header'
 import Navigation from '@components/Navigation'
@@ -38,9 +38,9 @@ const XIcon = (props) => {
 }
 
 const MobileNavigation = () => {
-	let IsInsideMobileNavigation = useIsInsideMobileNavigation()
-	let { isOpen, toggle, close }: any = useMobileNavigationStore()
-	let ToggleIcon = isOpen ? XIcon : MenuIcon
+	const IsInsideMobileNavigation = useIsInsideMobileNavigation()
+	const { isOpen, toggle, close }: any = useMobileNavigationStore()
+	const ToggleIcon = isOpen ? XIcon : MenuIcon
 
 	return (
 		<IsInsideMobileNavigation.Value.Provider value={true}>

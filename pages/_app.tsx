@@ -1,15 +1,13 @@
+import { MDXProvider } from '@mdx-js/react'
+import type { AppProps } from 'next/app'
 import Head from 'next/head'
 import { Router, useRouter } from 'next/router'
-import { MDXProvider } from '@mdx-js/react'
-
-import { Layout } from '@components/Layout'
-import * as mdxComponents from '@components/mdx'
-
-import type { AppProps } from 'next/app'
 import NProgress from 'nprogress'
 import ProgressBar from 'react-scroll-progress-bar'
 
 import Analytics from '@components/Analytics'
+import Layout from '@components/Layout'
+import mdxComponents from '@components/mdx'
 import '@styles/tailwind.css'
 import '@styles/extra.css'
 import 'focus-visible'
@@ -39,9 +37,9 @@ Router.events.on('routeChangeError', onRouteChange)
 
 const MyApp = ({
 	Component,
-	pageProps: { session, ...pageProps },
+	pageProps,
 }: AppProps): JSX.Element => {
-	let router = useRouter()
+	const router = useRouter()
 
 	return (
 		<>

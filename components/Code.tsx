@@ -1,15 +1,10 @@
-import {
-	Children,
-	createContext,
-	useContext,
-	useEffect,
-	useState,
-} from 'react'
 import { Tab } from '@headlessui/react'
 import clsx from 'clsx'
+import { Children, createContext, useContext, useEffect, useState } from 'react'
 
 import Tag from '@components/Tag'
 import { useTabGroupProps } from '@hooks/code'
+
 import { ClipboardIcon } from './icons/ClipboardIcon'
 
 const languageNames = {
@@ -50,14 +45,14 @@ const CodePanelHeader = ({ tag, label }) => {
 }
 
 const CodePanel = ({ tag, label, code, children }: any) => {
-  let child = Children.only(children)
-  
-  let [copyCount, setCopyCount] = useState(0)
-	let copied = copyCount > 0
+	const child = Children.only(children)
+
+	const [copyCount, setCopyCount] = useState(0)
+	const copied = copyCount > 0
 
 	useEffect(() => {
 		if (copyCount > 0) {
-			let timeout = setTimeout(() => setCopyCount(0), 1000)
+			const timeout = setTimeout(() => setCopyCount(0), 1000)
 			return () => {
 				clearTimeout(timeout)
 			}
@@ -71,48 +66,48 @@ const CodePanel = ({ tag, label, code, children }: any) => {
 				label={child.props.label ?? label}
 			/>
 			<div className="relative">
-        <pre className="overflow-x-auto p-4 text-xs text-white">{children}</pre>
-        <button
-			type="button"
-			className={clsx(
-				'group/button text-2xs absolute right-4 top-3.5 overflow-hidden rounded-full py-1 pl-2 pr-3 font-medium opacity-0 backdrop-blur transition focus:opacity-100 group-hover:opacity-100',
-				copied
-					? 'bg-emerald-400/10 ring-1 ring-inset ring-emerald-400/20'
-					: 'hover:bg-white/7.5 dark:bg-white/2.5 bg-white/5 dark:hover:bg-white/5'
-			)}
-			onClick={() => {
-				window.navigator.clipboard.writeText(code).then(() => {
-					setCopyCount((count) => count + 1)
-				})
-			}}
-		>
-			<span
-				aria-hidden={copied}
-				className={clsx(
-					'pointer-events-none flex items-center gap-0.5 text-zinc-400 transition duration-300',
-					copied && '-translate-y-1.5 opacity-0'
-				)}
-			>
-				<ClipboardIcon className="h-5 w-5 fill-zinc-500/20 stroke-zinc-500 transition-colors group-hover/button:stroke-zinc-400" />
-				Copy
-			</span>
-			<span
-				aria-hidden={!copied}
-				className={clsx(
-					'pointer-events-none absolute inset-0 flex items-center justify-center text-emerald-400 transition duration-300',
-					!copied && 'translate-y-1.5 opacity-0'
-				)}
-			>
-				Copied!
-			</span>
-		</button>
+				<pre className="overflow-x-auto p-4 text-xs text-white">{children}</pre>
+				<button
+					type="button"
+					className={clsx(
+						'group/button text-2xs absolute right-4 top-3.5 overflow-hidden rounded-full py-1 pl-2 pr-3 font-medium opacity-0 backdrop-blur transition focus:opacity-100 group-hover:opacity-100',
+						copied
+							? 'bg-emerald-400/10 ring-1 ring-inset ring-emerald-400/20'
+							: 'hover:bg-white/7.5 dark:bg-white/2.5 bg-white/5 dark:hover:bg-white/5'
+					)}
+					onClick={() => {
+						window.navigator.clipboard.writeText(code).then(() => {
+							setCopyCount((count) => count + 1)
+						})
+					}}
+				>
+					<span
+						aria-hidden={copied}
+						className={clsx(
+							'pointer-events-none flex items-center gap-0.5 text-zinc-400 transition duration-300',
+							copied && '-translate-y-1.5 opacity-0'
+						)}
+					>
+						<ClipboardIcon className="h-5 w-5 fill-zinc-500/20 stroke-zinc-500 transition-colors group-hover/button:stroke-zinc-400" />
+						Copy
+					</span>
+					<span
+						aria-hidden={!copied}
+						className={clsx(
+							'pointer-events-none absolute inset-0 flex items-center justify-center text-emerald-400 transition duration-300',
+							!copied && 'translate-y-1.5 opacity-0'
+						)}
+					>
+						Copied!
+					</span>
+				</button>
 			</div>
 		</div>
 	)
 }
 
 const CodeGroupHeader = ({ title, children, selectedIndex }: any) => {
-	let hasTabs = Children.count(children) > 1
+	const hasTabs = Children.count(children) > 1
 
 	if (!title && !hasTabs) {
 		return null
@@ -146,7 +141,7 @@ const CodeGroupHeader = ({ title, children, selectedIndex }: any) => {
 }
 
 const CodeGroupPanels = ({ children, ...props }) => {
-	let hasTabs = Children.count(children) > 1
+	const hasTabs = Children.count(children) > 1
 
 	if (hasTabs) {
 		return (
@@ -163,16 +158,17 @@ const CodeGroupPanels = ({ children, ...props }) => {
 	return <CodePanel {...props}>{children}</CodePanel>
 }
 
-
 const CodeGroupContext = createContext(false)
 
 export const CodeGroup = ({ children, title, ...props }: any) => {
-	let languages = Children.map(children, (child) => getPanelTitle(child.props))
-	let tabGroupProps = useTabGroupProps(languages)
-	let hasTabs = Children.count(children) > 1
-	let Container: any = hasTabs ? Tab.Group : 'div'
-	let containerProps = hasTabs ? tabGroupProps : {}
-	let headerProps = hasTabs
+	const languages = Children.map(children, (child) =>
+		getPanelTitle(child.props)
+	)
+	const tabGroupProps = useTabGroupProps(languages)
+	const hasTabs = Children.count(children) > 1
+	const Container: any = hasTabs ? Tab.Group : 'div'
+	const containerProps = hasTabs ? tabGroupProps : {}
+	const headerProps = hasTabs
 		? { selectedIndex: tabGroupProps.selectedIndex }
 		: {}
 
@@ -192,7 +188,7 @@ export const CodeGroup = ({ children, title, ...props }: any) => {
 }
 
 export const Code = ({ children, ...props }) => {
-	let isGrouped = useContext(CodeGroupContext)
+	const isGrouped = useContext(CodeGroupContext)
 
 	if (isGrouped) {
 		return <code {...props} dangerouslySetInnerHTML={{ __html: children }} />
@@ -202,7 +198,7 @@ export const Code = ({ children, ...props }) => {
 }
 
 export const Pre = ({ children, ...props }) => {
-	let isGrouped = useContext(CodeGroupContext)
+	const isGrouped = useContext(CodeGroupContext)
 
 	if (isGrouped) {
 		return children

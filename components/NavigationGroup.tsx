@@ -1,15 +1,20 @@
-import { remToPx } from '@libs/remToPx'
-import { AnimatePresence, motion, useIsPresent } from 'framer-motion'
+import clsx from 'clsx'
+import { AnimatePresence, motion } from 'framer-motion'
 import { useRouter } from 'next/router'
 import { useRef } from 'react'
-import clsx from 'clsx'
+
+import NavLink from '@components/NavLink'
+import VisibleSectionHighlight from '@components/VisibleSessionHighlight'
 import { useIsInsideMobileNavigation, useSectionStore } from '@hooks/navigation'
+import { remToPx } from '@libs/remToPx'
 
 function ActivePageMarker({ group, pathname }) {
-	let itemHeight = remToPx(2)
-	let offset = remToPx(0.25)
-	let activePageIndex = group.links.findIndex((link) => link.href === pathname)
-	let top = offset + activePageIndex * itemHeight
+	const itemHeight = remToPx(2)
+	const offset = remToPx(0.25)
+	const activePageIndex = group.links.findIndex(
+		(link) => link.href === pathname
+	)
+	const top = offset + activePageIndex * itemHeight
 
 	return (
 		<motion.div
@@ -24,18 +29,18 @@ function ActivePageMarker({ group, pathname }) {
 }
 
 const useInitialValue = (value, condition = true) => {
-	let initialValue = useRef(value).current
+	const initialValue = useRef(value).current
 	return condition ? initialValue : value
 }
 
 const NavigationGroup = ({ group, className }) => {
-	let isInsideMobileNavigation = useIsInsideMobileNavigation().Context
-	let [router, sections] = useInitialValue(
+	const isInsideMobileNavigation = useIsInsideMobileNavigation().Context
+	const [router, sections] = useInitialValue(
 		[useRouter(), useSectionStore((s: any) => s.sections)],
 		isInsideMobileNavigation
 	)
 
-	let isActiveGroup =
+	const isActiveGroup =
 		group.links.findIndex((link) => link.href === router.pathname) !== -1
 
 	return (

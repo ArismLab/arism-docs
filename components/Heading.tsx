@@ -1,9 +1,10 @@
-import { useEffect, useRef } from 'react'
-import Link from '@components/Link'
 import { useInView } from 'framer-motion'
+import { useEffect, useRef } from 'react'
 
+import Link from '@components/Link'
 import Tag from '@components/Tag'
 import { remToPx } from '@libs/remToPx'
+
 import AnchorIcon from './icons/AnchorIcon'
 import { useSectionStore } from '@hooks/navigation'
 
@@ -52,11 +53,13 @@ const Heading = ({
 	anchor = true,
 	...props
 }: any) => {
-	let Component: any = `h${level}`
-	let ref: any = useRef()
-	let registerHeading: any = useSectionStore((s: any) => s.registerHeading)
+	const Component: any = `h${level}`
+	const ref: any = useRef()
+	const registerHeading: any = useSectionStore(
+		(s: any) => s.registerHeading
+	)
 
-	let inView = useInView(ref, {
+	const inView = useInView(ref, {
 		margin: `${remToPx(-3.5)}px 0px 0px 0px`,
 		amount: 'all',
 	})

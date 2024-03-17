@@ -1,14 +1,14 @@
-import Link from '@components/Link'
 import { motion } from 'framer-motion'
 
 import Footer from '@components/Footer'
 import Header from '@components/Header'
+import Link from '@components/Link'
 import Logo from '@components/Logo'
 import Navigation from '@components/Navigation'
 import Prose from '@components/Prose'
 import SectionProvider from '@components/SectionProvider'
 
-export function Layout({ children, sections = [] }) {
+const Layout = ({ children, sections = [] }) => {
 	return (
 		<SectionProvider sections={sections}>
 			<div className="lg:ml-72 xl:ml-80">
@@ -36,3 +36,5 @@ export function Layout({ children, sections = [] }) {
 		</SectionProvider>
 	)
 }
+
+export default Layout

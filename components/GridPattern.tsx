@@ -1,7 +1,7 @@
 import { useId } from 'react'
 
-const GridPattern = ({ width, height, x, y, squares, ...props }) => {
-	let patternId = useId()
+const GridPattern = ({ width, height, x, y, squares, ...props }: any) => {
+	const patternId = useId()
 
 	return (
 		<svg aria-hidden="true" {...props}>

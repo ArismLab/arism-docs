@@ -1,13 +1,14 @@
-import { forwardRef } from 'react'
-import Link from '@components/Link'
 import clsx from 'clsx'
 import { motion, useScroll, useTransform } from 'framer-motion'
+import { forwardRef } from 'react'
 
 import Button from '@components/Button'
+import Link from '@components/Link'
 import Logo from '@components/Logo'
 import MobileNavigation from '@components/MobileNavigation'
 import { ModeToggle } from '@components/ModeToggle'
-import { MobileSearch, Search } from '@components/Search'
+import MobileSearch from '@components/Search/MobileSearch'
+import Search from '@components/Search/Search'
 import {
 	useIsInsideMobileNavigation,
 	useMobileNavigationStore,
@@ -27,12 +28,12 @@ const TopLevelNavItem = ({ href, children }) => {
 }
 
 const Header = forwardRef(({ className }: any, ref: any) => {
-	let { isOpen: mobileNavIsOpen }: any = useMobileNavigationStore()
-	let isInsideMobileNavigation = useIsInsideMobileNavigation().Context
+	const { isOpen: mobileNavIsOpen }: any = useMobileNavigationStore()
+	const isInsideMobileNavigation = useIsInsideMobileNavigation().Context
 
-	let { scrollY } = useScroll()
-	let bgOpacityLight = useTransform(scrollY, [0, 72], [0.5, 0.9])
-	let bgOpacityDark = useTransform(scrollY, [0, 72], [0.2, 0.8])
+	const { scrollY } = useScroll()
+	const bgOpacityLight = useTransform(scrollY, [0, 72], [0.5, 0.9])
+	const bgOpacityDark = useTransform(scrollY, [0, 72], [0.2, 0.8])
 
 	return (
 		<motion.div
@@ -46,10 +47,12 @@ const Header = forwardRef(({ className }: any, ref: any) => {
 					? 'bg-white dark:bg-zinc-900'
 					: 'bg-white/[var(--bg-opacity-light)] dark:bg-zinc-900/[var(--bg-opacity-dark)]'
 			)}
-			style={{
-				'--bg-opacity-light': bgOpacityLight,
-				'--bg-opacity-dark': bgOpacityDark,
-			}}
+			style={
+				{
+					'--bg-opacity-light': bgOpacityLight,
+					'--bg-opacity-dark': bgOpacityDark,
+				} as any
+			}
 		>
 			<div
 				className={clsx(

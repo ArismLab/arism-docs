@@ -1,4 +1,4 @@
-export function EnvelopeIcon(props) {
+const EnvelopeIcon = (props) => {
 	return (
 		<svg viewBox="0 0 20 20" aria-hidden="true" {...props}>
 			<path
@@ -15,3 +15,5 @@ export function EnvelopeIcon(props) {
 		</svg>
 	)
 }
+
+export default EnvelopeIcon

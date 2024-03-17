@@ -1,4 +1,4 @@
-export function UserIcon(props) {
+const UserIcon = (props) => {
 	return (
 		<svg viewBox="0 0 20 20" aria-hidden="true" {...props}>
 			<path
@@ -22,3 +22,5 @@ export function UserIcon(props) {
 		</svg>
 	)
 }
+
+export default UserIcon

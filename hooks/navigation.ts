@@ -9,13 +9,18 @@ import {
 } from 'react'
 import { create, useStore } from 'zustand'
 
-const isInsideMobileNavigationContext = createContext(false)
-
+export const IsInsideMobileNavigationContext = createContext<boolean>(false)
 export const useIsInsideMobileNavigation = () => {
     return {
-        Context: useContext(isInsideMobileNavigationContext),
-        Value: isInsideMobileNavigationContext
+        Context: useContext(IsInsideMobileNavigationContext),
+        Value: IsInsideMobileNavigationContext,
     }
+}
+
+export const SectionStoreContext = createContext(null)
+export const useSectionStore = (selector) => {
+  let store: any = useContext(SectionStoreContext)
+  return useStore(store, selector)
 }
 
 export const useInitialValue = (value, condition = true) => {
@@ -42,11 +47,6 @@ export const useMobileNavigationStore = create(
     })
 )
 
-export function useSectionStore(selector) {
-    let store = useContext(SectionStoreContext)
-    return useStore(store, selector)
-}
-
 export const useVisibleSections = (sectionStore) => {
     let setVisibleSections = useStore(
         sectionStore,
@@ -55,7 +55,7 @@ export const useVisibleSections = (sectionStore) => {
     let sections = useStore(sectionStore, (s: any) => s.sections)
 
     useEffect(() => {
-        function checkVisibleSections() {
+        const checkVisibleSections = () => {
             let { innerHeight, scrollY } = window
             let newVisibleSections: string[] = []
 
