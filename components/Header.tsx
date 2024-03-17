@@ -2,11 +2,10 @@ import clsx from 'clsx'
 import { motion, useScroll, useTransform } from 'framer-motion'
 import { forwardRef } from 'react'
 
-import Button from '@components/Button'
 import Link from '@components/Link'
 import Logo from '@components/Logo'
 import MobileNavigation from '@components/MobileNavigation'
-import { ModeToggle } from '@components/ModeToggle'
+import ModeToggle from '@components/ModeToggle'
 import MobileSearch from '@components/Search/MobileSearch'
 import Search from '@components/Search/Search'
 import {
@@ -80,9 +79,6 @@ const Header = forwardRef(({ className }: any, ref: any) => {
 				<div className="flex gap-4">
 					<MobileSearch />
 					<ModeToggle />
-				</div>
-				<div className="hidden min-[416px]:contents">
-					<Button href="#">Sign in</Button>
 				</div>
 			</div>
 		</motion.div>

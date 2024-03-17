@@ -20,7 +20,7 @@ const Resource = ({ resource }) => {
 		<div
 			key={resource.href}
 			onMouseMove={onMouseMove}
-			className="dark:bg-white/2.5 group relative flex rounded-2xl bg-zinc-50 transition-shadow hover:shadow-md hover:shadow-zinc-900/5 dark:hover:shadow-black/5"
+			className="dark:bg-white/2.5 group relative flex rounded-2xl bg-zinc-50 transition-shadow hover:shadow-md hover:shadow-zinc-900/5 dark:bg-zinc-950 dark:hover:shadow-black/5"
 		>
 			<div className="pointer-events-none">
 				<div className="absolute inset-0 rounded-2xl transition duration-300 [mask-image:linear-gradient(white,transparent)] group-hover:opacity-50">
@@ -33,7 +33,7 @@ const Resource = ({ resource }) => {
 					/>
 				</div>
 				<motion.div
-					className="absolute inset-0 rounded-2xl bg-gradient-to-r from-[#D7EDEA] to-[#F4FBDF] opacity-0 transition duration-300 group-hover:opacity-100 dark:from-[#202D2E] dark:to-[#303428]"
+					className="absolute inset-0 rounded-2xl bg-gradient-to-r from-primary-100  to-secondary-100   opacity-0 transition duration-300 group-hover:opacity-100 dark:from-primary-800 dark:to-secondary-800"
 					style={style}
 				/>
 				<motion.div
@@ -49,10 +49,10 @@ const Resource = ({ resource }) => {
 					/>
 				</motion.div>
 			</div>
-			<div className="ring-zinc-900/7.5 absolute inset-0 rounded-2xl ring-1 ring-inset group-hover:ring-zinc-900/10 dark:ring-white/10 dark:group-hover:ring-white/20" />
+			<div className="ring-zinc-900/7.5 absolute inset-0 rounded-2xl ring-1 ring-inset ring-primary-300 group-hover:ring-zinc-900/10 dark:ring-white/10 dark:group-hover:ring-white/20" />
 			<div className="relative rounded-2xl px-4 pb-4 pt-16">
-				<div className="dark:bg-white/7.5 flex h-7 w-7 items-center justify-center rounded-full bg-zinc-900/5 ring-1 ring-zinc-900/25 backdrop-blur-[2px] transition duration-300 group-hover:bg-white/50 group-hover:ring-zinc-900/25 dark:ring-white/15 dark:group-hover:bg-emerald-300/10 dark:group-hover:ring-emerald-400">
-					<resource.icon className="h-5 w-5 fill-zinc-700/10 stroke-zinc-700 transition-colors duration-300 group-hover:stroke-zinc-900 dark:fill-white/10 dark:stroke-zinc-400 dark:group-hover:fill-emerald-300/10 dark:group-hover:stroke-emerald-400" />
+				<div className="dark:bg-white/7.5 dark:group-hover:bg-primary-300/10 flex h-7 w-7 items-center justify-center rounded-full bg-zinc-900/5 ring-1 ring-zinc-900/25 backdrop-blur-[2px] transition duration-300 group-hover:bg-white/50 group-hover:ring-zinc-900/25 dark:ring-white/15 dark:group-hover:ring-primary-800">
+					<resource.icon className="dark:group-hover:fill-primary-300/10 h-5 w-5 fill-zinc-700/10 stroke-zinc-700 transition-colors duration-300 group-hover:stroke-zinc-900 dark:fill-white/10 dark:stroke-zinc-400 dark:group-hover:stroke-primary-800" />
 				</div>
 				<h3 className="mt-4 text-sm font-semibold leading-7 text-zinc-900 dark:text-white">
 					<Link href={resource.href}>

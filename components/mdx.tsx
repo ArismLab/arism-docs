@@ -28,8 +28,8 @@ const h2 = () => (props) => {
 
 const Note = ({ children }) => {
 	return (
-		<div className="my-6 flex gap-2.5 rounded-2xl border border-emerald-500/20 bg-emerald-50/50 p-4 leading-6 text-emerald-900 dark:border-emerald-500/30 dark:bg-emerald-500/5 dark:text-emerald-200 dark:[--tw-prose-links-hover:theme(colors.emerald.300)] dark:[--tw-prose-links:theme(colors.white)]">
-			<InfoIcon className="mt-1 h-4 w-4 flex-none fill-emerald-500 stroke-white dark:fill-emerald-200/20 dark:stroke-emerald-200" />
+		<div className="border-primary-500/20 bg-primary-50/50 dark:border-primary-500/30 dark:bg-primary-500/5 my-6 flex gap-2.5 rounded-2xl border p-4 leading-6 text-primary-900 dark:text-primary-200 dark:[--tw-prose-links-hover:theme(colors.primary.300)] dark:[--tw-prose-links:theme(colors.white)]">
+			<InfoIcon className="dark:fill-primary-200/20 mt-1 h-4 w-4 flex-none fill-primary-500 stroke-white dark:stroke-primary-200" />
 			<div className="[&>:first-child]:mt-0 [&>:last-child]:mb-0">
 				{children}
 			</div>
@@ -98,8 +98,8 @@ const mdxComponents: MDXComponents = {
 	Col,
 	Properties,
 	Property,
-  a: Link,
-  h2: h2 as any,
+	a: Link,
+	h2: h2 as any,
 	Button,
 	CodeGroup,
 	code: Code as any,

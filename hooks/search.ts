@@ -47,7 +47,7 @@ export const useAutocomplete = () => {
                                     params: {
                                         hitsPerPage: 5,
                                         highlightPreTag:
-                                            '<mark class="underline bg-transparent text-emerald-500">',
+                                            '<mark class="underline bg-transparent text-primary-500">',
                                         highlightPostTag: '</mark>',
                                     },
                                 },

@@ -1,7 +1,6 @@
 import Link from '@components/Link'
+import NavigationGroup from '@components/NavigationGroup'
 import { mainNav } from '@data/siteMetadata.json'
-
-import NavigationGroup from './NavigationGroup'
 
 const TopLevelNavItem = ({ href, children }) => {
 	return (

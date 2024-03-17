@@ -18,7 +18,7 @@ const MoonIcon = (props) => {
 	)
 }
 
-export const ModeToggle = () => {
+const ModeToggle = () => {
 	const disableTransitionsTemporarily = () => {
 		document.documentElement.classList.add('[&_*]:!transition-none')
 		window.setTimeout(() => {
@@ -52,3 +52,5 @@ export const ModeToggle = () => {
 		</button>
 	)
 }
+
+export default ModeToggle

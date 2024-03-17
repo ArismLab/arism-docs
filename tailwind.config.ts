@@ -6,11 +6,33 @@ const config: Config = {
         './components/**/*.{js,ts,jsx,tsx,mdx}',
         './libs/**/*.{js,ts,jsx,tsx,mdx}',
     ],
+    variants: {
+        extends: {
+            backgroundOpacity: ['active'],
+        },
+    },
+    darkMode: 'class',
     theme: {
         fontFamily: {
             sans: ['Sarabun', 'sans-serif'],
         },
         extend: {
+            fontSize: {
+                '2xs': ['0.75rem', { lineHeight: '1.25rem' }],
+                xs: ['0.8125rem', { lineHeight: '1.5rem' }],
+                sm: ['0.875rem', { lineHeight: '1.5rem' }],
+                base: ['1rem', { lineHeight: '1.75rem' }],
+                lg: ['1.125rem', { lineHeight: '1.75rem' }],
+                xl: ['1.25rem', { lineHeight: '1.75rem' }],
+                '2xl': ['1.5rem', { lineHeight: '2rem' }],
+                '3xl': ['1.875rem', { lineHeight: '2.25rem' }],
+                '4xl': ['2.25rem', { lineHeight: '2.5rem' }],
+                '5xl': ['3rem', { lineHeight: '1' }],
+                '6xl': ['3.75rem', { lineHeight: '1' }],
+                '7xl': ['4.5rem', { lineHeight: '1' }],
+                '8xl': ['6rem', { lineHeight: '1' }],
+                '9xl': ['8rem', { lineHeight: '1' }],
+            },
             colors: {
                 primary: {
                     50: 'var(--primary-50)',
@@ -62,10 +84,10 @@ const config: Config = {
                 css: {
                     '--tw-prose-body': theme('colors.zinc.700'),
                     '--tw-prose-headings': theme('colors.zinc.900'),
-                    '--tw-prose-links': theme('colors.emerald.500'),
-                    '--tw-prose-links-hover': theme('colors.emerald.600'),
+                    '--tw-prose-links': theme('colors.primary.500'),
+                    '--tw-prose-links-hover': theme('colors.primary.600'),
                     '--tw-prose-links-underline': theme(
-                        'colors.emerald.500 / 0.3'
+                        'colors.primary.500 / 0.3'
                     ),
                     '--tw-prose-bold': theme('colors.zinc.900'),
                     '--tw-prose-counters': theme('colors.zinc.500'),
@@ -82,11 +104,11 @@ const config: Config = {
 
                     '--tw-prose-invert-body': theme('colors.zinc.400'),
                     '--tw-prose-invert-headings': theme('colors.white'),
-                    '--tw-prose-invert-links': theme('colors.emerald.400'),
+                    '--tw-prose-invert-links': theme('colors.primary.400'),
                     '--tw-prose-invert-links-hover':
-                        theme('colors.emerald.500'),
+                        theme('colors.primary.500'),
                     '--tw-prose-invert-links-underline': theme(
-                        'colors.emerald.500 / 0.3'
+                        'colors.primary.500 / 0.3'
                     ),
                     '--tw-prose-invert-bold': theme('colors.white'),
                     '--tw-prose-invert-counters': theme('colors.zinc.400'),
@@ -430,6 +452,10 @@ const config: Config = {
             },
         }),
     },
-    plugins: [require('tailwindcss/nesting'), require('postcss-nesting')],
+    plugins: [
+        require('tailwindcss/nesting'),
+        require('postcss-nesting'),
+        require('@tailwindcss/typography'),
+    ],
 }
 export default config

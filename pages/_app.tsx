@@ -35,10 +35,7 @@ Router.events.on('hashChangeStart', onRouteChange)
 Router.events.on('routeChangeComplete', onRouteChange)
 Router.events.on('routeChangeError', onRouteChange)
 
-const MyApp = ({
-	Component,
-	pageProps,
-}: AppProps): JSX.Element => {
+const MyApp = ({ Component, pageProps }: AppProps): JSX.Element => {
 	const router = useRouter()
 
 	return (
@@ -46,17 +43,19 @@ const MyApp = ({
 			<ProgressBar bgcolor="#5b21b6" />
 			<Head>
 				{router.pathname === '/' ? (
-					<title>Wade&apos;s Docs</title>
+					<title>Arism Wallet</title>
 				) : (
-					<title>{`${pageProps.title} - Wade&apos;s Docs`}</title>
+					<title>{`${pageProps.title} - Arism Wallet`}</title>
 				)}
 				<meta name="description" content={pageProps.description} />
 				<Analytics />
 			</Head>
 			<MDXProvider components={mdxComponents}>
-				<Layout {...pageProps}>
-					<Component {...pageProps} />
-				</Layout>
+				<div className="bg-global">
+					<Layout {...pageProps}>
+						<Component {...pageProps} />
+					</Layout>
+				</div>
 			</MDXProvider>
 		</>
 	)

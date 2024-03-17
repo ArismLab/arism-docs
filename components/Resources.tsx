@@ -3,8 +3,7 @@ import ChatBubbleIcon from '@components/icons/ChatBubbleIcon'
 import EnvelopeIcon from '@components/icons/EnvelopeIcon'
 import UserIcon from '@components/icons/UserIcon'
 import UsersIcon from '@components/icons/UsersIcon'
-
-import Resource from './Resouce'
+import Resource from '@components/Resource'
 
 const resources = [
 	{

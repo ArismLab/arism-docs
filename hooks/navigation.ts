@@ -1,4 +1,3 @@
-import { remToPx } from '@libs/remToPx'
 import {
     Context,
     createContext,
@@ -8,6 +7,8 @@ import {
     useRef,
 } from 'react'
 import { create, useStore } from 'zustand'
+
+import { remToPx } from '@libs/remToPx'
 
 export const IsInsideMobileNavigationContext = createContext<boolean>(false)
 export const useIsInsideMobileNavigation = () => {
@@ -19,12 +20,12 @@ export const useIsInsideMobileNavigation = () => {
 
 export const SectionStoreContext = createContext(null)
 export const useSectionStore = (selector) => {
-  let store: any = useContext(SectionStoreContext)
-  return useStore(store, selector)
+    const store: any = useContext(SectionStoreContext)
+    return useStore(store, selector)
 }
 
 export const useInitialValue = (value, condition = true) => {
-    let initialValue = useRef(value).current
+    const initialValue = useRef(value).current
     return condition ? initialValue : value
 }
 
@@ -48,33 +49,33 @@ export const useMobileNavigationStore = create(
 )
 
 export const useVisibleSections = (sectionStore) => {
-    let setVisibleSections = useStore(
+    const setVisibleSections = useStore(
         sectionStore,
         (s: any) => s.setVisibleSections
     )
-    let sections = useStore(sectionStore, (s: any) => s.sections)
+    const sections = useStore(sectionStore, (s: any) => s.sections)
 
     useEffect(() => {
         const checkVisibleSections = () => {
-            let { innerHeight, scrollY } = window
-            let newVisibleSections: string[] = []
+            const { innerHeight, scrollY } = window
+            const newVisibleSections: string[] = []
 
             for (
                 let sectionIndex = 0;
                 sectionIndex < sections.length;
                 sectionIndex++
             ) {
-                let { id, headingRef, offsetRem } = sections[sectionIndex]
-                let offset = remToPx(offsetRem)
-                let top =
+                const { id, headingRef, offsetRem } = sections[sectionIndex]
+                const offset = remToPx(offsetRem)
+                const top =
                     headingRef.current.getBoundingClientRect().top + scrollY
 
                 if (sectionIndex === 0 && top - offset > scrollY) {
                     newVisibleSections.push('_top')
                 }
 
-                let nextSection = sections[sectionIndex + 1]
-                let bottom =
+                const nextSection = sections[sectionIndex + 1]
+                const bottom =
                     (nextSection?.headingRef.current.getBoundingClientRect()
                         .top ?? Infinity) +
                     scrollY -
@@ -92,7 +93,7 @@ export const useVisibleSections = (sectionStore) => {
             setVisibleSections(newVisibleSections)
         }
 
-        let raf = window.requestAnimationFrame(() => checkVisibleSections())
+        const raf = window.requestAnimationFrame(() => checkVisibleSections())
         window.addEventListener('scroll', checkVisibleSections, {
             passive: true,
         })

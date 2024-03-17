@@ -3,10 +3,10 @@ import { useEffect, useRef } from 'react'
 
 import Link from '@components/Link'
 import Tag from '@components/Tag'
+import { useSectionStore } from '@hooks/navigation'
 import { remToPx } from '@libs/remToPx'
 
 import AnchorIcon from './icons/AnchorIcon'
-import { useSectionStore } from '@hooks/navigation'
 
 const Eyebrow = ({ tag, label }) => {
 	if (!tag && !label) {
@@ -33,9 +33,9 @@ const Anchor = ({ id, inView, children }) => {
 			className="group text-inherit no-underline hover:text-inherit"
 		>
 			{inView && (
-				<div className="absolute ml-[calc(-1*var(--width))] mt-1 hidden w-[var(--width)] opacity-0 transition [--width:calc(2.625rem+0.5px+50%-min(50%,calc(theme(maxWidth.lg)+theme(spacing.8))))] group-hover:opacity-100 group-focus:opacity-100 md:block lg:z-50 2xl:[--width:theme(spacing.10)]">
+				<div className="absolute ml-[calc(-1*var(--width))] mt-1 w-[var(--width)] opacity-100 transition [--width:calc(2.625rem+0.5px+50%-min(50%,calc(theme(maxWidth.lg)+theme(spacing.8))))] group-focus:opacity-100 md:block lg:z-50 2xl:[--width:theme(spacing.10)]">
 					<div className="group/anchor block h-5 w-5 rounded-lg bg-zinc-50 ring-1 ring-inset ring-zinc-300 transition hover:ring-zinc-500 dark:bg-zinc-800 dark:ring-zinc-700 dark:hover:bg-zinc-700 dark:hover:ring-zinc-600">
-						<AnchorIcon className="h-5 w-5 stroke-zinc-500 transition dark:stroke-zinc-400 dark:group-hover/anchor:stroke-white" />
+						<AnchorIcon className="h-5 w-5 stroke-zinc-500 transition dark:stroke-zinc-400 dark:group-hover/anchor:stroke-primary-900" />
 					</div>
 				</div>
 			)}
@@ -55,9 +55,7 @@ const Heading = ({
 }: any) => {
 	const Component: any = `h${level}`
 	const ref: any = useRef()
-	const registerHeading: any = useSectionStore(
-		(s: any) => s.registerHeading
-	)
+	const registerHeading: any = useSectionStore((s: any) => s.registerHeading)
 
 	const inView = useInView(ref, {
 		margin: `${remToPx(-3.5)}px 0px 0px 0px`,

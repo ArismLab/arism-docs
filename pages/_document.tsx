@@ -39,7 +39,6 @@ export default function Document() {
 	return (
 		<Html lang="en" className="scroll-smooth">
 			<Head>
-				<script dangerouslySetInnerHTML={{ __html: modeScript }} />
 				<link
 					rel="icon"
 					type="image/png"
@@ -100,6 +99,7 @@ export default function Document() {
 					content="#000"
 				/>
 				<link rel="icon" href="/static/logo.png" sizes="any" type="image/png" />
+				<script dangerouslySetInnerHTML={{ __html: modeScript }} />
 			</Head>
 			<body className="bg-white antialiased dark:bg-zinc-900">
 				<Main />

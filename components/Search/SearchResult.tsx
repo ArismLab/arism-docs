@@ -45,7 +45,7 @@ const SearchResult = ({ result, resultIndex, autocomplete, collection }) => {
 			<div
 				id={`${id}-title`}
 				aria-hidden="true"
-				className="text-sm font-medium text-zinc-900 group-aria-selected:text-emerald-500 dark:text-white"
+				className="text-sm font-medium text-zinc-900 group-aria-selected:text-primary-500 dark:text-white"
 				dangerouslySetInnerHTML={{ __html: titleHtml }}
 			/>
 			{hierarchyHtml.length > 0 && (

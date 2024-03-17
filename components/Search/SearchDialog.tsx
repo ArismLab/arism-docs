@@ -41,7 +41,7 @@ const SearchInput = forwardRef(
 				/>
 				{autocompleteState.status === 'stalled' && (
 					<div className="absolute inset-y-0 right-3 flex items-center">
-						<LoadingIcon className="h-5 w-5 animate-spin stroke-zinc-200 text-zinc-900 dark:stroke-zinc-800 dark:text-emerald-400" />
+						<LoadingIcon className="h-5 w-5 animate-spin stroke-zinc-200 text-zinc-900 dark:stroke-zinc-800 dark:text-primary-400" />
 					</div>
 				)}
 			</div>

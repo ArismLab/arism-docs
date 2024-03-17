@@ -1,12 +1,11 @@
-import { createContext, useContext, useState } from 'react'
+import { useState } from 'react'
 
 import {
-  SectionStoreContext,
+	SectionStoreContext,
 	useIsomorphicLayoutEffect,
 	useVisibleSections,
 } from '@hooks/navigation'
 import { createSectionStore } from '@libs/store'
-import { useStore } from 'zustand'
 
 const SectionProvider = ({ sections, children }) => {
 	const [sectionStore] = useState(() => createSectionStore(sections))
