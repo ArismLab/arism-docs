@@ -6,6 +6,8 @@ import { Code, CodeGroup, Pre } from '@components/Code'
 import Heading from '@components/Heading'
 import Link from '@components/Link'
 
+import { Plot } from './Plot'
+
 const InfoIcon = (props) => {
 	return (
 		<svg viewBox="0 0 16 16" aria-hidden="true" {...props}>
@@ -103,7 +105,8 @@ const mdxComponents: MDXComponents = {
 	Button,
 	CodeGroup,
 	code: Code as any,
-	pre: Pre as any,
+  pre: Pre as any,
+  Plot: Plot as any
 }
 
 export default mdxComponents

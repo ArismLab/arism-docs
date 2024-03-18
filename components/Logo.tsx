@@ -1,6 +1,6 @@
 const Logo = (props) => {
 	return (
-		<div className="flex flex-row items-center justify-start gap-2">
+		<div className="flex flex-row items-center justify-start gap-3">
 			<img
 				src="/static/logo.png"
 				{...props}
@@ -8,7 +8,7 @@ const Logo = (props) => {
 				className="h-8 w-8"
 			/>
 			<span className="text-xl font-light text-zinc-900 dark:text-white">
-				Arism Wallet
+				Arism Docs
 			</span>
 		</div>
 	)

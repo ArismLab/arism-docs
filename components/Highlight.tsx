@@ -1,7 +1,6 @@
 import { motion, useMotionTemplate, useMotionValue } from 'framer-motion'
 
 import GridPattern from './GridPattern'
-import Link from './Link'
 
 const Highlight = ({ highlight }) => {
 	const mouseX = useMotionValue(0)
@@ -19,7 +18,7 @@ const Highlight = ({ highlight }) => {
 	return (
 		<div
 			onMouseMove={onMouseMove}
-			className="dark:bg-white/2.5 group relative flex rounded-2xl bg-zinc-50 transition-shadow hover:shadow-md hover:shadow-zinc-900/5 dark:bg-zinc-950 dark:hover:shadow-black/5"
+			className="group relative flex rounded-2xl bg-zinc-50 transition-shadow hover:shadow-md hover:shadow-zinc-900/5 dark:bg-zinc-950 dark:hover:shadow-black/5"
 		>
 			<div className="pointer-events-none">
 				<div className="absolute inset-0 rounded-2xl transition duration-300 [mask-image:linear-gradient(white,transparent)] group-hover:opacity-50">
@@ -27,12 +26,12 @@ const Highlight = ({ highlight }) => {
 						width={72}
 						height={56}
 						x="50%"
-						className="dark:fill-white/1 dark:stroke-white/2.5 absolute inset-x-0 inset-y-[-30%] h-[160%] w-full skew-y-[-18deg] fill-black/[0.02] stroke-black/5"
+						className="dark:fill-white/[0.01] dark:stroke-white/10 absolute inset-x-0 inset-y-[-30%] h-[160%] w-full skew-y-[-18deg] fill-black/[0.01] stroke-black/5"
 						{...highlight.pattern}
 					/>
 				</div>
 				<motion.div
-					className="absolute inset-0 rounded-2xl bg-gradient-to-r from-primary-100  to-secondary-100   opacity-0 transition duration-300 group-hover:opacity-100 dark:from-primary-800 dark:to-secondary-800"
+					className="absolute inset-0 rounded-2xl bg-gradient-to-r from-primary-100 to-secondary-100 opacity-0 transition duration-300 group-hover:opacity-100 dark:from-primary-800 dark:to-secondary-800"
 					style={style}
 				/>
 				<motion.div

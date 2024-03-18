@@ -16,13 +16,13 @@ const guides = [
 		href: '/node-setup',
 		name: 'Node setup',
 		description:
-			'Learn how to set up an Arism Node and start earning rewards.',
+			'Learn how to set up an nodes and start earning rewards.',
 	},
 	{
 		href: '/sdk-integration',
-		name: 'SDK Integration',
+		name: 'SDK integration',
 		description:
-			'Use our SDK integrate the Arism Wallet protocol to your DApps.',
+			'Use our SDK to integrate the protocol into your DApps.',
 	},
 ]
 

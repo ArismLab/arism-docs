@@ -1,12 +1,12 @@
 {
-    "title": "Arism Wallet",
-    "headerTitle": "Arism Wallet - The Hyper Wallet Protocol",
+    "title": "Arism Docs",
+    "headerTitle": "Arism Docs - Learn about The Hyper Wallet Protocol",
     "description": "A Distributed Key and Identifier Management Protocol powered by Zero Knowledge",
     "language": "en-us",
     "locale": "en-US",
     "theme": "system",
     "siteUrl": "https://docs.arism.org",
-    "siteRepo": "https://github.com/Arism-Lab/arism-docs",
+    "siteRepo": "https://github.com/ArismLab/arism-docs",
     "siteLogo": "/static/logo.png",
     "siteBanner": "/static/banner.png",
     "externalLinks": [
