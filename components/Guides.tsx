@@ -5,7 +5,7 @@ const guides = [
 	{
 		href: '/whitepaper',
 		name: 'Whitepaper',
-		description: 'Learn about the core concepts of the Arism Wallet protocol.',
+		description: 'Learn about the core concepts of the protocol.',
 	},
 	{
 		href: '/how-to-use',
@@ -16,7 +16,7 @@ const guides = [
 		href: '/node-setup',
 		name: 'Node setup',
 		description:
-			'Learn how to set up an nodes and start earning rewards.',
+			'Learn how to set up nodes and start earning rewards.',
 	},
 	{
 		href: '/sdk-integration',

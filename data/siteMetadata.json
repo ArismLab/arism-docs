@@ -57,14 +57,9 @@
                     "description": "The mechanisms for how keys are stored in the Arism Wallet."
                 },
                 {
-                    "title": "Dead Node Handing Mechanisms",
-                    "href": "/dead-node-handling-mechanisms",
-                    "description": "The mechanisms for how dead nodes are handled in the Arism Network."
-                },
-                {
-                    "title": "Integrity Preservation Mechanisms",
-                    "href": "/integrity-preservation-mechanisms",
-                    "description": "The mechanisms for how integrity is preserved in the Arism Network."
+                    "title": "Algorithms",
+                    "href": "/algorithms",
+                    "description": "All the general algorithms used in the Arism Wallet."
                 },
                 {
                     "title": "Conclusions",
@@ -87,7 +82,7 @@
         }
     ],
     "analytics": {
-        "umamiWebsiteId": "b018c634-3134-4965-ac2f-8b3a89c32e40",
-        "googleAnalyticsId": "G-V2EES3R603"
+        "umamiWebsiteId": "8cdb28da-322d-4adf-b081-27e579f84252",
+        "googleAnalyticsId": "G-KYY35T59NC"
     }
 }
