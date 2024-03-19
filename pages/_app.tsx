@@ -51,8 +51,8 @@ const MyApp = ({ Component, pageProps }: AppProps): JSX.Element => {
 					<title>{`${pageProps.title} - Arism Wallet`}</title>
 				)}
 				<meta name="description" content={pageProps.description} />
-				<Analytics />
 			</Head>
+      <Analytics />
 			<div className="bg-global">
 				<MDXProvider components={mdxComponents}>
 					<PageLayout {...pageProps}>

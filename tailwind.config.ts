@@ -297,8 +297,11 @@ const config: Config = {
                     },
                     figcaption: {
                         color: 'var(--tw-prose-captions)',
-                        fontSize: theme('fontSize.xs')[0],
-                        ...theme('fontSize.xs')[1],
+                        fontSize: theme('fontSize.base')[0],
+                        letterSpacing: '0.01em',
+                        textAlign: 'center',
+                        fontFamily: theme('fontFamily.sans').join(', '),
+                        ...theme('fontSize.base')[1],
                         marginTop: theme('spacing.2'),
                     },
 
