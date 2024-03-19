@@ -1,5 +1,5 @@
-import Guides from '@/components/Guides'
-import Highlights from '@/components/Highlights'
+import Guides from '@components/Guides'
+import Highlights from '@components/Highlights'
 
 export const sections = [
     { title: 'Getting started', id: 'getting-started' },
@@ -23,7 +23,12 @@ This decentralized wallet application uses advanced cryptographic algorithms to 
 To get started, you only need a Google account to sign in to the Arism Wallet application. Your keys will be distributed and managed by the Arism Wallet protocol and your device.
 
 <div className="mb-16 mt-6 flex gap-3">
-    <Button href="https://app.arism.org" variant="text" arrow="right" children="Try out Arism Application" />
+    <Button
+        href="https://app.arism.org"
+        variant="text"
+        arrow="right"
+        children="Try out Arism Application"
+    />
 </div>
 
 <Guides />

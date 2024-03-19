@@ -1,9 +1,8 @@
 import { motion, useIsPresent } from 'framer-motion'
 
+import { useIsInsideMobileNavigation } from '@components/MobileNavigation'
 import { useInitialValue, useSectionStore } from '@hooks/navigation'
 import { remToPx } from '@libs/remToPx'
-
-import { useIsInsideMobileNavigation } from './MobileNavigation'
 
 const VisibleSectionHighlight = ({ group, pathname }) => {
 	const [sections, visibleSections] = useInitialValue(

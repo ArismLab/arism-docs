@@ -1,4 +1,4 @@
-import Link from './Link'
+import Link from '@components/Link'
 
 const SocialLink = ({ href, icon: Icon, children }) => {
 	return (

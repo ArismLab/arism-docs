@@ -4,37 +4,42 @@ import { useEffect } from 'react'
 
 import Footer from '@components/Footer'
 import Header from '@components/Header'
+import HeroPattern from '@components/HeroPattern'
 import Link from '@components/Link'
 import Logo from '@components/Logo'
 import Navigation from '@components/Navigation'
+import { HomeSEO, PageSEO } from '@components/PageSEO'
 import Prose from '@components/Prose'
 import SectionProvider from '@components/SectionProvider'
 import { internalLinks } from '@data/siteMetadata.json'
 import kebabCase from '@libs/kebabCase'
 
-import HeroPattern from './HeroPattern'
-import { HomeSEO, PageSEO } from './PageSEO'
+const PageLayout = ({ children, sections = [] }) => {
+	const router = useRouter()
+	const path = router.asPath.split('#')[0].split('?')[0]
+	const info = internalLinks
+		.flatMap((section) => section.links)
+		.find((link) => link.href === path)
 
-const PageLayout = ({ children, sections = []}) => {
-  const router = useRouter()
-  const path = router.asPath.split('#')[0].split('?')[0]
-  const info = internalLinks.flatMap(section => section.links).find(link => link.href === path)
+	const chapterLinks = internalLinks.map((chapter) => chapter.links)
+	const acceptedLinks = internalLinks.map(
+		(chapter) => `/${kebabCase(chapter.title)}`
+	)
 
-  const chapterLinks = internalLinks.map(section => section.links)
-  const acceptedLinks = internalLinks.map(chapter => `/${kebabCase(chapter.title)}`)
-
-  useEffect(() => {
-    if (acceptedLinks.includes(path)) {
-      const chapterLink = chapterLinks[acceptedLinks.indexOf(path)]
-      router.push(chapterLink[0].href)
-    }
-  }, [])
+	useEffect(() => {
+		if (acceptedLinks.includes(path)) {
+			const chapterLink = chapterLinks[acceptedLinks.indexOf(path)]
+			router.push(chapterLink[0].href)
+		}
+	}, [])
 
 	return (
-    <SectionProvider sections={sections}>
-      {
-        path === '/' ? <HomeSEO /> : <PageSEO title={info?.title} description={info?.description} />
-      }
+		<SectionProvider sections={sections}>
+			{path === '/' ? (
+				<HomeSEO />
+			) : (
+				<PageSEO title={info?.title} description={info?.description} />
+			)}
 			<HeroPattern />
 			<div className="lg:ml-72 xl:ml-80">
 				<motion.header

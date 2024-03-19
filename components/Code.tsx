@@ -2,10 +2,9 @@ import { Tab } from '@headlessui/react'
 import clsx from 'clsx'
 import { Children, createContext, useContext, useEffect, useState } from 'react'
 
+import { ClipboardIcon } from '@components/icons/ClipboardIcon'
 import Tag from '@components/Tag'
 import { useTabGroupProps } from '@hooks/code'
-
-import { ClipboardIcon } from './icons/ClipboardIcon'
 
 const languageNames = {
 	js: 'JavaScript',

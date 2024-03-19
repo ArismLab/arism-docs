@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react'
 
+import SearchDialog from '@components/Search/SearchDialog'
 import { useSearchProps } from '@hooks/search'
 
-import SearchDialog from './SearchDialog'
 import SearchIcon from '../icons/SearchIcon'
 
 const Search = () => {

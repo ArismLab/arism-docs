@@ -13,6 +13,8 @@ import Search from '@components/Search/Search'
 import { externalLinks } from '@data/siteMetadata.json'
 import { useMobileNavigationStore } from '@hooks/navigation'
 
+import Button from './Button'
+
 const Header = forwardRef(({ className }: any, ref: any) => {
 	const { isOpen: mobileNavIsOpen }: any = useMobileNavigationStore()
 	const isInsideMobileNavigation = useIsInsideMobileNavigation()
@@ -26,7 +28,7 @@ const Header = forwardRef(({ className }: any, ref: any) => {
 			ref={ref}
 			className={clsx(
 				className,
-				'fixed inset-x-0 top-0 z-50 flex h-14 items-center justify-between gap-12 px-4 transition sm:px-6 lg:left-72 lg:z-30 lg:px-8 xl:left-80',
+				'fixed inset-x-0 top-0 z-50 flex h-16 items-center justify-between gap-12 px-4 transition sm:px-6 lg:left-72 lg:z-30 lg:px-8 xl:left-80 2xl:left-96',
 				!isInsideMobileNavigation &&
 					'backdrop-blur-sm dark:backdrop-blur lg:left-72 xl:left-80',
 				isInsideMobileNavigation
@@ -58,9 +60,9 @@ const Header = forwardRef(({ className }: any, ref: any) => {
 				<nav className="hidden md:block">
 					<ul role="list" className="flex items-center gap-8 text-sm">
 						{externalLinks.map((link, index) => (
-							<Link key={index} href={link.url}>
+							<Button arrow="right" variant="secondary" key={index} href={link.url}>
 								{link.name}
-							</Link>
+							</Button>
 						))}
 					</ul>
 				</nav>

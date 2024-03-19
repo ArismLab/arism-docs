@@ -80,10 +80,10 @@ const config: Config = {
                 css: {
                     '--tw-prose-body': theme('colors.zinc.700'),
                     '--tw-prose-headings': theme('colors.zinc.900'),
-                    '--tw-prose-links': theme('colors.primary.500'),
-                    '--tw-prose-links-hover': theme('colors.primary.600'),
+                    '--tw-prose-links': theme('colors.primary.600'),
+                    '--tw-prose-links-hover': theme('colors.primary.800'),
                     '--tw-prose-links-underline': theme(
-                        'colors.primary.500 / 0.3'
+                        'colors.primary.800 / 0.3'
                     ),
                     '--tw-prose-bold': theme('colors.zinc.800'),
                     '--tw-prose-counters': theme('colors.zinc.500'),
@@ -117,7 +117,9 @@ const config: Config = {
                     '--tw-prose-invert-code-bg': theme(
                         'colors.zinc.700 / 0.15'
                     ),
-                    '--tw-prose-invert-code-ring': theme('colors.zinc.300 / 0.1'),
+                    '--tw-prose-invert-code-ring': theme(
+                        'colors.zinc.300 / 0.1'
+                    ),
                     '--tw-prose-invert-th-borders': theme('colors.zinc.600'),
                     '--tw-prose-invert-td-borders': theme('colors.zinc.700'),
 
@@ -376,6 +378,7 @@ const config: Config = {
                             color: 'var(--tw-prose-links-hover)',
                             textDecorationColor:
                                 'var(--tw-prose-links-underline)',
+                            textUnderlineOffset: '0.2em',
                         },
                     },
                     ':is(h1, h2, h3) a': {

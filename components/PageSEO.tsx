@@ -36,9 +36,9 @@ const CommonSEO = ({
 }
 
 export const PageSEO = ({ title, description }: PageSEOProps): JSX.Element => {
-  if (!title) {
-    return <HomeSEO />
-  }
+	if (!title) {
+		return <HomeSEO />
+	}
 	return (
 		<CommonSEO
 			title={`${title} - ${siteMetadata.title}`}

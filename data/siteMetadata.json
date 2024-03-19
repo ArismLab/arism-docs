@@ -11,20 +11,12 @@
     "siteBanner": "/static/banner.png",
     "externalLinks": [
         {
-            "name": "Homepage",
+            "name": "Our Team",
             "url": "https://arism.org"
         },
         {
-            "name": "Application",
+            "name": "Launch App",
             "url": "https://app.arism.org"
-        },
-        {
-            "name": "Github",
-            "url": "https://github.com/ArismLab"
-        },
-        {
-            "name": "Twitter",
-            "url": "https://twitter.com/ArismLab"
         }
     ],
     "internalLinks": [
@@ -82,7 +74,7 @@
         }
     ],
     "analytics": {
-        "umamiWebsiteId": "8cdb28da-322d-4adf-b081-27e579f84252",
-        "googleAnalyticsId": "G-KYY35T59NC"
+        "umamiWebsiteId": "b018c634-3134-4965-ac2f-8b3a89c32e40",
+        "googleAnalyticsId": "G-V2EES3R603"
     }
 }

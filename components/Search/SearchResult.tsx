@@ -1,13 +1,15 @@
 import clsx from 'clsx'
 import { Fragment, useId } from 'react'
 
-const resolveResult = (result: any) => {
-	const allLevels = Object.keys(result.hierarchy)
+const SearchResult = ({ result, resultIndex, autocomplete, collection }) => {
+  const id = useId()
+  
+  const allLevels = Object.keys(result.hierarchy)
 	const hierarchy = Object.entries(result._highlightResult.hierarchy).filter(
-		(e: any) => Boolean(e[0].value)
+		(e: any) => Boolean(e[1].value)
 	)
-	const levels = hierarchy.map(([level]) => level)
-
+  const levels = hierarchy.map(([level]) => level)
+  
 	const level: any =
 		result.type === 'content'
 			? levels.pop()
@@ -16,24 +18,17 @@ const resolveResult = (result: any) => {
 						(level) =>
 							allLevels.indexOf(level) <= allLevels.indexOf(result.type)
 					)
-					.pop()
-
-	return {
-		titleHtml: result._highlightResult.hierarchy[level].value,
-		hierarchyHtml: hierarchy
-			.slice(0, levels.indexOf(level))
-			.map((e: any) => Boolean(e[1].value)),
-	}
-}
-
-const SearchResult = ({ result, resultIndex, autocomplete, collection }) => {
-	const id = useId()
-	const { titleHtml, hierarchyHtml } = resolveResult(result)
-
+        .pop()
+  
+  const titleHtml = result._highlightResult.hierarchy[level].value
+  const hierarchyHtml = hierarchy
+    .slice(0, levels.indexOf(level))
+    .map((e: any) => e[1].value)
+  
 	return (
 		<li
 			className={clsx(
-				'group block cursor-default px-4 py-3 aria-selected:bg-zinc-50 dark:aria-selected:bg-zinc-800/50',
+				'cursor-pointer group block px-4 py-3 aria-selected:bg-zinc-50 dark:aria-selected:bg-zinc-800/50',
 				resultIndex > 0 && 'border-t border-zinc-100 dark:border-zinc-800'
 			)}
 			aria-labelledby={`${id}-hierarchy ${id}-title`}

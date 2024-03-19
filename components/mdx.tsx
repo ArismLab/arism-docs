@@ -1,26 +1,11 @@
 import clsx from 'clsx'
 import { MDXComponents } from 'mdx/types'
+import Link from 'next/link'
 
 import Button from '@components/Button'
 import { Code, CodeGroup, Pre } from '@components/Code'
 import Heading from '@components/Heading'
-import Link from '@components/Link'
-
-const InfoIcon = (props) => {
-	return (
-		<svg viewBox="0 0 16 16" aria-hidden="true" {...props}>
-			<circle cx="8" cy="8" r="8" strokeWidth="0" />
-			<path
-				fill="none"
-				strokeLinecap="round"
-				strokeLinejoin="round"
-				strokeWidth="1.5"
-				d="M6.75 7.75h1.5v3.5"
-			/>
-			<circle cx="8" cy="4" r=".5" fill="none" />
-		</svg>
-	)
-}
+import InfoIcon from '@components/icons/InfoIcon'
 
 const h2 = (props) => {
 	return <Heading level={2} {...props} />
@@ -98,12 +83,12 @@ const mdxComponents: MDXComponents = {
 	Col,
 	Properties,
 	Property,
-	a: Link,
+	// a: Link as any,
 	h2: h2 as any,
 	Button,
 	CodeGroup,
 	code: Code as any,
-  pre: Pre as any,
+	pre: Pre as any,
 }
 
 export default mdxComponents

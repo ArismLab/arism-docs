@@ -39,7 +39,7 @@ Router.events.on('routeChangeComplete', onRouteChange)
 Router.events.on('routeChangeError', onRouteChange)
 
 const MyApp = ({ Component, pageProps }: AppProps): JSX.Element => {
-  const router = useRouter()
+	const router = useRouter()
 
 	return (
 		<>
@@ -52,7 +52,7 @@ const MyApp = ({ Component, pageProps }: AppProps): JSX.Element => {
 				)}
 				<meta name="description" content={pageProps.description} />
 			</Head>
-      <Analytics />
+			<Analytics />
 			<div className="bg-global">
 				<MDXProvider components={mdxComponents}>
 					<PageLayout {...pageProps}>

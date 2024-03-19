@@ -1,7 +1,7 @@
 import clsx from 'clsx'
 import Link from 'next/link'
 
-import ArrowIcon from './icons/ArrowIcon'
+import ArrowIcon from '@components/icons/ArrowIcon'
 
 const variantStyles = {
 	primary:
@@ -11,8 +11,8 @@ const variantStyles = {
 	filled:
 		'rounded-full bg-zinc-900 py-2 px-5 text-white hover:bg-zinc-700 dark:bg-zinc-500 dark:text-white dark:hover:bg-zinc-400',
 	outline:
-    'rounded-full py-2 px-5 text-black dark:text-white ring-1 ring-zinc-900 hover:ring-zinc-600 dark:ring-zinc-100 dark:hover:ring-zinc-400 hover:bg-zinc-900/10 dark:hover:bg-zinc-100/10',
-	text: 'text-primary-500 hover:text-primary-600 dark:text-primary-400 dark:hover:text-primary-500',
+		'rounded-full py-2 px-5 text-black dark:text-white ring-1 ring-zinc-900 hover:ring-zinc-600 dark:ring-zinc-100 dark:hover:ring-zinc-400 hover:bg-zinc-900/10 dark:hover:bg-zinc-100/10',
+	text: 'text-primary-500 hover:text-primary-300 dark:text-primary-300 dark:hover:text-primary-500',
 }
 
 const Button = ({
@@ -22,13 +22,13 @@ const Button = ({
 	arrow,
 	...props
 }: any) => {
-  const isAnchor = props?.href?.startsWith('http')
-  props.target = isAnchor ? '_blank' : null
+	const isAnchor = props?.href?.startsWith('http')
+	props.target = isAnchor ? '_blank' : null
 
-	const Component = props?.href ? isAnchor ? 'a' : Link : 'button'
+	const Component = props?.href ? (isAnchor ? 'a' : Link) : 'button'
 
 	className = clsx(
-		'prose-none inline-flex gap-0.5 justify-center overflow-hidden text-sm font-medium transition',
+		'not-prose inline-flex gap-0.5 justify-center overflow-hidden text-sm font-medium transition',
 		variantStyles[variant],
 		className
 	)

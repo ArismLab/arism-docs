@@ -1,9 +1,8 @@
 import { useRouter } from 'next/router'
 
+import Button from '@components/Button'
+import Link from '@components/Link'
 import { internalLinks } from '@data/siteMetadata.json'
-
-import Button from './Button'
-import Link from './Link'
 
 const PageLink = ({ label, page, previous = false }) => {
 	return (

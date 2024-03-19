@@ -6,9 +6,9 @@ import { Fragment, forwardRef, useEffect, useRef } from 'react'
 import AlgoliaIcon from '@components/icons/AlgoliaIcon'
 import LoadingIcon from '@components/icons/LoadingIcon'
 import SearchIcon from '@components/icons/SearchIcon'
+import SearchResults from '@components/Search/SearchResults'
 import { useAutocomplete } from '@hooks/search'
 
-import SearchResults from './SearchResults'
 
 const SearchInput = forwardRef(
 	({ autocomplete, autocompleteState, onClose }: any, inputRef): any => {

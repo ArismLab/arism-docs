@@ -2,54 +2,134 @@
 
 ## Shamir's Secret Sharing (SSS)
 
-**Shamir's Secret Sharing** is an algorithm in cryptography created by Adi Shamir. It is a form of *secret sharing*, where a **Secret** is divided into **Shares**, giving each participant its own unique **Share**. To reconstruct the original **Secret**, a minimum number of **Shares** is required. In the threshold scheme, the **Secret** is divided into `n` **Shares** and at least `k` **Shares** are required to reconstruct the orignial **Secret**.
+**Shamir's Secret Sharing** is an algorithm in cryptography created by Adi Shamir. It is a form of _secret sharing_, where a **Secret** is divided into **Shares**, giving each participant its own unique **Share**. To reconstruct the original **Secret**, a minimum number of **Shares** is required. In the threshold scheme, the **Secret** is divided into `n` **Shares** and at least `k` **Shares** are required to reconstruct the orignial **Secret**.
 
 Even though a lot of services and systems nowadays are using **SSS** to protect the user's **Private Key**, but **SSS** is safe only when the generation of keys are done in one environment without any communication between the participants. That's why we only apply it at the client to divide the user's **Private Key** into **Factors**.
 
 When it comes to servers where everything is vulnerable, or a distributed network where the node operators are anonymous, there is no way to apply any cryptographic technique on **SSS** to protect the **Secrets**.
 
-<figure className="w-full sm:w-1/2 xl:w-1/3 mx-auto">
-<img src='/static/img/sss_plot.png'/>
-<figcaption>Figure 1: Shamir's Secret Sharing (SSS) algorithm</figcaption>
+<figure className="mx-auto w-full sm:w-1/2 xl:w-1/3">
+    <img src="/static/img/sss_plot.png" />
+    <figcaption>Figure 1: Shamir's Secret Sharing (SSS) algorithm</figcaption>
 </figure>
 
-In our application, we have 3 **Factors** which are **Network Factor**, **Device Factor** and **Recovery Factor**. Also on this *Cartesian coordinate system*, we can generate as many **Child Keys** as we want by choosing the x-value randomly and calculate the corresponding y-value.
+In our application, we have 3 **Factors** which are **Network Factor**, **Device Factor** and **Recovery Factor**. Also on this _Cartesian coordinate system_, we can generate as many **Child Keys** as we want by choosing the x-value randomly and calculate the corresponding y-value.
 
 But since all of those **Keys** following a single polynomial, if user cannot reconstruct this straight line, everything will be lost.
 
 <Note>
-For detailed information about this process, please refer to [Keystore Mechanisms](/keystore-mechanisms) page.
+    For detailed information about this process, please refer to [Keystore
+    Mechanisms](/keystore-mechanisms) page.
 </Note>
 
 ## Distributed Secret Sharing (DSS)
 
+### Overview
+
 The predecessor of this algorithm is from **Distributed Key Generation (DKG)** process from **Torus Labs**. The **DSS** algorithm is a advanced version of **SSS** in which it is safe to generate the keys in a distributed environment without having to share the **Secrets** between the participants.
 
-<figure className="w-full sm:w-1/2 xl:w-1/3 mx-auto">
-<img src='/static/img/dss_plot.png'/>
-<figcaption>Figure 2: Distributed Secret Sharing (DSS) algorithm</figcaption>
+<figure className="mx-auto w-full sm:w-1/2 xl:w-1/3">
+    <img src="/static/img/dss_plot.png" />
+    <figcaption>
+        Figure 2: Distributed Secret Sharing (DSS) algorithm
+    </figcaption>
 </figure>
 
 In which, $\Sigma\text{z}_{*}$ is the **Network Key** (or called as **Master Secret** in the algorithm context), it can be calculated by the sum of **Secrets** $\text{s}_{*}$ from the nodes. But instead, we apply an **SSS** for each node to divide its **Secret** into **Shares** and deliver each of them corresponding to each of the other nodes.
 
 When all the nodes complete the sharing process, each of them can construct its **Master Share** by calculate the sum of the **Shares** it recevied and transfer it to the client. The process is of course masked by an encryption layer.
 
-The client after receiving all the **Master Shares** from the nodes, it can calculate the **Network Key** as mentioned above.
+The client after receiving all the **Master Shares** from the nodes, it can calculate the **Network Key** by applying _Lagrange interpolation_ to 2/3 of the **Master Shares** to construct the **Master Share's Polynomial** and intersect it with the y-axis.
 
 <Note>
-In short, the **DSS** algorithm is a set of **SSS** algorithms corresponding to each of the nodes in the network.
+    In short, the **DSS** algorithm is a set of **SSS** algorithms corresponding
+    to each of the nodes in the network.
 </Note>
+
+### Proof
+
+Considering node 1, we can see that $\left(1, s_1^1\right)$, $\left(2, s_1^2\right)$ and $\left(3, s_1^3\right)$ are the points on the polynomial $f_1(x) = z_1 + \alpha_1x$. Therefore, we have a system of linear equations:
+
+$$
+\begin{cases}
+z_1 + \alpha_1 = s_1^1 \\
+z_1 + 2\alpha_1 = s_1^2 \\
+z_1 + 3\alpha_1 = s_1^3
+\end{cases}
+$$
+
+We can represent this for any $i$-th node by transforming it into a matrix equation as $\textbf{A} \times \textbf{z}_i = \textbf{s}_i$:
+
+$$
+\begin{bmatrix}
+1 & 1 \\
+1 & 2 \\
+1 & 3
+\end{bmatrix} \begin{bmatrix}
+z_i \\
+\alpha_i
+\end{bmatrix} = \begin{bmatrix}
+s_i^1 \\
+s_i^2 \\
+s_i^3
+\end{bmatrix}
+$$
+
+Similarly, we also have $\textbf{A} \times \Sigma\textbf{z}_* = \Sigma\textbf{s}_*$ since $\left(1, \Sigma s_*^1\right)$, $\left(2, \Sigma s_*^2\right)$ and $\left(3, \Sigma s_*^3\right)$ are the points on the polynomial $f_*(x) = \Sigma z_* + \Sigma\alpha_*x$:
+
+$$
+\begin{bmatrix}
+1 & 1 \\
+1 & 2 \\
+1 & 3
+\end{bmatrix} \begin{bmatrix}
+\Sigma z_* \\
+\Sigma \alpha_*
+\end{bmatrix} = \begin{bmatrix}
+\Sigma s_*^1 \\
+\Sigma s_*^2 \\
+\Sigma s_*^3
+\end{bmatrix}
+$$
+
+Since we have $\textbf{z}_* = \begin{bmatrix} \textbf{A} \mid \textbf{s}_* \end{bmatrix}$ are already non-singlar matrices. Therefore, $\Sigma \textbf{z}_* = \Sigma{\begin{bmatrix} \textbf{A} \mid \textbf{s}_* \end{bmatrix}} = \begin{bmatrix} n \times \textbf{A} \mid \Sigma\textbf{s}_* \end{bmatrix}$ is also non-singular (from _positive-definiteness property_).
+
+Thus, the row-echelon form $\Sigma\textbf{z}_* = \begin{bmatrix} \textbf{A} \mid \Sigma\textbf{s}_* \end{bmatrix}$ is a non-singular matrix (from _consistency of the augmented matrix property_), which leads the system of linear equations $\textbf{A} \times \Sigma\textbf{z}_* = \Sigma\textbf{s}_*$ to have a unique solution, or $\Sigma z_*$ is valid and unique. We call it **Master Secret**.
+
+The same proof can be also applied for polynomials of any degree $n$:
+
+$$
+\begin{bmatrix}
+1 & 1 & 1 & \cdots & 1 \\
+1 & 2 & 4 & \cdots & 2^{n-1} \\
+1 & 3 & 9 & \cdots & 3^{n-1} \\
+\vdots & \vdots & \vdots & \ddots & \vdots \\
+1 & n & n^2 & \cdots & n^{n-1}
+\end{bmatrix} \begin{bmatrix}
+z_i \\
+\alpha_i \\
+\alpha_i^2 \\
+\vdots \\
+\alpha_i^{n-1}
+\end{bmatrix} = \begin{bmatrix}
+s_i^1 \\
+s_i^2 \\
+s_i^3 \\
+\vdots \\
+s_i^n
+\end{bmatrix}
+$$
 
 ## Circularly Protecting Secret Sharing (CPSS)
 
 Regarding to the **DSS** algorithm above, we can see that 3/3 nodes are needed to generate the **Network Key** and 2/3 nodes are needed to derive the **Key**. Therefoce, if one of the nodes is down, the system will be unavailable for users to register (but still available for the existing users to login).
 
-To solve this problem, we apply a mechanism that a node will supervise another node circularly and be responsible to simulate that node's behavior (e.g  creating **Secret** and delivering **Shares** on its behalf) when that node is down.
+To solve this problem, we apply a mechanism that a node will supervise another node circularly and be responsible to simulate that node's behavior (e.g creating **Secret** and delivering **Shares** on its behalf) when that node is down.
 
 But in the 3-node system, this is completely dangerous because in this case, one node can control 2/3 of the network, which is enough to manipulate the user's **Master Key**. Luckily our system uses 5 nodes (maybe would be 9 when users are more), which can prevent this vulnerability. But we only accept this mechanism when JUST ONE node is down, if there are 2 nodes, there are two cases:
 
-- *The second down node is the one that is supervised by the first down node*: There is not enough nodes.
-- *The second down node is not the one that is supervised by the first down node*: The system is vulnerable because there are 2 nodes controlling 2/5 of the network.
+-   _The second down node is the one that is supervised by the first down node_: There is not enough nodes.
+-   _The second down node is not the one that is supervising by the first down node_: The system is vulnerable because there are 2 nodes controlling 2/5 of the network.
 
 That's why, in the 5-node system, 4/5 nodes are needed to generate the **Network Key** and 3/5 nodes are needed to derive the **Key**.
 

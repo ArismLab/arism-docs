@@ -48,7 +48,7 @@ const highlights = [
 	{
 		name: 'Feature Variety',
 		description:
-      'Account Abstraction and Distributed Identifier support. Manage and represent everything by a single identity.',
+			'Account Abstraction and Distributed Identifier support. Manage and represent everything by a single identity.',
 		icon: UsersIcon,
 		pattern: {
 			y: 22,

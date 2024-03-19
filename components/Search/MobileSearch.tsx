@@ -1,7 +1,6 @@
 import SearchIcon from '@components/icons/SearchIcon'
+import SearchDialog from '@components/Search/SearchDialog'
 import { useSearchProps } from '@hooks/search'
-
-import SearchDialog from './SearchDialog'
 
 const MobileSearch = () => {
 	const { buttonProps, dialogProps } = useSearchProps()

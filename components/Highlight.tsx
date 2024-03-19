@@ -1,6 +1,6 @@
 import { motion, useMotionTemplate, useMotionValue } from 'framer-motion'
 
-import GridPattern from './GridPattern'
+import GridPattern from '@components/GridPattern'
 
 const Highlight = ({ highlight }) => {
 	const mouseX = useMotionValue(0)
@@ -26,7 +26,7 @@ const Highlight = ({ highlight }) => {
 						width={72}
 						height={56}
 						x="50%"
-						className="dark:fill-white/[0.01] dark:stroke-white/10 absolute inset-x-0 inset-y-[-30%] h-[160%] w-full skew-y-[-18deg] fill-black/[0.01] stroke-black/5"
+						className="absolute inset-x-0 inset-y-[-30%] h-[160%] w-full skew-y-[-18deg] fill-black/[0.01] stroke-black/5 dark:fill-white/[0.01] dark:stroke-white/10"
 						{...highlight.pattern}
 					/>
 				</div>
@@ -53,8 +53,8 @@ const Highlight = ({ highlight }) => {
 					<highlight.icon className="h-5 w-5 fill-zinc-700/10 stroke-zinc-700 transition-colors duration-300 group-hover:stroke-zinc-900 dark:fill-white/10 dark:stroke-zinc-400 dark:group-hover:fill-primary-300/10 dark:group-hover:stroke-primary-800" />
 				</div>
 				<h3 className="mt-4 text-lg font-semibold leading-7 text-zinc-900 dark:text-white">
-          <span className="absolute inset-0 rounded-2xl" />
-          {highlight.name}
+					<span className="absolute inset-0 rounded-2xl" />
+					{highlight.name}
 				</h3>
 				<p className="mt-1 text-sm text-zinc-600 dark:text-zinc-400">
 					{highlight.description}

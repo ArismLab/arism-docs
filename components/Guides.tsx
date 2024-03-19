@@ -15,14 +15,12 @@ const guides = [
 	{
 		href: '/node-setup',
 		name: 'Node setup',
-		description:
-			'Learn how to set up nodes and start earning rewards.',
+		description: 'Learn how to set up nodes and start earning rewards.',
 	},
 	{
 		href: '/sdk-integration',
 		name: 'SDK integration',
-		description:
-			'Use our SDK to integrate the protocol into your DApps.',
+		description: 'Use our SDK to integrate the protocol into your DApps.',
 	},
 ]
 

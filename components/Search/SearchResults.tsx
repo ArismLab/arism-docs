@@ -1,6 +1,5 @@
 import NoResultsIcon from '@components/icons/NoResultIcon'
-
-import SearchResult from './SearchResult'
+import SearchResult from '@components/Search/SearchResult'
 
 const SearchResults = ({ autocomplete, query, collection }) => {
 	if (collection.items.length === 0) {

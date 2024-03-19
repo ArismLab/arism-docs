@@ -3,12 +3,11 @@ import { AnimatePresence, motion } from 'framer-motion'
 import { useRouter } from 'next/router'
 import { useRef } from 'react'
 
+import { useIsInsideMobileNavigation } from '@components/MobileNavigation'
 import NavLink from '@components/NavLink'
 import VisibleSectionHighlight from '@components/VisibleSessionHighlight'
 import { useSectionStore } from '@hooks/navigation'
 import { remToPx } from '@libs/remToPx'
-
-import { useIsInsideMobileNavigation } from './MobileNavigation'
 
 function ActivePageMarker({ group, pathname }) {
 	const itemHeight = remToPx(2)
@@ -49,7 +48,7 @@ const NavigationGroup = ({ group, className }) => {
 		<li className={clsx('relative mt-6', className)}>
 			<motion.h2
 				layout="position"
-				className="text-xs uppercase font-semibold text-zinc-900 dark:text-white"
+				className="text-xs font-semibold uppercase text-zinc-900 dark:text-white"
 			>
 				{group.title}
 			</motion.h2>

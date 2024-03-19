@@ -1,7 +1,7 @@
 import * as VA from '@vercel/analytics/react'
 import Script from 'next/script'
 
-import siteMetadata from '@/data/siteMetadata.json'
+import siteMetadata from '@data/siteMetadata.json'
 
 // https://developers.google.com/analytics/devguides/collection/gtagjs/events
 export const logEvent = (

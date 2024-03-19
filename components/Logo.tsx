@@ -7,7 +7,7 @@ const Logo = (props) => {
 				alt="Arism Wallet"
 				className="h-8 w-8"
 			/>
-			<span className="text-xl font-light text-zinc-900 dark:text-white">
+			<span className="text-xl font-light text-zinc-900 dark:text-white tracking-wide">
 				Arism Docs
 			</span>
 		</div>
