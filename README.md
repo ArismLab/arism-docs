@@ -36,11 +36,11 @@
         -   [1.8. Theorem 8 - Recovery Key \& Factor definition](#18-theorem-8---recovery-key--factor-definition)
         -   [1.9. Theorem 9 - Private Key retrieval threshold](#19-theorem-9---private-key-retrieval-threshold)
     -   [2. Dead node handling mechanisms (network side)](#2-dead-node-handling-mechanisms-network-side)
-        -   [2.1. Theorem 10 - Circularly Protecting Secret Sharing (CPSS)](#21-theorem-10---circularly-protecting-secret-sharing-cpss)
-        -   [2.1. Theorem 11 - Consensually Recovering Secret Sharing (CRSS)](#21-theorem-11---consensually-recovering-secret-sharing-crss)
+        -   [2.1. Theorem 10 - Interchangeable Secret Sharing (ISS)](#21-theorem-10---circularly-protecting-secret-sharing-cpss)
+        -   [2.1. Theorem 11 - Recoverable Secret Sharing (RSS)](#21-theorem-11---consensually-recovering-secret-sharing-crss)
     -   [3. Integrity preservation mechanism (network side)](#3-integrity-preservation-mechanism-network-side)
         -   [3.1. Theorem 12 - Proactive Secret Sharing (PSS)](#31-theorem-12---proactive-secret-sharing-pss)
-        -   [3.2. Theorem 13 - Pedersen Verifiable Secret Sharing (PVSS)](#32-theorem-13---pedersen-verifiable-secret-sharing-pvss)
+        -   [3.2. Theorem 13 - Verifiable Secret Sharing (VSS)](#32-theorem-13---pedersen-verifiable-secret-sharing-pvss)
 -   [IV. Notes](#iv-notes)
 -   [V. Future implementations](#v-future-implementations)
 
@@ -68,7 +68,7 @@ The **Arism Network** is a distributed network linked together by 5 **Validation
 
 ### 2.3. Supervised Node
 
-This is part of the **Circularly Protecting Secret Sharing (CPSS)** algorithm, to ensure that when a **Validation Node** dies, it will still be possible to generate **Network Keys** as long as the number of dead Nodes is below a certain threshold or conditions.
+This is part of the **Interchangeable Secret Sharing (ISS)** algorithm, to ensure that when a **Validation Node** dies, it will still be possible to generate **Network Keys** as long as the number of dead Nodes is below a certain threshold or conditions.
 
 One **Validation Node** will supervise the other **Validation Node**. When a node dies, the node that is supervising it will take care of performing the algorithm for it.
 
@@ -116,12 +116,12 @@ We will encounter some terminologies when talking about mechanisms and algorithm
 There are also some cryptographic algorithms on the network side:
 
 -   **Proactive Secret Sharing (PSS)**: An algorithm to protect nodes.
--   **Pedersen Verifiable Secret Sharing (PVSS)**: An algorithm to verify the integrity of the **Private Line**.
+-   **Verifiable Secret Sharing (VSS)**: An algorithm to verify the integrity of the **Private Line**.
 
 We are proud to introduce our new cryptographic algorithms on the network side used in the mechanisms:
 
--   **Circularly Protecting Secret Sharing (CPSS)**: An algorithm to handle dead nodes.
--   **Consensually Recovering Secret Sharing (CRSS)**: An algorithm to recover dead nodes.
+-   **Interchangeable Secret Sharing (ISS)**: An algorithm to handle dead nodes.
+-   **Recoverable Secret Sharing (RSS)**: An algorithm to recover dead nodes.
 
 We will encounter some terminologies when talking about those mechanisms and algorithms on the network side:
 
@@ -238,11 +238,11 @@ Overall, whenever user logs in, there is only 2/3 **Factors** needed to be provi
 
 ## 2. Dead node handling mechanisms (network side)
 
-### 2.1. Theorem 10 - Circularly Protecting Secret Sharing (CPSS)
+### 2.1. Theorem 10 - Interchangeable Secret Sharing (ISS)
 
 This is about generating key for user's registration when a **Validation Node** dies.
 
-### 2.1. Theorem 11 - Consensually Recovering Secret Sharing (CRSS)
+### 2.1. Theorem 11 - Recoverable Secret Sharing (RSS)
 
 This is about node recovery mechanism after a **Validation Node** dies.
 
@@ -252,7 +252,7 @@ This is about node recovery mechanism after a **Validation Node** dies.
 
 This is about changing all shares when replacing a node.
 
-### 3.2. Theorem 13 - Pedersen Verifiable Secret Sharing (PVSS)
+### 3.2. Theorem 13 - Verifiable Secret Sharing (VSS)
 
 This is about node fidelity validation
 

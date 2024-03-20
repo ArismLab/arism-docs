@@ -58,7 +58,7 @@ const Header = forwardRef(({ className }: any, ref: any) => {
 			</div>
 			<div className="flex items-center gap-5">
 				<nav className="hidden md:block">
-					<ul role="list" className="flex items-center gap-8 text-sm">
+					<ul role="list" className="flex items-center gap-5 text-sm">
 						{externalLinks.map((link, index) => (
 							<Button arrow="right" variant="secondary" key={index} href={link.url}>
 								{link.name}

@@ -2,7 +2,7 @@ import NavigationGroup from '@components/NavigationGroup'
 import { internalLinks } from '@data/siteMetadata.json'
 
 const Navigation = ({ className }: { className?: string }) => {
-	return (
+  return (
 		<nav className={className}>
 			<ul role="list">
 				{internalLinks.map((group, groupIndex) => (
@@ -13,7 +13,7 @@ const Navigation = ({ className }: { className?: string }) => {
 					/>
 				))}
 			</ul>
-		</nav>
+      </nav>
 	)
 }
 

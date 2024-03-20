@@ -2,18 +2,22 @@
 
 ## Shamir's Secret Sharing (SSS)
 
-**Shamir's Secret Sharing** is an algorithm in cryptography created by Adi Shamir. It is a form of _secret sharing_, where a **Secret** is divided into **Shares**, giving each participant its own unique **Share**. To reconstruct the original **Secret**, a minimum number of **Shares** is required. In the threshold scheme, the **Secret** is divided into `n` **Shares** and at least `k` **Shares** are required to reconstruct the orignial **Secret**.
+### Overview
+
+**Shamir's Secret Sharing** is an algorithm in cryptography created by Adi Shamir. It is a form of _secret sharing_, where a **Secret** is divided into **Shares**, giving each participant its own unique **Share**. To reconstruct the original **Secret**, a minimum number of **Shares** is required. In the threshold scheme, the **Secret** is divided into $n$ **Shares** and at least $k$ **Shares** are required to reconstruct the orignial **Secret**.
 
 Even though a lot of services and systems nowadays are using **SSS** to protect the user's **Private Key**, but **SSS** is safe only when the generation of keys are done in one environment without any communication between the participants. That's why we only apply it at the client to divide the user's **Private Key** into **Factors**.
 
 When it comes to servers where everything is vulnerable, or a distributed network where the node operators are anonymous, there is no way to apply any cryptographic technique on **SSS** to protect the **Secrets**.
 
+### Our implementation
+
+In our application, we have 3 **Factors** which are **Network Factor**, **Device Factor** and **Recovery Factor**. Also on this _Cartesian coordinate system_, we can generate as many **Child Keys** as needed by choosing the x-value randomly and calculate the corresponding y-value.
+
 <figure className="mx-auto w-full sm:w-1/2 xl:w-1/3">
     <img src="/static/img/sss_plot.png" />
     <figcaption>Figure 1: Shamir's Secret Sharing (SSS) algorithm</figcaption>
 </figure>
-
-In our application, we have 3 **Factors** which are **Network Factor**, **Device Factor** and **Recovery Factor**. Also on this _Cartesian coordinate system_, we can generate as many **Child Keys** as we want by choosing the x-value randomly and calculate the corresponding y-value.
 
 But since all of those **Keys** following a single polynomial, if user cannot reconstruct this straight line, everything will be lost.
 
@@ -27,6 +31,10 @@ But since all of those **Keys** following a single polynomial, if user cannot re
 ### Overview
 
 The predecessor of this algorithm is from **Distributed Key Generation (DKG)** process from **Torus Labs**. The **DSS** algorithm is a advanced version of **SSS** in which it is safe to generate the keys in a distributed environment without having to share the **Secrets** between the participants.
+
+### Our implementation
+
+In our application, we use 5 nodes whose the polynomial is of degree 2. In future, we also plan to increase the number of nodes to 9 in future (which means the degree of the polynomial is 3). But to make it simple, the following example is for the 3-node system.
 
 <figure className="mx-auto w-full sm:w-1/2 xl:w-1/3">
     <img src="/static/img/dss_plot.png" />
@@ -120,27 +128,37 @@ s_i^n
 \end{bmatrix}
 $$
 
-## Circularly Protecting Secret Sharing (CPSS)
+## Interchangeable Secret Sharing (ISS)
 
-Regarding to the **DSS** algorithm above, we can see that 3/3 nodes are needed to generate the **Network Key** and 2/3 nodes are needed to derive the **Key**. Therefoce, if one of the nodes is down, the system will be unavailable for users to register (but still available for the existing users to login).
+### Overview
+
+Regarding to the **DSS** algorithm above, we can see that 3/3 nodes are needed to generate the **Network Key** and 2/3 nodes are needed to derive the **Key**. Therefore, if one of the nodes is down, the system will be unavailable for users to register (but still available for the existing users to login).
+
+### Our implementation
 
 To solve this problem, we apply a mechanism that a node will supervise another node circularly and be responsible to simulate that node's behavior (e.g creating **Secret** and delivering **Shares** on its behalf) when that node is down.
 
-But in the 3-node system, this is completely dangerous because in this case, one node can control 2/3 of the network, which is enough to manipulate the user's **Master Key**. Luckily our system uses 5 nodes (maybe would be 9 when users are more), which can prevent this vulnerability. But we only accept this mechanism when JUST ONE node is down, if there are 2 nodes, there are two cases:
+But in the 3-node system, this is completely dangerous because in this case, one node can control 2/3 of the network, which is enough to manipulate the user's **Master Key**. Luckily, our system implements 5 nodes, which can prevent this vulnerability. But we only accept this mechanism when JUST ONE node is down, if there are 2 nodes, there are two cases:
 
--   _The second down node is the one that is supervised by the first down node_: There is not enough nodes.
--   _The second down node is not the one that is supervising by the first down node_: The system is vulnerable because there are 2 nodes controlling 2/5 of the network.
+- _The second down node is the one that is supervised by the first down node_: There is not enough nodes.
+- _The second down node is not the one that is supervised by the first down node_: The system is vulnerable because there are 2 nodes controlling 2/5 of the network.
 
-That's why, in the 5-node system, 4/5 nodes are needed to generate the **Network Key** and 3/5 nodes are needed to derive the **Key**.
+That's why, in the 5-node system, 4/5 nodes are needed to generate the **Network Key** and 3/5 nodes are needed to derive the **Network Key**.
 
-## Consensually Recovering Secret Sharing (CRSS)
+## Recoverable Secret Sharing (RSS)
 
-After having applied the **CPSS** algorithm to ensure the system's availability, we must recover the data generated by its supervising node. Of course we will not allow the supervising node to save that data and deliver directly to that node. Instead, we will apply a algorithm that allows the other nodes to consensually recover the data by sharing the **Shares** they generated for that node.
+### Overview
+
+After having applied the **ISS** algorithm to ensure the system's availability, we must recover the data generated by its supervising node. Of course we will not allow the supervising node to save that data and deliver directly to that node. Instead, we will apply a algorithm that allows the other nodes to consensually recover the data by sharing the **Shares** they generated for that node.
 
 ## Proactive Secret Sharing (PSS)
 
+### Overview
+
 In a distributed and trustless network, there is no way to ensure that a node will keep the data safe and private after a node joins and leaves the network. That's why we apply a mechanism that allows the nodes to proactively update their **Shares** and **Master Shares** whenever a node leaves the network.
 
-## Pedersen Verifiable Secret Sharing (PVSS)
+## Verifiable Secret Sharing (VSS)
+
+### Overview
 
 In addition to the vulnerabilities for a distributed key management system that we mentioned above, there is a problem that the nodes can generate fake **Shares** and **Master Shares** to falsify the system and **Keys**. To solve this problem, we apply a **Zero-Knowledge** mechanism to prove that the **Shares** that a node delivered are valid without forcing it to reveal its **Secret**.

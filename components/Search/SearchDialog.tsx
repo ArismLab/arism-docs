@@ -141,21 +141,15 @@ const SearchDialog = ({ open, setOpen, className }) => {
 									/>
 									<div
 										ref={panelRef}
-										className="dark:bg-white/2.5 border-t border-zinc-200 bg-white empty:hidden dark:border-zinc-100/5"
+										className="dark:bg-zinc-900 border-t border-zinc-200 bg-zinc-100 empty:hidden dark:border-zinc-100/5"
 										{...(autocomplete.getPanelProps({}) as any)}
 									>
 										{autocompleteState.isOpen && (
-											<>
-												<SearchResults
-													autocomplete={autocomplete}
-													query={autocompleteState.query}
-													collection={autocompleteState.collections[0]}
-												/>
-												<p className="flex items-center justify-end gap-2 border-t border-zinc-100 px-4 py-2 text-xs text-zinc-400 dark:border-zinc-800 dark:text-zinc-500">
-													Search by{' '}
-													<AlgoliaIcon className="h-4 fill-[#003DFF] dark:fill-zinc-400" />
-												</p>
-											</>
+                      <SearchResults
+                        autocomplete={autocomplete}
+                        query={autocompleteState.query}
+                        collection={autocompleteState.collections[0]}
+                      />
 										)}
 									</div>
 								</form>
