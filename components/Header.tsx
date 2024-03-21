@@ -4,10 +4,10 @@ import { forwardRef } from 'react'
 
 import Link from '@components/Link'
 import Logo from '@components/Logo'
+import ModeToggle from '@components/ModeToggle'
 import MobileNavigation, {
 	useIsInsideMobileNavigation,
-} from '@components/MobileNavigation'
-import ModeToggle from '@components/ModeToggle'
+} from '@components/Navigator/MobileNavigation'
 import MobileSearch from '@components/Search/MobileSearch'
 import Search from '@components/Search/Search'
 import { externalLinks } from '@data/siteMetadata.json'

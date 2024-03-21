@@ -1,20 +1,17 @@
 import { MDXProvider } from '@mdx-js/react'
 import type { AppProps } from 'next/app'
 import Head from 'next/head'
-import { redirect } from 'next/navigation'
 import { Router, useRouter } from 'next/router'
 import NProgress from 'nprogress'
 import ProgressBar from 'react-scroll-progress-bar'
 
 import Analytics from '@components/Analytics'
-import mdxComponents from '@components/mdx'
+import mdxComponents from '@components/MDX'
 import PageLayout from '@components/PageLayout'
 import '@styles/tailwind.css'
 import '@styles/extra.css'
 import 'focus-visible'
-import { internalLinks } from '@data/siteMetadata.json'
 import { useMobileNavigationStore } from '@hooks/navigation'
-import kebabCase from '@libs/kebabCase'
 
 // NProgress.configure({ showSpinner: false });
 

@@ -1,6 +1,6 @@
 import { motion, useIsPresent } from 'framer-motion'
 
-import { useIsInsideMobileNavigation } from '@components/MobileNavigation'
+import { useIsInsideMobileNavigation } from '@components/Navigator/MobileNavigation'
 import { useInitialValue, useSectionStore } from '@hooks/navigation'
 import { remToPx } from '@libs/remToPx'
 

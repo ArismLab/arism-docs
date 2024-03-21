@@ -1,4 +1,4 @@
-import NavigationGroup from '@components/NavigationGroup'
+import NavigationGroup from '@components/Navigator/NavigationGroup'
 import { internalLinks } from '@data/siteMetadata.json'
 
 const Navigation = ({ className }: { className?: string }) => {

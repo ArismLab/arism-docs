@@ -3,9 +3,9 @@ import { AnimatePresence, motion } from 'framer-motion'
 import { useRouter } from 'next/router'
 import { useRef } from 'react'
 
-import { useIsInsideMobileNavigation } from '@components/MobileNavigation'
+import { useIsInsideMobileNavigation } from '@components/Navigator/MobileNavigation'
+import VisibleSectionHighlight from '@components/Navigator/VisibleSessionHighlight'
 import NavLink from '@components/NavLink'
-import VisibleSectionHighlight from '@components/VisibleSessionHighlight'
 import { useSectionStore } from '@hooks/navigation'
 import { remToPx } from '@libs/remToPx'
 
