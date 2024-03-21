@@ -1,8 +1,8 @@
 import clsx from 'clsx'
 import { Children, useEffect, useState } from 'react'
 
-import { ClipboardIcon } from '@components/icons/ClipboardIcon'
-import Tag from '@components/Tag'
+import Tag from '@components/Common/Tag'
+import { ClipboardIcon } from '@components/Icons/ClipboardIcon'
 
 const CodePanel = ({ tag, label, code, children }: any) => {
 	const child = Children.only(children)

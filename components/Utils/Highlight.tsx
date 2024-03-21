@@ -1,6 +1,6 @@
 import { motion, useMotionTemplate, useMotionValue } from 'framer-motion'
 
-import GridPattern from '@components/GridPattern'
+import GridPattern from '@components/Utils/GridPattern'
 
 const Highlight = ({ highlight }) => {
 	const mouseX = useMotionValue(0)

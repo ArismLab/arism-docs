@@ -2,8 +2,8 @@ import { Dialog, Transition } from '@headlessui/react'
 import { motion } from 'framer-motion'
 import { Fragment, createContext, useContext } from 'react'
 
-import Header from '@components/Header'
 import Navigation from '@components/Navigator/Navigation'
+import Header from '@components/Page/Header'
 import { useMobileNavigationStore } from '@hooks/navigation'
 
 const MenuIcon = (props) => {

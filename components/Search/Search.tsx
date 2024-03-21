@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react'
 import SearchDialog from '@components/Search/SearchDialog'
 import { useSearchProps } from '@hooks/search'
 
-import SearchIcon from '../icons/SearchIcon'
+import SearchIcon from '../Icons/SearchIcon'
 
 const Search = () => {
 	const [modifierKey, setModifierKey] = useState()

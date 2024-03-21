@@ -2,9 +2,9 @@ import clsx from 'clsx'
 import { motion, useScroll, useTransform } from 'framer-motion'
 import { forwardRef } from 'react'
 
-import Link from '@components/Link'
-import Logo from '@components/Logo'
-import ModeToggle from '@components/ModeToggle'
+import Link from '@components/Common/Link'
+import Logo from '@components/Common/Logo'
+import ModeToggle from '@components/Common/ModeToggle'
 import MobileNavigation, {
 	useIsInsideMobileNavigation,
 } from '@components/Navigator/MobileNavigation'
@@ -13,7 +13,7 @@ import Search from '@components/Search/Search'
 import { externalLinks } from '@data/siteMetadata.json'
 import { useMobileNavigationStore } from '@hooks/navigation'
 
-import Button from './Button'
+import Button from '../Common/Button'
 
 const Header = forwardRef(({ className }: any, ref: any) => {
 	const { isOpen: mobileNavIsOpen }: any = useMobileNavigationStore()

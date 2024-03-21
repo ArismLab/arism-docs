@@ -1,4 +1,4 @@
-import SearchIcon from '@components/icons/SearchIcon'
+import SearchIcon from '@components/Icons/SearchIcon'
 import SearchDialog from '@components/Search/SearchDialog'
 import { useSearchProps } from '@hooks/search'
 

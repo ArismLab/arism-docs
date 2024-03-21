@@ -1,13 +1,22 @@
 import { Transition } from '@headlessui/react'
+import Link from 'next/link'
 import { Fragment, useState } from 'react'
 
-import CheckIcon from '@components/icons/CheckIcon'
-import DiscordIcon from '@components/icons/Discord'
-import FeedbackButton from '@components/icons/FeedbackButton'
-import GitHubIcon from '@components/icons/GitHubIcon'
-import TwitterIcon from '@components/icons/TwitterIcon'
-import PageNavigation from '@components/PageNavigation'
-import SocialLink from '@components/SocialLink'
+import CheckIcon from '@components/Icons/CheckIcon'
+import DiscordIcon from '@components/Icons/Discord'
+import FeedbackButton from '@components/Icons/FeedbackButton'
+import GitHubIcon from '@components/Icons/GitHubIcon'
+import TwitterIcon from '@components/Icons/TwitterIcon'
+import PageNavigation from '@components/Page/PageNavigation'
+
+const SocialLink = ({ href, icon: Icon, children }) => {
+	return (
+		<Link href={href} className="group">
+			<span className="sr-only">{children}</span>
+			<Icon className="h-5 w-5 fill-zinc-700 transition group-hover:fill-zinc-900 dark:group-hover:fill-zinc-500" />
+		</Link>
+	)
+}
 
 const Footer = () => {
 	const [submitted, setSubmitted] = useState(false)

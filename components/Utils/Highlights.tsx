@@ -1,9 +1,9 @@
-import Heading from '@components/Heading'
-import Highlight from '@components/Highlight'
-import ChatBubbleIcon from '@components/icons/ChatBubbleIcon'
-import EnvelopeIcon from '@components/icons/EnvelopeIcon'
-import UserIcon from '@components/icons/UserIcon'
-import UsersIcon from '@components/icons/UsersIcon'
+import Heading from '@components/Common/Heading'
+import ChatBubbleIcon from '@components/Icons/ChatBubbleIcon'
+import EnvelopeIcon from '@components/Icons/EnvelopeIcon'
+import UserIcon from '@components/Icons/UserIcon'
+import UsersIcon from '@components/Icons/UsersIcon'
+import Highlight from '@components/Utils/Highlight'
 
 const highlights = [
 	{

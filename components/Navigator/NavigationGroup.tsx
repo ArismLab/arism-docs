@@ -4,8 +4,8 @@ import { useRouter } from 'next/router'
 import { useRef } from 'react'
 
 import { useIsInsideMobileNavigation } from '@components/Navigator/MobileNavigation'
+import NavLink from '@components/Navigator/NavLink'
 import VisibleSectionHighlight from '@components/Navigator/VisibleSessionHighlight'
-import NavLink from '@components/NavLink'
 import { useSectionStore } from '@hooks/navigation'
 import { remToPx } from '@libs/remToPx'
 

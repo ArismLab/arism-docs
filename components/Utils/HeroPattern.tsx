@@ -1,4 +1,4 @@
-import GridPattern from '@components/GridPattern'
+import GridPattern from '@components/Utils/GridPattern'
 
 const HeroPattern = () => {
 	return (

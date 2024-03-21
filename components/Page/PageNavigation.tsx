@@ -1,7 +1,7 @@
 import { useRouter } from 'next/router'
 
-import Button from '@components/Button'
-import Link from '@components/Link'
+import Button from '@components/Common/Button'
+import Link from '@components/Common/Link'
 import { internalLinks } from '@data/siteMetadata.json'
 
 const PageLink = ({ label, page, previous = false }) => {

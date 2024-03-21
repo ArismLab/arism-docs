@@ -1,9 +1,9 @@
 import { useInView } from 'framer-motion'
 import { useEffect, useRef } from 'react'
 
-import AnchorIcon from '@components/icons/AnchorIcon'
-import Link from '@components/Link'
-import Tag from '@components/Tag'
+import Link from '@components/Common/Link'
+import Tag from '@components/Common/Tag'
+import AnchorIcon from '@components/Icons/AnchorIcon'
 import { useSectionStore } from '@hooks/navigation'
 import { remToPx } from '@libs/remToPx'
 

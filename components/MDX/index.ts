@@ -1,6 +1,6 @@
 import { MDXComponents } from 'mdx/types'
 
-import Button from '@components/Button'
+import Button from '@components/Common/Button'
 import Code from '@components/MDX/Code'
 import Col from '@components/MDX/Col'
 import H2 from '@components/MDX/H2'

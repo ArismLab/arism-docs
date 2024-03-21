@@ -3,9 +3,9 @@ import clsx from 'clsx'
 import { useRouter } from 'next/router'
 import { Fragment, forwardRef, useEffect, useRef } from 'react'
 
-import AlgoliaIcon from '@components/icons/AlgoliaIcon'
-import LoadingIcon from '@components/icons/LoadingIcon'
-import SearchIcon from '@components/icons/SearchIcon'
+import AlgoliaIcon from '@components/Icons/AlgoliaIcon'
+import LoadingIcon from '@components/Icons/LoadingIcon'
+import SearchIcon from '@components/Icons/SearchIcon'
 import SearchResults from '@components/Search/SearchResults'
 import { useAutocomplete } from '@hooks/search'
 

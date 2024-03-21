@@ -1,4 +1,4 @@
-import InfoIcon from '@components/icons/InfoIcon'
+import InfoIcon from '@components/Icons/InfoIcon'
 
 const Note = ({ children }) => {
 	return (

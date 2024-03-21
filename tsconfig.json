@@ -34,7 +34,7 @@
         "contexts/auth.jsx",
         "data/siteMetadata.json",
         "libs/mdx.mjs",
-        "components/icons/GitHubIcontsx"
+        "components/Icons/GitHubIcontsx"
     ],
     "typeRoots": ["../node_modules/@types", "../@types"],
     "exclude": ["node_modules"]

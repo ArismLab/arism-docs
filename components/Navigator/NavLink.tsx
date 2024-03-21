@@ -1,7 +1,7 @@
 import clsx from 'clsx'
 import Link from 'next/link'
 
-import Tag from '@components/Tag'
+import Tag from '@components/Common/Tag'
 
 const NavLink = ({
 	href,
