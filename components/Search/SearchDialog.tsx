@@ -9,7 +9,6 @@ import SearchIcon from '@components/icons/SearchIcon'
 import SearchResults from '@components/Search/SearchResults'
 import { useAutocomplete } from '@hooks/search'
 
-
 const SearchInput = forwardRef(
 	({ autocomplete, autocompleteState, onClose }: any, inputRef): any => {
 		const inputProps = autocomplete.getInputProps({})
@@ -141,15 +140,15 @@ const SearchDialog = ({ open, setOpen, className }) => {
 									/>
 									<div
 										ref={panelRef}
-										className="dark:bg-zinc-900 border-t border-zinc-200 bg-zinc-100 empty:hidden dark:border-zinc-100/5"
+										className="border-t border-zinc-200 bg-zinc-100 empty:hidden dark:border-zinc-100/5 dark:bg-zinc-900"
 										{...(autocomplete.getPanelProps({}) as any)}
 									>
 										{autocompleteState.isOpen && (
-                      <SearchResults
-                        autocomplete={autocomplete}
-                        query={autocompleteState.query}
-                        collection={autocompleteState.collections[0]}
-                      />
+											<SearchResults
+												autocomplete={autocomplete}
+												query={autocompleteState.query}
+												collection={autocompleteState.collections[0]}
+											/>
 										)}
 									</div>
 								</form>

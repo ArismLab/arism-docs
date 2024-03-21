@@ -47,7 +47,8 @@ export const useTabGroupProps = (availableLanguages) => {
         (a, z) => preferredLanguages.indexOf(z) - preferredLanguages.indexOf(a)
     )[0]
     const languageIndex = availableLanguages.indexOf(activeLanguage)
-    const newSelectedIndex = languageIndex === -1 ? selectedIndex : languageIndex
+    const newSelectedIndex =
+        languageIndex === -1 ? selectedIndex : languageIndex
     if (newSelectedIndex !== selectedIndex) {
         setSelectedIndex(newSelectedIndex)
     }

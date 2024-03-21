@@ -140,8 +140,8 @@ To solve this problem, we apply a mechanism that a node will supervise another n
 
 But in the 3-node system, this is completely dangerous because in this case, one node can control 2/3 of the network, which is enough to manipulate the user's **Master Key**. Luckily, our system implements 5 nodes, which can prevent this vulnerability. But we only accept this mechanism when JUST ONE node is down, if there are 2 nodes, there are two cases:
 
-- _The second down node is the one that is supervised by the first down node_: There is not enough nodes.
-- _The second down node is not the one that is supervised by the first down node_: The system is vulnerable because there are 2 nodes controlling 2/5 of the network.
+-   _The second down node is the one that is supervised by the first down node_: There is not enough nodes.
+-   _The second down node is not the one that is supervised by the first down node_: The system is vulnerable because there are 2 nodes controlling 2/5 of the network.
 
 That's why, in the 5-node system, 4/5 nodes are needed to generate the **Network Key** and 3/5 nodes are needed to derive the **Network Key**.
 

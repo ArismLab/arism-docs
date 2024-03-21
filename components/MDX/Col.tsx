@@ -1,4 +1,4 @@
-import clsx from "clsx"
+import clsx from 'clsx'
 
 const Col = ({ children, sticky = false }) => {
 	return (

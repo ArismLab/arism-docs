@@ -1,14 +1,14 @@
-import clsx from "clsx"
-import { Children, useEffect, useState } from "react"
+import clsx from 'clsx'
+import { Children, useEffect, useState } from 'react'
 
-import { ClipboardIcon } from "@components/icons/ClipboardIcon"
-import Tag from "@components/Tag"
+import { ClipboardIcon } from '@components/icons/ClipboardIcon'
+import Tag from '@components/Tag'
 
 const CodePanel = ({ tag, label, code, children }: any) => {
-  const child = Children.only(children)
-  
-  const codeTag = child.props.tag ?? tag
-  const codeLabel = child.props.label ?? label
+	const child = Children.only(children)
+
+	const codeTag = child.props.tag ?? tag
+	const codeLabel = child.props.label ?? label
 
 	const [copyCount, setCopyCount] = useState(0)
 	const copied = copyCount > 0
@@ -23,20 +23,20 @@ const CodePanel = ({ tag, label, code, children }: any) => {
 	}, [copyCount])
 
 	return (
-    <div className="dark:bg-white/2.5 group">
-      <div className="border-b-white/7.5 bg-white/2.5 dark:bg-white/1 flex h-9 items-center gap-2 border-y border-t-transparent bg-zinc-900 px-4 dark:border-b-white/5">
-			{codeTag && (
-				<div className="dark flex">
-					<Tag variant="small">{codeTag}</Tag>
-				</div>
-			)}
-			{codeTag && codeLabel && (
-				<span className="h-0.5 w-0.5 rounded-full bg-zinc-500" />
-			)}
-			{codeLabel && (
-				<span className="font-mono text-xs text-zinc-400">{codeLabel}</span>
-			)}
-		</div>
+		<div className="dark:bg-white/2.5 group">
+			<div className="border-b-white/7.5 bg-white/2.5 dark:bg-white/1 flex h-9 items-center gap-2 border-y border-t-transparent bg-zinc-900 px-4 dark:border-b-white/5">
+				{codeTag && (
+					<div className="dark flex">
+						<Tag variant="small">{codeTag}</Tag>
+					</div>
+				)}
+				{codeTag && codeLabel && (
+					<span className="h-0.5 w-0.5 rounded-full bg-zinc-500" />
+				)}
+				{codeLabel && (
+					<span className="font-mono text-xs text-zinc-400">{codeLabel}</span>
+				)}
+			</div>
 			<div className="relative">
 				<pre className="overflow-x-auto p-4 text-xs text-white">{children}</pre>
 				<button

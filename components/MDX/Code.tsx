@@ -1,4 +1,4 @@
-import { useContext} from 'react'
+import { useContext } from 'react'
 
 import { CodeGroupContext } from '@components/MDX/Pre'
 

@@ -1,5 +1,3 @@
-
-
 import { MDXComponents } from 'mdx/types'
 
 import Button from '@components/Button'
@@ -13,17 +11,17 @@ import Property from '@components/MDX/Property'
 import Row from '@components/MDX/Row'
 
 const mdxComponents: MDXComponents = {
-	Note,
-	Row,
-	Col,
-	Properties,
-	Property,
-	// a: Link as any,
-	h2: H2 as any,
-	Button,
-	Pre,
-	code: Code as any,
-	pre: Pre as any,
+    Note,
+    Row,
+    Col,
+    Properties,
+    Property,
+    // a: Link as any,
+    h2: H2 as any,
+    Button,
+    Pre,
+    code: Code as any,
+    pre: Pre as any,
 }
 
 export default mdxComponents

@@ -2,14 +2,14 @@ import clsx from 'clsx'
 import { Fragment, useId } from 'react'
 
 const SearchResult = ({ result, resultIndex, autocomplete, collection }) => {
-  const id = useId()
-  
-  const allLevels = Object.keys(result.hierarchy)
+	const id = useId()
+
+	const allLevels = Object.keys(result.hierarchy)
 	const hierarchy = Object.entries(result._highlightResult.hierarchy).filter(
 		(e: any) => Boolean(e[1].value)
 	)
-  const levels = hierarchy.map(([level]) => level)
-  
+	const levels = hierarchy.map(([level]) => level)
+
 	const level: any =
 		result.type === 'content'
 			? levels.pop()
@@ -18,17 +18,17 @@ const SearchResult = ({ result, resultIndex, autocomplete, collection }) => {
 						(level) =>
 							allLevels.indexOf(level) <= allLevels.indexOf(result.type)
 					)
-        .pop()
-  
-  const titleHtml = result._highlightResult.hierarchy[level].value
-  const hierarchyHtml = hierarchy
-    .slice(0, levels.indexOf(level))
-    .map((e: any) => e[1].value)
-  
+					.pop()
+
+	const titleHtml = result._highlightResult.hierarchy[level].value
+	const hierarchyHtml = hierarchy
+		.slice(0, levels.indexOf(level))
+		.map((e: any) => e[1].value)
+
 	return (
 		<li
 			className={clsx(
-				'cursor-pointer group block px-4 py-3 aria-selected:bg-zinc-50 dark:aria-selected:bg-zinc-800/50',
+				'group block cursor-pointer px-4 py-3 aria-selected:bg-zinc-50 dark:aria-selected:bg-zinc-800/50',
 				resultIndex > 0 && 'border-t border-zinc-100 dark:border-zinc-800'
 			)}
 			aria-labelledby={`${id}-hierarchy ${id}-title`}
