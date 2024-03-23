@@ -27,6 +27,11 @@
                     "title": "Introduction",
                     "href": "/",
                     "description": "A quick tour towards the Arism Wallet."
+                },
+                {
+                    "title": "Roadmap",
+                    "href": "/roadmap",
+                    "description": "The roadmap for the Arism Wallet development."
                 }
             ]
         },

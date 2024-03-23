@@ -56,7 +56,7 @@ Considering node 1, we can see that $\left(1, s_1^1\right)$, $\left(2, s_1^2\rig
 
 $$
 \begin{cases}
-z_1 + \alpha_1 = s_1^1 \\
+z_1 + 1\alpha_1 = s_1^1 \\
 z_1 + 2\alpha_1 = s_1^2 \\
 z_1 + 3\alpha_1 = s_1^3
 \end{cases}
@@ -96,25 +96,25 @@ $$
 \end{bmatrix}
 $$
 
-Since we have $\textbf{z}_* = \begin{bmatrix} \textbf{A} \mid \textbf{s}_* \end{bmatrix}$ are already non-singlar matrices. Therefore, $\Sigma \textbf{z}_* = \Sigma{\begin{bmatrix} \textbf{A} \mid \textbf{s}_* \end{bmatrix}} = \begin{bmatrix} n \times \textbf{A} \mid \Sigma\textbf{s}_* \end{bmatrix}$ is also non-singular (from _positive-definiteness property_).
+Since we have $\textbf{z}_i = \begin{bmatrix} \textbf{A} \mid \textbf{s}_i \end{bmatrix}$ are already non-singlar matrices for every $i$. Therefore, $\Sigma \textbf{z}_* = \Sigma{\begin{bmatrix} \textbf{A} \mid \textbf{s}_* \end{bmatrix}} = \begin{bmatrix} n \times \textbf{A} \mid \Sigma\textbf{s}_* \end{bmatrix}$ is also non-singular (from _positive-definiteness property_).
 
 Thus, the row-echelon form $\Sigma\textbf{z}_* = \begin{bmatrix} \textbf{A} \mid \Sigma\textbf{s}_* \end{bmatrix}$ is a non-singular matrix (from _consistency of the augmented matrix property_), which leads the system of linear equations $\textbf{A} \times \Sigma\textbf{z}_* = \Sigma\textbf{s}_*$ to have a unique solution, or $\Sigma z_*$ is valid and unique. We call it **Master Secret**.
 
-The same proof can be also applied for polynomials of any degree $n$:
+The same proof can be also applied for any polynomials of degree $k$ with $n$ nodes (in which $k \leq n$).
 
 $$
-\begin{bmatrix}
+\begin{cases}
 1 & 1 & 1 & \cdots & 1 \\
-1 & 2 & 4 & \cdots & 2^{n-1} \\
-1 & 3 & 9 & \cdots & 3^{n-1} \\
+1 & 2 & 4 & \cdots & 2^k \\
+1 & 3 & 9 & \cdots & 3^k \\
 \vdots & \vdots & \vdots & \ddots & \vdots \\
-1 & n & n^2 & \cdots & n^{n-1}
-\end{bmatrix} \begin{bmatrix}
+1 & n & n^2 & \cdots & n^k
+\end{cases} \begin{bmatrix}
 z_i \\
 \alpha_i \\
 \alpha_i^2 \\
 \vdots \\
-\alpha_i^{n-1}
+\alpha_i^k
 \end{bmatrix} = \begin{bmatrix}
 s_i^1 \\
 s_i^2 \\
